@@ -19,6 +19,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:invencible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_k7ijg"]
 resource_name = "run"
@@ -360,6 +372,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [300, 301, 302, 303, 304, 305, 306, 307]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:invencible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_cgink"]
 resource_name = "death"
@@ -451,7 +475,6 @@ position = Vector2(0, -0.333328)
 shape = SubResource("RectangleShape2D_hmhqs")
 
 [node name="attacks" type="Area2D" parent="."]
-visible = false
 position = Vector2(-145, -107)
 monitoring = false
 

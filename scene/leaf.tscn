@@ -330,6 +330,7 @@ size = Vector2(26, 0)
 [node name="Leaf" type="CharacterBody2D" groups=["player"]]
 collision_mask = 8
 script = ExtResource("1_qjbl6")
+invecible = true
 metadata/_edit_vertical_guides_ = [-133.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]

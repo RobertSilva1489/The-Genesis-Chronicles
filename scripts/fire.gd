@@ -91,10 +91,7 @@ func blink() -> void:
 	$Sprite2D.modulate = Color(10,10,10,10)
 	await get_tree().create_timer(.1).timeout
 	$Sprite2D.modulate = Color(1,1,1,1)
-func Special_OP():
-	health+=10
-	if health > 100:
-		health = 100
+
 		
 func _on_attacks_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

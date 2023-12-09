@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://x47o5eftkbs1"]
+[gd_scene load_steps=23 format=3 uid="uid://x47o5eftkbs1"]
 
+[ext_resource type="Script" path="res://scripts/wind.gd" id="1_5a07s"]
 [ext_resource type="Texture2D" uid="uid://e8on88bpxy5q" path="res://assent/bosses/wind_SpriteSheet_288x128.png" id="1_tyas1"]
 
 [sub_resource type="Animation" id="Animation_akm0h"]
@@ -416,17 +417,24 @@ radius = 35.0143
 radius = 16.0
 height = 42.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qo54y"]
+size = Vector2(186, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi2sq"]
+size = Vector2(38, 20)
+
 [node name="wind" type="CharacterBody2D"]
 position = Vector2(-126, -65)
 collision_layer = 2
 collision_mask = 8
+script = ExtResource("1_5a07s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tyas1")
 centered = false
 hframes = 30
 vframes = 13
-frame = 270
+frame = 295
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -477,10 +485,25 @@ shape = SubResource("CircleShape2D_o8d0k")
 disabled = true
 
 [node name="special3" type="CollisionShape2D" parent="attacks"]
-position = Vector2(180, 109)
+position = Vector2(198, 109)
 shape = SubResource("CapsuleShape2D_411d4")
 disabled = true
 
 [node name="followPlayer" type="Area2D" parent="."]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="followPlayer"]
+position = Vector2(248, 97)
+shape = SubResource("RectangleShape2D_qo54y")
+
 [node name="detectPlayer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
+position = Vector2(174, 116)
+shape = SubResource("RectangleShape2D_pi2sq")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="attacks" to="." method="_on_attacks_body_entered"]
+[connection signal="body_entered" from="followPlayer" to="." method="_on_follow_player_body_entered"]
+[connection signal="body_exited" from="followPlayer" to="." method="_on_follow_player_body_exited"]
+[connection signal="body_entered" from="detectPlayer" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="detectPlayer" to="." method="_on_detect_player_body_exited"]

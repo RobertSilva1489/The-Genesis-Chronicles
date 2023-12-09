@@ -48,7 +48,6 @@ func _patrol():
 		move_and_slide()
 	if follow == false:
 		velocity.x = 0 
-		$AnimationPlayer.play("idle")
 func _flip() -> void:
 	if direction < 0 and health > 0:
 		transform.x.x = -1
@@ -107,6 +106,7 @@ func _on_follow_player_body_entered(body: Node2D) -> void:
 func _on_follow_player_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		follow = false
+		$AnimationPlayer.play("idle")
 
 
 func _on_attacks_body_entered(body: Node2D) -> void:

@@ -421,20 +421,21 @@ height = 42.0
 size = Vector2(186, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi2sq"]
-size = Vector2(38, 20)
+size = Vector2(25.8333, 20)
 
-[node name="wind" type="CharacterBody2D"]
-position = Vector2(-126, -65)
+[node name="wind" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(39, 13)
+scale = Vector2(1.2, 1.2)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_5a07s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-145, -108.333)
 texture = ExtResource("1_tyas1")
 centered = false
 hframes = 30
 vframes = 13
-frame = 295
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -446,10 +447,12 @@ libraries = {
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(145, 108)
+position = Vector2(0, -0.333328)
 shape = SubResource("RectangleShape2D_hmhqs")
 
 [node name="attacks" type="Area2D" parent="."]
+visible = false
+position = Vector2(-145, -107)
 monitoring = false
 
 [node name="attack1" type="CollisionShape2D" parent="attacks"]
@@ -485,20 +488,22 @@ shape = SubResource("CircleShape2D_o8d0k")
 disabled = true
 
 [node name="special3" type="CollisionShape2D" parent="attacks"]
-position = Vector2(198, 109)
+position = Vector2(180, 109)
 shape = SubResource("CapsuleShape2D_411d4")
 disabled = true
 
 [node name="followPlayer" type="Area2D" parent="."]
+position = Vector2(-145, -108.333)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="followPlayer"]
 position = Vector2(248, 97)
 shape = SubResource("RectangleShape2D_qo54y")
 
 [node name="detectPlayer" type="Area2D" parent="."]
+position = Vector2(-145, -108.333)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
-position = Vector2(174, 116)
+position = Vector2(167.917, 116)
 shape = SubResource("RectangleShape2D_pi2sq")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

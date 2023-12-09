@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
-[ext_resource type="PackedScene" uid="uid://0lq0il055lme" path="res://scene/water.tscn" id="3_elkul"]
+[ext_resource type="PackedScene" uid="uid://x47o5eftkbs1" path="res://scene/wind.tscn" id="3_78huv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qeffu"]
 bounce = 0.4
@@ -76,5 +76,5 @@ max_jump_amount = 2
 max_acceleration = 2000
 can_hold_jump = true
 
-[node name="water" parent="." instance=ExtResource("3_elkul")]
-position = Vector2(536, 333)
+[node name="wind" parent="." instance=ExtResource("3_78huv")]
+position = Vector2(401, 220)

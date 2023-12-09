@@ -1,0 +1,117 @@
+[gd_scene load_steps=17 format=3 uid="uid://bfogw0jwb6gp6"]
+
+[ext_resource type="Texture2D" uid="uid://dendw0ncjv7er" path="res://assent/mage_guardian-blue.png" id="1_e5j57"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txnat"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgchj"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjca2"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3402b"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njriy"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21tc6"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_153a5"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gka4o"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj3qc"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw58w"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg7qy"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kinsm"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81pre"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etiww"]
+atlas = ExtResource("1_e5j57")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oh3w8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txnat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgchj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjca2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3402b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njriy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21tc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_153a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gka4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj3qc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw58w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg7qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kinsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81pre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etiww")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="fire_mage" type="AnimatedSprite2D"]
+modulate = Color(1, 0.054902, 0, 1)
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_oh3w8")
+autoplay = "default"
+frame_progress = 0.920854
+centered = false

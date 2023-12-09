@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4muf76kgfb77"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_7bswo"]
+[ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="4_kcijc"]
+[ext_resource type="Texture2D" uid="uid://337hheiuqdd6" path="res://assent/HUD/mp_bar.png" id="5_max2y"]
+[ext_resource type="Texture2D" uid="uid://vncylhb4jggh" path="res://assent/HUD/custom2.png" id="5_sjs26"]
+[ext_resource type="Texture2D" uid="uid://0ymca165k3uq" path="res://assent/leaf_ranger.png" id="6_0bwfw"]
+[ext_resource type="Texture2D" uid="uid://0l3434yahwd6" path="res://assent/HUD/hud_bg_without_custom_meter.png" id="6_bibaq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_k4tnl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_v3ncn"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_7bswo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0901961, 0.317647, 0.0901961, 1)
+position = Vector2(13, 11)
+scale = Vector2(65, 59)
+texture = SubResource("CanvasTexture_k4tnl")
+centered = false
+
+[node name="leaf" type="Sprite2D" parent="."]
+position = Vector2(13, 12)
+scale = Vector2(1, 0.921875)
+texture = ExtResource("6_0bwfw")
+centered = false
+
+[node name="bg" type="Sprite2D" parent="."]
+modulate = Color(0.0313726, 0.0313726, 0.0313726, 1)
+position = Vector2(79, 18)
+scale = Vector2(187, 33)
+texture = SubResource("CanvasTexture_v3ncn")
+centered = false
+
+[node name="mana" type="TextureProgressBar" parent="."]
+offset_left = 82.0
+offset_top = 40.0
+offset_right = 397.0
+offset_bottom = 120.0
+value = 100.0
+texture_progress = ExtResource("5_max2y")
+
+[node name="health" type="TextureProgressBar" parent="."]
+offset_left = 82.0
+offset_top = 26.0
+offset_right = 397.0
+offset_bottom = 116.0
+value = 100.0
+texture_progress = ExtResource("4_kcijc")
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(159, 47)
+texture = ExtResource("6_bibaq")
+
+[node name="arrow" type="TextureProgressBar" parent="Sprite2D2"]
+offset_left = -77.0
+offset_top = 4.0
+offset_right = 73.0
+offset_bottom = 44.0
+max_value = 10.0
+value = 10.0
+texture_progress = ExtResource("5_sjs26")

@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://bec8hrk6km5ow"]
+
+[ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
+[ext_resource type="PackedScene" uid="uid://0lq0il055lme" path="res://scene/water.tscn" id="3_elkul"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qeffu"]
+bounce = 0.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uorm"]
+size = Vector2(986, 20)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_frocy"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wxik8"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_tvkmb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+modulate = Color(0, 0.568627, 0, 1)
+position = Vector2(498, 399)
+collision_layer = 8
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_qeffu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+modulate = Color(0, 0.576471, 0, 1)
+shape = SubResource("RectangleShape2D_8uorm")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(0, 0.568627, 0, 1)
+position = Vector2(-3.00004, -2)
+scale = Vector2(991, 20)
+texture = SubResource("CanvasTexture_frocy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-420, -2)
+scale = Vector2(21, 10)
+texture = SubResource("CanvasTexture_wxik8")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-197, -2)
+scale = Vector2(21, 10)
+texture = SubResource("CanvasTexture_wxik8")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(60.9999, 0)
+scale = Vector2(21, 10)
+texture = SubResource("CanvasTexture_wxik8")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(237, 0)
+scale = Vector2(21, 10)
+texture = SubResource("CanvasTexture_wxik8")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(435, -2)
+scale = Vector2(21, 10)
+texture = SubResource("CanvasTexture_wxik8")
+centered = false
+
+[node name="Leaf" parent="." instance=ExtResource("1_nkah1")]
+position = Vector2(283, 316)
+jump_duration = 0.5
+max_jump_amount = 2
+max_acceleration = 2000
+can_hold_jump = true
+
+[node name="water" parent="." instance=ExtResource("3_elkul")]
+position = Vector2(536, 333)

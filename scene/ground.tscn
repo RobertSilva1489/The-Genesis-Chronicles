@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://c3f2a5l6c5yg4"]
+[gd_scene load_steps=149 format=3 uid="uid://c3f2a5l6c5yg4"]
 
 [ext_resource type="Texture2D" uid="uid://d24q6hlhemqvj" path="res://assent/bosses/ground_monk_FREE_v1.3-SpriteSheet_288x128.png" id="1_1uv1f"]
 [ext_resource type="Script" path="res://scripts/ground.gd" id="1_mxxs7"]
@@ -1441,6 +1441,12 @@ height = 49.3333
 [sub_resource type="CircleShape2D" id="CircleShape2D_qan7c"]
 radius = 33.34
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yayxr"]
+size = Vector2(32.6667, 17.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h67iw"]
+size = Vector2(182.667, 16)
+
 [node name="ground" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(1, 0)
 scale = Vector2(1.5, 1.5)
@@ -1470,20 +1476,17 @@ libraries = {
 monitoring = false
 
 [node name="attack1" type="CollisionShape2D" parent="attacks"]
-visible = false
 position = Vector2(-2.66667, -12.6667)
 rotation = 4.71239
 shape = SubResource("CapsuleShape2D_goirr")
 disabled = true
 
 [node name="attack2" type="CollisionShape2D" parent="attacks"]
-visible = false
 position = Vector2(25.3333, -6)
 shape = SubResource("CircleShape2D_b6ov2")
 disabled = true
 
 [node name="special1" type="CollisionShape2D" parent="attacks"]
-visible = false
 position = Vector2(65.3333, -1.33333)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xyywa")
@@ -1502,7 +1505,11 @@ disabled = true
 [node name="detectPlayer" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
+position = Vector2(25.6667, 8)
+shape = SubResource("RectangleShape2D_yayxr")
 
 [node name="followPlayer" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="followPlayer"]
+position = Vector2(101.333, -10)
+shape = SubResource("RectangleShape2D_h67iw")

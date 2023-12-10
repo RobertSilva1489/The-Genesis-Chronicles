@@ -1477,12 +1477,12 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_mxxs7")
-invencible = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-145.333, -102.667)
 sprite_frames = SubResource("SpriteFrames_xyh28")
 animation = &"idle"
+frame = 1
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

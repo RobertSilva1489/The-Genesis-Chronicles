@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=8 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
+[ext_resource type="PackedScene" uid="uid://jo8p074gh1c1" path="res://scene/lava_background.tscn" id="2_k5byc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qeffu"]
 bounce = 0.4
@@ -15,6 +16,10 @@ size = Vector2(986, 20)
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_tvkmb")
+
+[node name="lavaBackground" parent="." instance=ExtResource("2_k5byc")]
+position = Vector2(-389, -176)
+scale = Vector2(4, 2.5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 modulate = Color(0, 0.568627, 0, 1)

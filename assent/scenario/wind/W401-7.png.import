@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpoq7mjrtaw7v"
-path="res://.godot/imported/ezgif.com-gif-maker.png-6522cbf74d824393162c5dbde06a45f2.ctex"
+uid="uid://my83q6fd12s"
+path="res://.godot/imported/W401-7.png-a6c5f25c81b921d3a06afd70ac8ef27d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assent/scenario/ezgif.com-gif-maker.png"
-dest_files=["res://.godot/imported/ezgif.com-gif-maker.png-6522cbf74d824393162c5dbde06a45f2.ctex"]
+source_file="res://assent/scenario/wind/W401-7.png"
+dest_files=["res://.godot/imported/W401-7.png-a6c5f25c81b921d3a06afd70ac8ef27d.ctex"]
 
 [params]
 

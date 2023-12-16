@@ -25,7 +25,6 @@ Hud="*res://scene/hud.tscn"
 window/size/viewport_width=800
 window/size/viewport_height=600
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [editor_plugins]
@@ -34,6 +33,7 @@ enabled=PackedStringArray("res://addons/character-controller/plugin.cfg", "res:/
 
 [filesystem]
 
+import/blender/enabled=false
 import/fbx/enabled=false
 
 [input]

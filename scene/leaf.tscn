@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bd4lhvh1afe24"]
+[gd_scene load_steps=20 format=3 uid="uid://bd4lhvh1afe24"]
 
 [ext_resource type="Texture2D" uid="uid://bovyxon6775j3" path="res://assent/Elementals_leaf_ranger_288x128_SpriteSheet.png" id="1_grca3"]
 [ext_resource type="Script" path="res://platformer_controller/platformer_controller.gd" id="1_qjbl6"]
+[ext_resource type="Shader" path="res://shader/leaf.gdshader" id="3_lp8gp"]
 
 [sub_resource type="Animation" id="Animation_i0p7e"]
 resource_name = "attack"
@@ -327,6 +328,14 @@ height = 148.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7hck"]
 size = Vector2(26, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32w7n"]
+shader = ExtResource("3_lp8gp")
+shader_parameter/global_position = Vector2(0.5, 0.5)
+shader_parameter/screen_size = Vector2(0.5, 0.5)
+shader_parameter/force = null
+shader_parameter/size = 0.3
+shader_parameter/thickness = 0.1
+
 [node name="Leaf" type="CharacterBody2D" groups=["player"]]
 collision_mask = 8
 script = ExtResource("1_qjbl6")
@@ -335,14 +344,17 @@ metadata/_edit_vertical_guides_ = [-133.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 rotation_smoothing_enabled = true
+rotation_smoothing_speed = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_grca3")
 hframes = 22
 vframes = 17
-frame = 335
+frame = 251
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -392,6 +404,15 @@ autostart = true
 position = Vector2(0, 63)
 shape = SubResource("RectangleShape2D_l7hck")
 one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_32w7n")
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 51.0
+offset_bottom = 42.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

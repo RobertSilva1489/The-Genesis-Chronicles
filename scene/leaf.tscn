@@ -325,7 +325,7 @@ radius = 8.0
 height = 148.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7hck"]
-size = Vector2(26, 0)
+size = Vector2(20, 0)
 
 [node name="Leaf" type="CharacterBody2D" groups=["player"]]
 collision_mask = 8

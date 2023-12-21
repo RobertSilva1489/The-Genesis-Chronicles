@@ -13,7 +13,8 @@ config_version=5
 config/name="Leaf"
 run/main_scene="res://scene/world.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="res://assent/leaf_ranger.png"
+config/icon="res://assent/leaf_ranger.png"
 
 [autoload]
 

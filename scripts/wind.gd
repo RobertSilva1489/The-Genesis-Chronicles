@@ -1,9 +1,8 @@
 extends CharacterBody2D
-var countHit = 0
-var attack_hold = 1
+@export var countHit = 0
 var attacks = ["attack1","attack2","attack3","defender","defender"]
-var special = ["special1","special2","defender","defender"]
-var special2 = ["special1","special2","defender","defender","defender","defender","defender"]
+var special = ["special1","special2","defender","defender","attack1","attack2","attack3"]
+var special2 = ["special1","special2","defender","defender","special1","special2","defender","defender","attack1","attack2","attack3"]
 var selected_animation
 var direction = 0
 var dead = false
@@ -60,16 +59,20 @@ func attack():
 	var selected_animation
 	if countHit < 7:
 		attack_animations = attacks
-	elif countHit > 7:
+		print("Set 1")
+	elif countHit >= 7:
 		attack_animations = special
+		print("Set 2")
 	elif  health < 30 and countHit > 7:
 		attack_animations = special2
-	selected_animation = attack_animations[randi()%attack_animations.size()]
-	can_attack = false
-	$AnimationPlayer.play(selected_animation)
-	print(selected_animation)
-	await get_tree().create_timer(attack_cooldown).timeout
-	can_attack = true
+		print("Set 3")
+#	selected_animation = attack_animations[randi()%attack_animations.size()]
+	for attackSet in attack_animations:
+		selected_animation = attackSet
+		can_attack = false
+		$AnimationPlayer.play(selected_animation)
+		await get_tree().create_timer(attack_cooldown).timeout
+		can_attack = true
 func damage (dame) -> void:
 	if invencible !=true:
 		blink()

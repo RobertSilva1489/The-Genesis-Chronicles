@@ -14,12 +14,17 @@ _data = {
 point_count = 4
 
 [node name="WindGust" type="Line2D"]
+position = Vector2(587, 257)
+scale = Vector2(-0.5, 0.5)
+points = PackedVector2Array(-336, 142)
 width_curve = SubResource("Curve_j3ire")
 antialiased = true
 script = ExtResource("1_kvn1i")
 reverse_direction = true
+trail_length = 87.0
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-464, -164)
 curve = SubResource("Curve2D_a1oyr")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]

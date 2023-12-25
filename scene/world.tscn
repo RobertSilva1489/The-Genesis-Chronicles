@@ -1,20 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=12 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
 [ext_resource type="Texture2D" uid="uid://cwshg2jwnkhr4" path="res://assent/scenario/sea_background.png" id="2_gci7n"]
+[ext_resource type="Shader" path="res://shader/Noise Offset.gdshader" id="2_ltfv5"]
 [ext_resource type="Texture2D" uid="uid://53lfgpdm33qo" path="res://assent/scenario/bubble.png" id="6_rf53p"]
 [ext_resource type="Texture2D" uid="uid://cljey4p8i22hh" path="res://assent/scenario/Land2.png" id="7_04xbw"]
-[ext_resource type="Shader" path="res://shader/wave.gdshader" id="7_utwdj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmwvb"]
-shader = ExtResource("7_utwdj")
-shader_parameter/WATER_COL = Color(0, 0.458824, 0.85098, 1)
-shader_parameter/WATER2_COL = Color(0.00784314, 0.219608, 0.333333, 1)
-shader_parameter/FOAM_COL = Color(0, 1, 1, 0.196078)
-shader_parameter/distortion_speed = 10.0
-shader_parameter/tile = Vector2(10, 10)
-shader_parameter/offset = 0.0
+[ext_resource type="Texture2D" uid="uid://bal1y8wcmir0e" path="res://assent/scenario/Textures/LAVA.png" id="7_p8xul"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2243"]
 texture = ExtResource("7_04xbw")
@@ -252,6 +244,14 @@ damping_max = 5.0
 scale_min = 0.02
 scale_max = 0.05
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gejft"]
+shader = ExtResource("2_ltfv5")
+shader_parameter/strength = 5.0
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 1)
+shader_parameter/movement_speed = 0.3
+shader_parameter/NOISE_TEXTURE = ExtResource("7_p8xul")
+
 [node name="world_water" type="Node2D"]
 script = ExtResource("1_tvkmb")
 
@@ -260,16 +260,16 @@ scale = Vector2(0.4, 0.4)
 transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.952941, 0, 0, 1)
 position = Vector2(5610, -1140)
 scale = Vector2(7.20313, 4.86574)
 texture = ExtResource("2_gci7n")
 
 [node name="TileMap" type="TileMap" parent="."]
+modulate = Color(1, 0, 0, 1)
 texture_filter = 1
-material = SubResource("ShaderMaterial_rmwvb")
 position = Vector2(-141, -36)
 scale = Vector2(0.6, 0.6)
 tile_set = SubResource("TileSet_wmo87")
@@ -284,8 +284,25 @@ friction = 2000
 can_hold_jump = true
 
 [node name="bubble" type="GPUParticles2D" parent="."]
+visible = false
 position = Vector2(2212, -150)
 scale = Vector2(30, 10)
 amount = 700
 process_material = SubResource("ParticleProcessMaterial_l6jh3")
 texture = ExtResource("6_rf53p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_gejft")
+anchors_preset = -1
+anchor_left = -0.704
+anchor_top = -2.487
+anchor_right = 6.285
+anchor_bottom = 1.0
+offset_left = -29.7999
+offset_top = 0.200195
+offset_right = -0.000488281
+offset_bottom = -336.0
+grow_horizontal = 2
+grow_vertical = 2

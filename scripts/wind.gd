@@ -57,13 +57,13 @@ func _flip() -> void:
 func attack():
 	var attack_animations
 	var selected_animation
-	if countHit < 7:
+	if countHit < 7 and health > 30:
 		attack_animations = attacks
 		print("Set 1")
-	elif countHit >= 7:
+	elif countHit >= 7 and health > 30:
 		attack_animations = special
 		print("Set 2")
-	elif  health < 30 and countHit > 7:
+	elif  health < 30:
 		attack_animations = special2
 		print("Set 3")
 #	selected_animation = attack_animations[randi()%attack_animations.size()]

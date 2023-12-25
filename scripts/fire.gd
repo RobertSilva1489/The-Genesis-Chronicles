@@ -91,8 +91,6 @@ func blink() -> void:
 	$Sprite2D.modulate = Color(10,10,10,10)
 	await get_tree().create_timer(.1).timeout
 	$Sprite2D.modulate = Color(1,1,1,1)
-
-		
 func _on_attacks_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.take_damage(damage_apply)

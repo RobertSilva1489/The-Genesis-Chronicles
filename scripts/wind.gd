@@ -18,7 +18,6 @@ var move :int
 @export var follow = false
 @export var attack_cooldown : float = 1.0
 @export var damage_apply = randi_range(5,20)
-@onready var tree: AnimationTree = $AnimationTree
 @onready var leaf: CharacterBody2D = $"../Leaf"
 
 func _ready() -> void:

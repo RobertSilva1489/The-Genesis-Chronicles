@@ -331,11 +331,9 @@ libraries = {
 "": SubResource("AnimationLibrary_2ot80")
 }
 
-[node name="miniun" parent="." instance=ExtResource("10_p11te")]
-position = Vector2(2273, -218)
-scale = Vector2(1.5, 1.5)
-slime_element = "wind"
-
 [node name="wind" parent="." instance=ExtResource("10_37620")]
 position = Vector2(3793, -99)
 health = 20
+
+[node name="miniun" parent="." instance=ExtResource("10_p11te")]
+position = Vector2(2305, -225)

@@ -1,28 +1,31 @@
 extends CharacterBody2D
 
-@export var slime_element = ""
 @export var speed = 50
 @export var health = 100
 @export var strong = 20
 @export var gravity = 980
 @export var can_attack = true
 @export var follow = false
-@export var attack_cooldown : float = 1.0
+@export var attack_cooldown : float = 1.5
 @export var attack_player = false
+@export var DIST_FOLLOW := 300
 @onready var leaf: CharacterBody2D = $"../Leaf"
+var distance := 0.0
 var direction = 0
 var enter_state = true
 var dead = false
 var dano: int
-var distance
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
 func _physics_process(delta: float) -> void:
-	if !is_on_floor():
-		velocity.y += gravity * delta
-		move_and_slide()
+	if leaf != null:
+		distance = global_position.distance_to(leaf.global_position)
 func _process(delta: float) -> void:
+	if distance <=DIST_FOLLOW:
+		follow = true
+	else:
+		follow = false 
 	if leaf != null and dead == false:
 		distance = leaf.global_position.x - global_position.x
 		direction = sign(distance)
@@ -31,9 +34,6 @@ func _process(delta: float) -> void:
 		elif follow and attack_player !=true:
 			$AnimationPlayer.play("idle")
 			_patrol()
-		if !$RayCast2D.is_colliding():
-			follow = false
-			$AnimationPlayer.play("idle")
 	_flip()	
 	$TextureProgressBar.value = health
 func blink() -> void:
@@ -56,13 +56,19 @@ func _patrol():
 	if Global.health > 0 and health > 0:
 		velocity.x = direction * speed
 		move_and_slide()
+	if global_position.y != leaf.global_position.y:
+		if global_position.y < leaf.global_position.y:
+			velocity.y = 50
+		if global_position.y > leaf.global_position.y:
+			velocity.y = -50
 	if follow == false:
 		velocity.x = 0 
+		
 func _flip() -> void:
-	if direction < 0 and health > 0:
+	if direction < 0 and health > 0 and $Timer.time_left <=0:
 		transform.x.x = -1
 		$Timer.start(0.5)
-	if direction > 0 and health > 0:
+	if direction > 0 and health > 0 and $Timer.time_left <=0:
 		transform.x.x = 1
 		$Timer.start(0.5)	
 func attack():
@@ -80,12 +86,5 @@ func _on_detect_player_body_exited(body: Node2D) -> void:
 		attack_player = false
 
 
-func _on_follow_player_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		follow = true
-
-
-func _on_follow_player_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		follow = false
-		$AnimationPlayer.play("idle")
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	$AnimationPlayer.play("idle")

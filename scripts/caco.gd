@@ -17,10 +17,9 @@ var dano: int
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
-func _process(delta: float) -> void:
 	if distance <=DIST_FOLLOW:
 		follow = true
 	else:
@@ -46,6 +45,7 @@ func damage (dame) -> void:
 	print(health)
 	if health <=0:
 		dead = true
+		$TextureProgressBar.hide()
 		$AnimationPlayer.play("death")
 		await $AnimationPlayer.animation_finished	
 func _on_attack_body_entered(body):

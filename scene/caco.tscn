@@ -295,6 +295,18 @@ tracks/2/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_a6hpk"]
 length = 0.4
@@ -365,6 +377,7 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_rnwig")
 speed = 100
+health = 50
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0.5, 0)
@@ -373,19 +386,16 @@ scale = Vector2(0.5, 0.5)
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Marker2D"]
 position = Vector2(1, 16)
 sprite_frames = SubResource("SpriteFrames_rq4md")
-animation = &"death"
-frame = 2
+animation = &"attack"
 centered = false
 
 [node name="attack" type="Area2D" parent="."]
 position = Vector2(20, 27)
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
 position = Vector2(-0.666668, -1.66667)
 rotation = -1.5708
 shape = SubResource("CircleShape2D_qdfkw")
-disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(19.3333, 25.3333)
@@ -406,7 +416,8 @@ offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
-value = 100.0
+max_value = 50.0
+value = 50.0
 rounded = true
 texture_under = ExtResource("2_idqyt")
 texture_progress = ExtResource("2_idqyt")

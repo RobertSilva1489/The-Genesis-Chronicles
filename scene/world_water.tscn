@@ -277,7 +277,7 @@ gravity = 0
 DIST_FOLLOW = 500
 
 [node name="Leaf" parent="." instance=ExtResource("5_egx4g")]
-position = Vector2(2420, -7)
+position = Vector2(3534, -18)
 max_jump_height = 200.0
 min_jump_height = 100.0
 jump_duration = 1.0

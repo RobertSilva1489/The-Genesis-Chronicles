@@ -7,8 +7,9 @@ var special2 = ["special1","special2","defender","defender","defender","defender
 var selected_animation
 var direction = 0
 var dead = false
-var distance
+var distance := 0.0
 var move :int
+@export var DIST_FOLLOW := 300
 @export var invencible = false
 @export var speed = 50
 @export var health = 100
@@ -30,6 +31,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 		move_and_slide()
 func _process(delta: float) -> void:
+	if leaf != null:
+		distance = global_position.distance_to(leaf.global_position)
+	if distance <=DIST_FOLLOW:
+		follow = true
+	else:
+		follow = false 
 	if leaf != null and dead == false:
 		distance = leaf.global_position.x - global_position.x
 		direction = sign(distance)

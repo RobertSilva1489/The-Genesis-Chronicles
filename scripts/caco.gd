@@ -18,16 +18,6 @@ var distance
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
-	match slime_element:
-		"water":
-			$Marker2D/AnimatedSprite2D.modulate = Color(0,0,1,1)
-		"fire":
-			$Marker2D/AnimatedSprite2D.modulate = Color(1,0,0,1)
-		"wind":
-			$Marker2D/AnimatedSprite2D.modulate = Color(0,0.35,1,1)
-		"ground":
-			$Marker2D/AnimatedSprite2D.modulate = Color(0.7,0.08,0,1)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -39,7 +29,7 @@ func _process(delta: float) -> void:
 		if attack_player and can_attack:
 			attack()
 		elif follow and attack_player !=true:
-			$AnimationPlayer.play("walk")
+			$AnimationPlayer.play("idle")
 			_patrol()
 		if !$RayCast2D.is_colliding():
 			follow = false
@@ -47,23 +37,10 @@ func _process(delta: float) -> void:
 	_flip()	
 	$TextureProgressBar.value = health
 func blink() -> void:
-	match slime_element:
-		"water":
-			$Marker2D/AnimatedSprite2D.modulate = Color(10,10,10,10)
-			await get_tree().create_timer(.1).timeout
-			$Marker2D/AnimatedSprite2D.modulate = Color(0,0,1,1)
-		"fire":
-			$Marker2D/AnimatedSprite2D.modulate = Color(10,10,10,10)
-			await get_tree().create_timer(.1).timeout
-			$Marker2D/AnimatedSprite2D.modulate = Color(1,0,0,1)
-		"wind":
-			$Marker2D/AnimatedSprite2D.modulate = Color(10,10,10,10)
-			await get_tree().create_timer(.1).timeout
-			$Marker2D/AnimatedSprite2D.modulate = Color(0,0.35,1,1)
-		"ground":
-			$Marker2D/AnimatedSprite2D.modulate = Color(10,10,10,10)
-			await get_tree().create_timer(.1).timeout
-			$Marker2D/AnimatedSprite2D.modulate = Color(0.7,0.08,0,1)
+	$Marker2D/Sprite2D.modulate = Color(10,10,10,10)
+	$AnimationPlayer.play("hit")
+	await get_tree().create_timer(.1).timeout
+	$Marker2D/Sprite2D.modulate = Color(1,1,1,1)
 func damage (dame) -> void:
 	health -= dame
 	blink()

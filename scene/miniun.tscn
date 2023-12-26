@@ -1,5 +1,6 @@
-[gd_scene load_steps=49 format=3 uid="uid://v6oyrdhf7oyh"]
+[gd_scene load_steps=50 format=3 uid="uid://v6oyrdhf7oyh"]
 
+[ext_resource type="Script" path="res://scripts/miniun.gd" id="1_fr5tj"]
 [ext_resource type="Texture2D" uid="uid://by5dkhu5bep7o" path="res://assent/minion/attack.png" id="2_mlrvn"]
 [ext_resource type="Texture2D" uid="uid://c8oxh81h3ossa" path="res://assent/minion/death.png" id="3_8umgj"]
 [ext_resource type="Texture2D" uid="uid://dosnl0wh71jgr" path="res://assent/minion/idle.png" id="4_2wqoq"]
@@ -297,6 +298,42 @@ tracks/2/keys = {
 "update": 1,
 "values": ["attack"]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("attack/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_7hol7"]
 length = 1.6
@@ -335,6 +372,32 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["death"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 15)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_yqm3u"]
@@ -376,6 +439,18 @@ tracks/2/keys = {
 "update": 1,
 "values": ["idle"]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 15)]
+}
 
 [sub_resource type="Animation" id="Animation_e16c3"]
 length = 1.6
@@ -416,6 +491,18 @@ tracks/2/keys = {
 "update": 1,
 "values": ["walk"]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ciy8p"]
 _data = {
@@ -442,14 +529,21 @@ size = Vector2(375, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85ee6"]
 size = Vector2(19.9996, 10.333)
 
-[node name="Miniun" type="CharacterBody2D"]
+[node name="Miniun" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_fr5tj")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(4, 15)
 scale = Vector2(0.5, 0.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+position = Vector2(-4, -46)
+scale = Vector2(-2, 2)
 sprite_frames = SubResource("SpriteFrames_vtjvf")
-animation = &"attack"
+animation = &"death"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -510,3 +604,9 @@ position = Vector2(-145, -108.333)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
 position = Vector2(165, 111.167)
 shape = SubResource("RectangleShape2D_85ee6")
+
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
+[connection signal="body_entered" from="followPlayer" to="." method="_on_follow_player_body_entered"]
+[connection signal="body_exited" from="followPlayer" to="." method="_on_follow_player_body_exited"]
+[connection signal="body_entered" from="detectPlayer" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="detectPlayer" to="." method="_on_detect_player_body_exited"]

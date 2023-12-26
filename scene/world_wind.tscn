@@ -337,3 +337,4 @@ health = 20
 
 [node name="miniun" parent="." instance=ExtResource("10_p11te")]
 position = Vector2(2332, -74)
+slime_element = "wind"

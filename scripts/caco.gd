@@ -12,7 +12,6 @@ extends CharacterBody2D
 @onready var leaf: CharacterBody2D = $"../Leaf"
 var distance := 0.0
 var direction = 0
-var enter_state = true
 var dead = false
 var dano: int
 

@@ -336,4 +336,4 @@ position = Vector2(3793, -99)
 health = 20
 
 [node name="miniun" parent="." instance=ExtResource("10_p11te")]
-position = Vector2(2305, -225)
+position = Vector2(2332, -74)

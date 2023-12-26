@@ -315,7 +315,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw7tc"]
-height = 48.0
+height = 42.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_36qkg"]
 radius = 2.0
@@ -354,7 +354,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 41)
+position = Vector2(-1, 39)
 shape = SubResource("CapsuleShape2D_uw7tc")
 
 [node name="attack" type="Area2D" parent="."]

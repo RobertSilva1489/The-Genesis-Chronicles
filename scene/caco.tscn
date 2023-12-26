@@ -195,7 +195,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_7e3h1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qdfkw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vywfv"]
+size = Vector2(20, 2.25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_680p0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xatls"]
+size = Vector2(375, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly0bp"]
+size = Vector2(19.9996, 10.333)
+
+[sub_resource type="Animation" id="Animation_qlfb7"]
 length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
@@ -222,8 +235,32 @@ tracks/1/keys = {
 "update": 1,
 "values": ["attack"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attack:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("attack/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
-[sub_resource type="Animation" id="Animation_sma1l"]
+[sub_resource type="Animation" id="Animation_8dhqg"]
 length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -249,8 +286,22 @@ tracks/1/keys = {
 "update": 1,
 "values": ["death"]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
-[sub_resource type="Animation" id="Animation_61h81"]
+[sub_resource type="Animation" id="Animation_a6hpk"]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -277,7 +328,7 @@ tracks/1/keys = {
 "values": ["hit"]
 }
 
-[sub_resource type="Animation" id="Animation_e2y8b"]
+[sub_resource type="Animation" id="Animation_7sf8f"]
 length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -305,26 +356,13 @@ tracks/1/keys = {
 "values": ["idle"]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ciy8p"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ctld"]
 _data = {
-"attack": SubResource("Animation_7e3h1"),
-"death": SubResource("Animation_sma1l"),
-"hit": SubResource("Animation_61h81"),
-"idle": SubResource("Animation_e2y8b")
+"attack": SubResource("Animation_qlfb7"),
+"death": SubResource("Animation_8dhqg"),
+"hit": SubResource("Animation_a6hpk"),
+"idle": SubResource("Animation_7sf8f")
 }
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qdfkw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vywfv"]
-size = Vector2(20, 2.25)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_680p0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xatls"]
-size = Vector2(375, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly0bp"]
-size = Vector2(19.9996, 10.333)
 
 [node name="Caco" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -339,12 +377,8 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(1, 16)
 sprite_frames = SubResource("SpriteFrames_rq4md")
 animation = &"attack"
+frame = 5
 centered = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ciy8p")
-}
 
 [node name="attack" type="Area2D" parent="."]
 position = Vector2(20, 27)
@@ -404,3 +438,8 @@ position = Vector2(19, 27)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
 position = Vector2(0, 0.333)
 shape = SubResource("RectangleShape2D_ly0bp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8ctld")
+}

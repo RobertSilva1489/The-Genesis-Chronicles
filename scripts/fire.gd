@@ -61,18 +61,19 @@ func _flip() -> void:
 func attack():
 	var attack_animations
 	var selected_animation
-	if countHit < 7:
+	if countHit < 7 and health > 30:
 		attack_animations = attacks
-	elif countHit > 7:
+	elif countHit >= 7 and health > 30:
 		attack_animations = special
-	elif  health < 30 and countHit > 7:
+
+	elif  health < 30:
 		attack_animations = special2
-	selected_animation = attack_animations[randi()%attack_animations.size()]
-	can_attack = false
-	$AnimationPlayer.play(selected_animation)
-	print(selected_animation)
-	await get_tree().create_timer(attack_cooldown).timeout
-	can_attack = true
+	for attackSet in attack_animations:
+		selected_animation = attackSet
+		can_attack = false
+		$AnimationPlayer.play(selected_animation)
+		await get_tree().create_timer(attack_cooldown).timeout
+		can_attack = true
 func damage (dame) -> void:
 	if invencible !=true:
 		blink()

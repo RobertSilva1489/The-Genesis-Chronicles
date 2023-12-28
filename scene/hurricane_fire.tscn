@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://de3o6uud8tivx"]
+
+[ext_resource type="Texture2D" uid="uid://hkfr0xcv5iwr" path="res://assent/enemy/Red Effect Bullet Impact Explosion 32x32.png" id="1_qvn8f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgj1x"]
+atlas = ExtResource("1_qvn8f")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0onx"]
+atlas = ExtResource("1_qvn8f")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buv4d"]
+atlas = ExtResource("1_qvn8f")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx6v2"]
+atlas = ExtResource("1_qvn8f")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ypym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgj1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0onx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buv4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx6v2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_falhi"]
+radius = 29.0
+height = 58.0
+
+[node name="hurricane_fire" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3ypym")
+frame_progress = 0.0123512
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(33, 29)
+shape = SubResource("CapsuleShape2D_falhi")

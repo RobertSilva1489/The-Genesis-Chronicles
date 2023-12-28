@@ -1,0 +1,147 @@
+[gd_scene load_steps=15 format=3 uid="uid://beq5eok0bjetm"]
+
+[ext_resource type="Texture2D" uid="uid://c3w1gh8qcrbv1" path="res://assent/enemy/1/Explosion_1.png" id="1_u2dvb"]
+[ext_resource type="Texture2D" uid="uid://dnn7c6su4jlwe" path="res://assent/enemy/1/Explosion_2.png" id="2_xtvo2"]
+[ext_resource type="Texture2D" uid="uid://cmb07fo8tncf3" path="res://assent/enemy/1/Explosion_3.png" id="3_uavrr"]
+[ext_resource type="Texture2D" uid="uid://d377xune7hu4l" path="res://assent/enemy/1/Explosion_4.png" id="4_j6qoe"]
+[ext_resource type="Texture2D" uid="uid://bov38pmfnraed" path="res://assent/enemy/1/Explosion_5.png" id="5_u82sm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jc1f"]
+atlas = ExtResource("1_u2dvb")
+region = Rect2(0, 0, 130, 660)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oarxu"]
+atlas = ExtResource("2_xtvo2")
+region = Rect2(0, 0, 130, 660)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kwji"]
+atlas = ExtResource("3_uavrr")
+region = Rect2(0, 0, 130, 660)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omian"]
+atlas = ExtResource("4_j6qoe")
+region = Rect2(0, 0, 130, 660)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm76j"]
+atlas = ExtResource("5_u82sm")
+region = Rect2(0, 0, 130, 660)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy7en"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jc1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oarxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kwji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omian")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm76j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ogwv"]
+size = Vector2(364, 100)
+
+[sub_resource type="Animation" id="Animation_i4uwx"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fire:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fire:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["default"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tk0dv"]
+_data = {
+"default": SubResource("Animation_i4uwx")
+}
+
+[node name="rain_fire" type="Area2D"]
+monitoring = false
+
+[node name="fire" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.219608, 0.0627451, 1)
+position = Vector2(104, 0)
+scale = Vector2(1, 0.742424)
+sprite_frames = SubResource("SpriteFrames_sy7en")
+autoplay = "default"
+centered = false
+
+[node name="fire2" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.219608, 0.0627451, 1)
+position = Vector2(257, 0)
+scale = Vector2(1, 0.742424)
+sprite_frames = SubResource("SpriteFrames_sy7en")
+autoplay = "default"
+centered = false
+
+[node name="fire3" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.219608, 0.0627451, 1)
+position = Vector2(368, 0)
+scale = Vector2(1, 0.742424)
+sprite_frames = SubResource("SpriteFrames_sy7en")
+autoplay = "default"
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(294, 427)
+shape = SubResource("RectangleShape2D_7ogwv")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_tk0dv")
+}

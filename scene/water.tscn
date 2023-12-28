@@ -1,9 +1,7 @@
-[gd_scene load_steps=178 format=3 uid="uid://0lq0il055lme"]
+[gd_scene load_steps=177 format=3 uid="uid://0lq0il055lme"]
 
 [ext_resource type="Texture2D" uid="uid://b3bgplwto1jqt" path="res://assent/bosses/water_FREE_SpriteSheet_288x128.png" id="1_ktpxg"]
 [ext_resource type="Script" path="res://scripts/water.gd" id="1_s05rs"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_reifq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4q5x"]
 atlas = ExtResource("1_ktpxg")
@@ -1676,9 +1674,6 @@ collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_s05rs")
 health = 10
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-material = SubResource("ShaderMaterial_reifq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-144, -110)

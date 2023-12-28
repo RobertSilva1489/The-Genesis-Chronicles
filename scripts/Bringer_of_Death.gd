@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var attack_player = false
 @export var DIST_FOLLOW := 300
 @onready var leaf: CharacterBody2D = $"../Leaf"
+var spell: PackedScene = preload("res://scene/spell.tscn")
 var attacks = ["attack1","attack2"]
 var direction = 0
 var enter_state = true
@@ -45,15 +46,15 @@ func _process(delta: float) -> void:
 	_flip()	
 	$TextureProgressBar.value = health
 func blink() -> void:
-	$Marker2D/Sprite2D.modulate = Color(10,10,10,10)
+	$Body/Bringer.modulate = Color(10,10,10,10)
 	await get_tree().create_timer(.1).timeout
-	$Marker2D/Sprite2D.modulate = Color(1,1,1,1)
+	$Body/Bringer.modulate = Color(1,1,1,1)
 func damage (dame) -> void:
 	health -= dame
 	blink()
-	print(health)
 	if health <=0:
 		dead = true
+		$TextureProgressBar.hide()
 		$AnimationPlayer.play("death")
 		await $AnimationPlayer.animation_finished	
 func _on_attack_body_entered(body):
@@ -78,7 +79,10 @@ func attack():
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 func range_attack():
-	print("range")
+	var spells = spell.instantiate()
+	get_parent().add_child(spells)
+	spells.global_position.y = $spell.global_position.y
+	spells.global_position.x = leaf.global_position.x
 	
 func _on_detect_player_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and Global.health > 0:
@@ -88,7 +92,3 @@ func _on_detect_player_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		attack_player = false
 
-
-func _on_follow_player_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		follow = true

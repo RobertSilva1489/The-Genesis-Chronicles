@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=3 uid="uid://bqe6jvhxjgbul"]
+
+[ext_resource type="Texture2D" uid="uid://dt0pnbgfggvxy" path="res://assent/enemy/FB00_nyknck/FB001.png" id="1_al1do"]
+[ext_resource type="Script" path="res://scripts/skull.gd" id="1_qkr7p"]
+[ext_resource type="Texture2D" uid="uid://dkw5x81fewu6s" path="res://assent/enemy/FB00_nyknck/FB002.png" id="2_e86xn"]
+[ext_resource type="Texture2D" uid="uid://b5ma2ln7dq250" path="res://assent/enemy/FB00_nyknck/FB003.png" id="3_m36uy"]
+[ext_resource type="Texture2D" uid="uid://b5ubv7i5sgnbw" path="res://assent/enemy/FB00_nyknck/FB004.png" id="4_31na2"]
+[ext_resource type="Texture2D" uid="uid://8ix32k2n5u8w" path="res://assent/enemy/FB00_nyknck/FB005.png" id="5_6dq8g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pacu"]
+atlas = ExtResource("1_al1do")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naf78"]
+atlas = ExtResource("2_e86xn")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdroh"]
+atlas = ExtResource("3_m36uy")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n2mm"]
+atlas = ExtResource("4_31na2")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxlqw"]
+atlas = ExtResource("5_6dq8g")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnya0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pacu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naf78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdroh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n2mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxlqw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5qvrs"]
+radius = 9.0
+
+[node name="skull" type="Area2D"]
+position = Vector2(280, 181)
+script = ExtResource("1_qkr7p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tnya0")
+autoplay = "default"
+frame_progress = 0.250668
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(44, 14)
+shape = SubResource("CircleShape2D_5qvrs")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(42, 14)
+scale = Vector2(1.2, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -10,7 +10,10 @@ extends CharacterBody2D
 @export var DIST_FOLLOW := 300
 @export var DIST_ATTACK := 100
 @onready var leaf: CharacterBody2D = $"../Leaf"
-var attacks = ["attack1","attack2","attack3"]
+var hurricane: PackedScene = preload("res://scene/hurricane_fire.tscn")
+var rain_fire: PackedScene = preload("res://scene/rain_fire.tscn")
+var skull: PackedScene = preload("res://scene/skull.tscn")
+var attacks = ["attack1","attack1","attack1"]
 var direction = 0
 var enter_state = true
 var dead = false
@@ -27,7 +30,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
-		if distance <=DIST_FOLLOW:
+		if distance <=DIST_FOLLOW and can_attack == false:
 			follow = true
 		else:
 			follow = false
@@ -80,8 +83,11 @@ func attack():
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 
-func attack_spell1():
-	pass
+func _rain_fire():
+	var rain_fires = rain_fire.instantiate()
+	get_parent().add_child(rain_fires)
+	rain_fires.global_position.y = $rainFire.global_position.y
+	rain_fires.global_position.x = leaf.global_position.x - 70
 func attack_spell2():
 	pass
 func attack_fly_head():

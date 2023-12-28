@@ -331,4 +331,3 @@ libraries = {
 }
 
 [node name="Bringer_of_Death" parent="." instance=ExtResource("12_w5mlm")]
-gravity = 980

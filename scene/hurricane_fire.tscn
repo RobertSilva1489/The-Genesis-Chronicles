@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://de3o6uud8tivx"]
+[gd_scene load_steps=9 format=3 uid="uid://de3o6uud8tivx"]
 
 [ext_resource type="Texture2D" uid="uid://hkfr0xcv5iwr" path="res://assent/enemy/Red Effect Bullet Impact Explosion 32x32.png" id="1_qvn8f"]
+[ext_resource type="Script" path="res://scripts/hurricane_fire.gd" id="1_s3loo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgj1x"]
 atlas = ExtResource("1_qvn8f")
@@ -43,13 +44,23 @@ radius = 29.0
 height = 58.0
 
 [node name="hurricane_fire" type="Area2D"]
+position = Vector2(331, 184)
+script = ExtResource("1_s3loo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3ypym")
-frame_progress = 0.0123512
+autoplay = "default"
+frame_progress = 0.310853
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(33, 29)
 shape = SubResource("CapsuleShape2D_falhi")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(32, 32.5)
+scale = Vector2(3.3, 3.05)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

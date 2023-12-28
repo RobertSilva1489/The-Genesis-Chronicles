@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://v6oyrdhf7oyh"]
+[gd_scene load_steps=49 format=3 uid="uid://v6oyrdhf7oyh"]
 
 [ext_resource type="Script" path="res://scripts/miniun.gd" id="1_fr5tj"]
 [ext_resource type="Texture2D" uid="uid://by5dkhu5bep7o" path="res://assent/minion/attack.png" id="2_mlrvn"]
@@ -523,9 +523,6 @@ size = Vector2(20, 2.25)
 radius = 12.0
 height = 29.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_edbn4"]
-size = Vector2(375, 14)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85ee6"]
 size = Vector2(19.9996, 10.333)
 
@@ -592,13 +589,6 @@ texture_progress = ExtResource("6_4a3d8")
 tint_under = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="followPlayer" type="Area2D" parent="."]
-position = Vector2(-145, -108.333)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="followPlayer"]
-position = Vector2(145, 96.833)
-shape = SubResource("RectangleShape2D_edbn4")
-
 [node name="detectPlayer" type="Area2D" parent="."]
 position = Vector2(-145, -108.333)
 
@@ -607,7 +597,5 @@ position = Vector2(165, 111.167)
 shape = SubResource("RectangleShape2D_85ee6")
 
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
-[connection signal="body_entered" from="followPlayer" to="." method="_on_follow_player_body_entered"]
-[connection signal="body_exited" from="followPlayer" to="." method="_on_follow_player_body_exited"]
 [connection signal="body_entered" from="detectPlayer" to="." method="_on_detect_player_body_entered"]
 [connection signal="body_exited" from="detectPlayer" to="." method="_on_detect_player_body_exited"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjo5b0m8r8n63"]
+
+[ext_resource type="PackedScene" uid="uid://v6oyrdhf7oyh" path="res://scene/Bringer_of_Death.tscn" id="1_ltqai"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Bringer_of_Death" parent="." instance=ExtResource("1_ltqai")]

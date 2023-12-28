@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var DIST_FOLLOW := 300
 @onready var leaf: CharacterBody2D = $"../Leaf"
 var distance := 0.0
+var _position
 var direction = 0
 var dead = false
 var dano: int
@@ -24,9 +25,10 @@ func _process(delta: float) -> void:
 		follow = true
 	else:
 		follow = false 
+		$AnimationPlayer.play("idle")
 	if leaf != null and dead == false:
-		distance = leaf.global_position.x - global_position.x
-		direction = sign(distance)
+		_position = leaf.global_position.x - global_position.x
+		direction = sign(_position)
 		if attack_player and can_attack:
 			attack()
 		elif follow and attack_player !=true:

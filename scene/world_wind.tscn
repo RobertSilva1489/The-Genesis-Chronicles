@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cljey4p8i22hh" path="res://assent/scenario/Land2.png" id="8_xl5fn"]
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="9_3oh1v"]
 [ext_resource type="PackedScene" uid="uid://x47o5eftkbs1" path="res://scene/wind.tscn" id="10_37620"]
-[ext_resource type="PackedScene" uid="uid://v6oyrdhf7oyh" path="res://scene/miniun.tscn" id="10_p11te"]
+[ext_resource type="PackedScene" uid="uid://v6oyrdhf7oyh" path="res://scene/Bringer_of_Death.tscn" id="12_w5mlm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7a0m1"]
 shader = ExtResource("8_5qavr")
@@ -335,6 +335,6 @@ libraries = {
 position = Vector2(3793, -99)
 health = 20
 
-[node name="miniun" parent="." instance=ExtResource("10_p11te")]
-position = Vector2(2332, -74)
-slime_element = "wind"
+[node name="Bringer_of_Death" parent="." instance=ExtResource("12_w5mlm")]
+position = Vector2(2527, -22)
+gravity = 980

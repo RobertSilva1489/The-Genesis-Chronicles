@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=13 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://53lfgpdm33qo" path="res://assent/scenario/bubble.png" id="6_rf53p"]
 [ext_resource type="Texture2D" uid="uid://cljey4p8i22hh" path="res://assent/scenario/Land2.png" id="7_04xbw"]
 [ext_resource type="Texture2D" uid="uid://bal1y8wcmir0e" path="res://assent/scenario/Textures/LAVA.png" id="7_p8xul"]
+[ext_resource type="PackedScene" uid="uid://v6oyrdhf7oyh" path="res://scene/Bringer_of_Death.tscn" id="8_8hm01"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2243"]
 texture = ExtResource("7_04xbw")
@@ -306,3 +307,6 @@ offset_right = -0.000488281
 offset_bottom = -336.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Bringer_of_Death" parent="." instance=ExtResource("8_8hm01")]
+position = Vector2(1986, -14)

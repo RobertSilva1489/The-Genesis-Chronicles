@@ -1,5 +1,5 @@
 extends Area2D
-var hit = int(randf_range(5,20))
+@export var hit = int(randf_range(1,5))
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.take_damage(hit)

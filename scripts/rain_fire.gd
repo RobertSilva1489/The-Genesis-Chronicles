@@ -10,3 +10,17 @@ func _make_rain():
 	$fire5.play("default")
 	$fire6.play("default")
 	$fire7.play("default")
+func _invisible():
+	$fire2.hide()
+	$fire3.hide()
+	$fire4.hide()
+	$fire5.hide()
+	$fire6.hide()
+	$fire7.hide()
+func _visible():
+	$fire2.show()
+	$fire3.show()
+	$fire4.show()
+	$fire5.show()
+	$fire6.show()
+	$fire7.show()

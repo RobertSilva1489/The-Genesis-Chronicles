@@ -112,7 +112,7 @@ transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(-1257.5, -1842.5)
-scale = Vector2(1.16308, 1)
+scale = Vector2(1.13, 0.838525)
 texture = ExtResource("2_yghno")
 centered = false
 

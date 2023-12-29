@@ -13,7 +13,7 @@ extends CharacterBody2D
 var hurricane: PackedScene = preload("res://scene/hurricane_fire.tscn")
 var rain_fire: PackedScene = preload("res://scene/rain_fire.tscn")
 var skull: PackedScene = preload("res://scene/skull.tscn")
-var attacks = ["attack1","attack1","attack1"]
+var attacks = ["attack1","attack2","attack3"]
 var direction = 0
 var enter_state = true
 var dead = false
@@ -88,10 +88,16 @@ func _rain_fire():
 	get_parent().add_child(rain_fires)
 	rain_fires.global_position.y = $rainFire.global_position.y
 	rain_fires.global_position.x = leaf.global_position.x - 70
-func attack_spell2():
-	pass
+func _hurricane():
+	var hurricanes = hurricane.instantiate()
+	get_parent().add_child(hurricanes)
+	hurricanes.global_position = $hurricane.global_position
+	hurricanes.direction = direction 
 func attack_fly_head():
-	pass
+	var skulls = skull.instantiate()
+	get_parent().add_child(skulls)
+	skulls.global_position = $skull.global_position
+	skulls.direction = direction
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0:

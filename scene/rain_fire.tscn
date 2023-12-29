@@ -181,6 +181,8 @@ _data = {
 
 [node name="rain_fire" type="Area2D"]
 scale = Vector2(0.2, 0.2)
+collision_layer = 0
+collision_mask = 9
 monitoring = false
 script = ExtResource("1_agvli")
 

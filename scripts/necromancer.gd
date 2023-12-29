@@ -100,5 +100,5 @@ func attack_fly_head():
 	skulls.direction = direction
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if health > 0:
+	if health > 0 and dead == false:
 		$AnimationPlayer.play("idle")

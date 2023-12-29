@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://djyq0mhw1bmfh"]
+[gd_scene load_steps=18 format=3 uid="uid://djyq0mhw1bmfh"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_2eec3"]
 [ext_resource type="Texture2D" uid="uid://djgvjfsa3kbnm" path="res://assent/scenario/3Z_2104.w020.n001.1230B.p15.1230.jpg" id="2_ixnad"]
@@ -105,7 +105,7 @@ shader_parameter/NOISE_TEXTURE = ExtResource("8_0ji7y")
 size = Vector2(96, 181.333)
 
 [sub_resource type="Animation" id="Animation_sj74x"]
-resource_name = "new_animation"
+resource_name = "open"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -132,9 +132,38 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_y0k0k"]
+resource_name = "close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1414, -378), Vector2(1414, -328), Vector2(1414, -278), Vector2(1414, -228)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D2/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m5phf"]
 _data = {
-"new_animation": SubResource("Animation_sj74x")
+"close": SubResource("Animation_y0k0k"),
+"open": SubResource("Animation_sj74x")
 }
 
 [node name="world_fire" type="Node2D"]
@@ -193,7 +222,7 @@ grow_vertical = 2
 position = Vector2(680, -90)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(1414, -278)
+position = Vector2(1414, -378)
 rotation = 3.14159
 scale = Vector2(0.4, 1.5)
 collision_layer = 8
@@ -208,7 +237,6 @@ region_rect = Rect2(0, 0, 95.945, 96.4976)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(48, 5.33334)
 shape = SubResource("RectangleShape2D_v4r5j")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 0.2

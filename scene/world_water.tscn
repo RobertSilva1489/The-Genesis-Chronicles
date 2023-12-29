@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://34cy45i4qvv"]
+[gd_scene load_steps=13 format=3 uid="uid://34cy45i4qvv"]
 
 [ext_resource type="PackedScene" uid="uid://0lq0il055lme" path="res://scene/water.tscn" id="2_aio12"]
 [ext_resource type="Texture2D" uid="uid://cwshg2jwnkhr4" path="res://assent/scenario/sea_background.png" id="2_pta8h"]
 [ext_resource type="Shader" path="res://shader/wave.gdshader" id="3_ddl53"]
+[ext_resource type="Texture2D" uid="uid://ds41k6fo42mvw" path="res://assent/scenario/sand.png" id="3_ughke"]
 [ext_resource type="Texture2D" uid="uid://cljey4p8i22hh" path="res://assent/scenario/Land2.png" id="4_67gy2"]
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="5_egx4g"]
 [ext_resource type="Texture2D" uid="uid://53lfgpdm33qo" path="res://assent/scenario/bubble.png" id="6_trp31"]
@@ -255,11 +256,24 @@ scale = Vector2(0.4, 0.4)
 transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(352.5, 47.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(5610, -1140)
-scale = Vector2(7.20313, 4.86574)
+position = Vector2(-3075, -2157.5)
+scale = Vector2(7.8112, 3.30787)
 texture = ExtResource("2_pta8h")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-1057.5, 205)
+motion_offset = Vector2(500, 0)
+motion_mirroring = Vector2(2527, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-777.5, -497.5)
+scale = Vector2(9.87305, 6.3151)
+texture = ExtResource("3_ughke")
+centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -277,7 +291,7 @@ gravity = 0
 DIST_FOLLOW = 500
 
 [node name="Leaf" parent="." instance=ExtResource("5_egx4g")]
-position = Vector2(3534, -18)
+position = Vector2(-426, 89)
 max_jump_height = 200.0
 min_jump_height = 100.0
 jump_duration = 1.0

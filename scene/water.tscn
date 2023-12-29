@@ -1678,7 +1678,7 @@ health = 10
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-144, -110)
 sprite_frames = SubResource("SpriteFrames_vhdca")
-animation = &"idle"
+animation = &"special2"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

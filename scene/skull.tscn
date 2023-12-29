@@ -57,6 +57,8 @@ radius = 9.0
 modulate = Color(1, 0.235294, 0.14902, 1)
 position = Vector2(280, 181)
 scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 9
 script = ExtResource("1_qkr7p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

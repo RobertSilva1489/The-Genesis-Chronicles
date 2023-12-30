@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdkkk565ttlt7"
-path="res://.godot/imported/Assets.png-6488699c1d35f2ab027805f15956feed.ctex"
+uid="uid://cx3x60dqtyfpf"
+path="res://.godot/imported/Jump.png-6c615d0697bb5d0db66b39ee9a0dd4a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assent/enemy/Assets.png"
-dest_files=["res://.godot/imported/Assets.png-6488699c1d35f2ab027805f15956feed.ctex"]
+source_file="res://assent/enemy/Yamabushi_tengu/Jump.png"
+dest_files=["res://.godot/imported/Jump.png-6c615d0697bb5d0db66b39ee9a0dd4a9.ctex"]
 
 [params]
 

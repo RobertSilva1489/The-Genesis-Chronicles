@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yemej3xkywnp"
-path="res://.godot/imported/Crab_Idle.png-18bce5ea536edb8f9bb6fdf7e6713cee.ctex"
+uid="uid://f4h04gr0aity"
+path="res://.godot/imported/Fire golem(64x64).png-2f02c03f184c292ad3c8fd89328771a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assent/enemy/Crab/Crab_Idle.png"
-dest_files=["res://.godot/imported/Crab_Idle.png-18bce5ea536edb8f9bb6fdf7e6713cee.ctex"]
+source_file="res://assent/enemy/Fire golem(64x64).png"
+dest_files=["res://.godot/imported/Fire golem(64x64).png-2f02c03f184c292ad3c8fd89328771a8.ctex"]
 
 [params]
 

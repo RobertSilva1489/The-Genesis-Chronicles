@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bctm2j3hlrrmo"
-path="res://.godot/imported/Crab_AttackC_FX.png-65d38f874ad0250f5f2f95aa8279014a.ctex"
+uid="uid://bgyspy71kidv1"
+path="res://.godot/imported/Walk.png-45499b878bb4f8169931768cf1e3f6a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assent/enemy/Crab/Crab_AttackC_FX.png"
-dest_files=["res://.godot/imported/Crab_AttackC_FX.png-65d38f874ad0250f5f2f95aa8279014a.ctex"]
+source_file="res://assent/enemy/5/Walk.png"
+dest_files=["res://.godot/imported/Walk.png-45499b878bb4f8169931768cf1e3f6a6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfjy7n26ptlpv"
-path="res://.godot/imported/Crab_Death.png-2b8fa435e8b9ed64ad9b68c75343dc66.ctex"
+uid="uid://dinfx64bf17ro"
+path="res://.godot/imported/Attack.png-d7b3ccaddd39b113d1b0c0670692e904.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assent/enemy/Crab/Crab_Death.png"
-dest_files=["res://.godot/imported/Crab_Death.png-2b8fa435e8b9ed64ad9b68c75343dc66.ctex"]
+source_file="res://assent/enemy/5/Attack.png"
+dest_files=["res://.godot/imported/Attack.png-d7b3ccaddd39b113d1b0c0670692e904.ctex"]
 
 [params]
 

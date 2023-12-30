@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm61kbno03ki6"
-path="res://.godot/imported/Crab_Run.png-c2aac2bfc95dc2f206931a66b6358fe6.ctex"
+uid="uid://bsmja17jju5dn"
+path="res://.godot/imported/Walk2.png-f5f6ee08bd7c497054f41b6db44ea572.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assent/enemy/Crab/Crab_Run.png"
-dest_files=["res://.godot/imported/Crab_Run.png-c2aac2bfc95dc2f206931a66b6358fe6.ctex"]
+source_file="res://assent/enemy/5/Walk2.png"
+dest_files=["res://.godot/imported/Walk2.png-f5f6ee08bd7c497054f41b6db44ea572.ctex"]
 
 [params]
 

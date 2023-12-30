@@ -1,5 +1,6 @@
-[gd_scene load_steps=61 format=3 uid="uid://cl80qymdgvdi"]
+[gd_scene load_steps=63 format=3 uid="uid://cl80qymdgvdi"]
 
+[ext_resource type="Script" path="res://scripts/night_boner.gd" id="1_68lv7"]
 [ext_resource type="Texture2D" uid="uid://bmb4606eejw8h" path="res://assent/enemy/NightBorne.png" id="1_b3n1x"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="2_g50r2"]
 
@@ -381,7 +382,7 @@ length = 1.33333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker2D/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Marker2D/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -393,7 +394,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Marker2D/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("Marker2D/Sprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -402,13 +403,37 @@ tracks/1/keys = {
 "update": 1,
 "values": ["attack"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attack/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("attack:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_2uu0s"]
 length = 2.55556
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker2D/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Marker2D/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -420,7 +445,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Marker2D/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("Marker2D/Sprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -429,6 +454,32 @@ tracks/1/keys = {
 "update": 1,
 "values": ["death"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_xcljk"]
 length = 1.28571
@@ -436,7 +487,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker2D/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Marker2D/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -448,7 +499,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Marker2D/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("Marker2D/Sprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -457,6 +508,18 @@ tracks/1/keys = {
 "update": 1,
 "values": ["idle"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2p71a"]
 length = 0.857143
@@ -464,7 +527,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker2D/AnimatedSprite2D:frame")
+tracks/0/path = NodePath("Marker2D/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -476,7 +539,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Marker2D/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("Marker2D/Sprite2D:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -484,6 +547,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["walk"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j8pqs"]
@@ -499,16 +574,26 @@ size = Vector2(20, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_80ngj"]
 radius = 8.0
-height = 26.0
+height = 28.0
 
-[node name="NightBoner" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_axvre"]
+height = 42.0
+
+[node name="NightBoner" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_68lv7")
+speed = 70
+DIST_ATTACK = 90
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+modulate = Color(0.501961, 0, 0, 1)
+position = Vector2(-43, -48)
 sprite_frames = SubResource("SpriteFrames_w4are")
-animation = &"idle"
-frame = 1
+animation = &"walk"
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -518,11 +603,11 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(40, 63.5)
+position = Vector2(-2, 15.5)
 shape = SubResource("RectangleShape2D_x4obm")
+one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(42, 50)
 shape = SubResource("CapsuleShape2D_80ngj")
 
 [node name="Timer" type="Timer" parent="."]
@@ -533,10 +618,10 @@ one_shot = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 27.0
-offset_top = 29.0
-offset_right = 196.0
-offset_bottom = 49.0
+offset_left = -15.0
+offset_top = -19.0
+offset_right = 154.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.2, 0.2)
@@ -545,3 +630,16 @@ rounded = true
 texture_under = ExtResource("2_g50r2")
 texture_progress = ExtResource("2_g50r2")
 tint_under = Color(1, 0, 0, 1)
+
+[node name="attack" type="Area2D" parent="."]
+position = Vector2(36, 0)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+position = Vector2(-9, 2)
+rotation = 0.610865
+shape = SubResource("CapsuleShape2D_axvre")
+disabled = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

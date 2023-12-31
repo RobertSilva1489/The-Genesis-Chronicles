@@ -11,11 +11,11 @@ extends CharacterBody2D
 @export var DIST_FOLLOW := 500
 @export var DIST_ATTACK := 200
 @onready var leaf: CharacterBody2D = $"../Leaf"
+var attacks = ["attack1","attack2","attack3"]
 var distance := 0.0
 var _position
 var direction = 0
 var dead = false
-var dano: int
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 func blink() -> void:
 	$Marker2D/Sprite2D.modulate = Color(10,10,10,10)
 	await get_tree().create_timer(.1).timeout
-	$Marker2D/Sprite2D.modulate = Color(0.5,0,0,1)
+	$Marker2D/Sprite2D.modulate = Color(0.5,0,0,0.67)
 func damage (dame) -> void:
 	health -= dame
 	blink()
@@ -72,13 +72,14 @@ func _patrol():
 func _flip() -> void:
 	if direction < 0 and health > 0 and $Timer.time_left <=0:
 		transform.x.x = -1
-		$Timer.start(0.7)
+		$Timer.start(0.5)
 	if direction > 0 and health > 0 and $Timer.time_left <=0:
 		transform.x.x = 1 
-		$Timer.start(0.7)	
+		$Timer.start(0.5)	
 func attack():
+	var select = attacks[randi()%attacks.size()]
 	can_attack = false
-	$AnimationPlayer.play("attack")
+	$AnimationPlayer.play(select)
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 	

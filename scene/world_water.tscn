@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://34cy45i4qvv"]
+[gd_scene load_steps=21 format=3 uid="uid://34cy45i4qvv"]
 
+[ext_resource type="Script" path="res://scripts/world_water.gd" id="1_rdlo3"]
 [ext_resource type="PackedScene" uid="uid://0lq0il055lme" path="res://scene/water.tscn" id="2_aio12"]
 [ext_resource type="Texture2D" uid="uid://cwshg2jwnkhr4" path="res://assent/scenario/sea_background.png" id="2_pta8h"]
 [ext_resource type="Shader" path="res://shader/wave.gdshader" id="3_ddl53"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="5_egx4g"]
 [ext_resource type="Texture2D" uid="uid://53lfgpdm33qo" path="res://assent/scenario/bubble.png" id="6_trp31"]
 [ext_resource type="PackedScene" uid="uid://g32jcfnx5uy6" path="res://scene/caco.tscn" id="8_xr57p"]
+[ext_resource type="PackedScene" uid="uid://c5eupcx5nallq" path="res://scene/mermaid.tscn" id="10_3l4mu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmwvb"]
 shader = ExtResource("3_ddl53")
@@ -287,12 +289,29 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_kvpmk"]
+resource_name = "new_animation_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g335a"]
 _data = {
-"new_animation": SubResource("Animation_c0j6n")
+"new_animation": SubResource("Animation_c0j6n"),
+"new_animation_2": SubResource("Animation_kvpmk")
 }
 
 [node name="world_water" type="Node2D"]
+script = ExtResource("1_rdlo3")
 
 [node name="water" parent="." instance=ExtResource("2_aio12")]
 position = Vector2(4182, 94)
@@ -305,7 +324,7 @@ transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
 position = Vector2(352.5, 47.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-3075, -2157.5)
+position = Vector2(-2760, -2317.5)
 scale = Vector2(7.8112, 3.30787)
 texture = ExtResource("2_pta8h")
 centered = false
@@ -383,7 +402,11 @@ position = Vector2(2929, -240.5)
 shape = SubResource("RectangleShape2D_hwd8h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation_2"
 speed_scale = 0.2
 libraries = {
 "": SubResource("AnimationLibrary_g335a")
 }
+
+[node name="mermaid" parent="." instance=ExtResource("10_3l4mu")]
+position = Vector2(2615, -119)

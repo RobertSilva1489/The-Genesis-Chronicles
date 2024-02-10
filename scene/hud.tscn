@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4muf76kgfb77"]
+[gd_scene load_steps=11 format=3 uid="uid://c4muf76kgfb77"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_7bswo"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="4_kcijc"]
@@ -10,6 +10,10 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_k4tnl"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_v3ncn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sacgl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_op51s"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7bswo")
@@ -39,7 +43,6 @@ offset_left = 82.0
 offset_top = 40.0
 offset_right = 397.0
 offset_bottom = 120.0
-value = 100.0
 texture_progress = ExtResource("5_max2y")
 
 [node name="health" type="TextureProgressBar" parent="."]
@@ -47,7 +50,6 @@ offset_left = 82.0
 offset_top = 26.0
 offset_right = 397.0
 offset_bottom = 116.0
-value = 100.0
 texture_progress = ExtResource("4_kcijc")
 tint_progress = Color(1, 0, 0, 1)
 
@@ -63,3 +65,22 @@ offset_bottom = 44.0
 max_value = 10.0
 value = 10.0
 texture_progress = ExtResource("5_sjs26")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(462, 0)
+
+[node name="TextEdit" type="TextEdit" parent="Node2D"]
+texture_filter = 1
+offset_right = 75.0
+offset_bottom = 32.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sacgl")
+text = "WAVE: "
+
+[node name="TextEdit2" type="TextEdit" parent="Node2D"]
+texture_filter = 1
+offset_left = 54.0
+offset_right = 83.0
+offset_bottom = 26.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_op51s")
+text = "00"
+scroll_past_end_of_file = true

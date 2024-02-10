@@ -384,13 +384,13 @@ position = Vector2(0.5, 0)
 scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Marker2D"]
-position = Vector2(1, 16)
+position = Vector2(-37, -34.6667)
 sprite_frames = SubResource("SpriteFrames_rq4md")
 animation = &"attack"
 centered = false
 
 [node name="attack" type="Area2D" parent="."]
-position = Vector2(20, 27)
+position = Vector2(1, 1.66667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
 position = Vector2(-0.666668, -1.66667)
@@ -398,7 +398,7 @@ rotation = -1.5708
 shape = SubResource("CircleShape2D_qdfkw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(19.3333, 25.3333)
+position = Vector2(0.3333, -3.43323e-05)
 shape = SubResource("CircleShape2D_680p0")
 
 [node name="Timer" type="Timer" parent="."]
@@ -409,10 +409,10 @@ one_shot = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 11.0
-offset_right = 180.0
-offset_bottom = 31.0
+offset_left = -8.0
+offset_top = -14.3333
+offset_right = 161.0
+offset_bottom = 5.66666
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
@@ -424,7 +424,7 @@ texture_progress = ExtResource("2_idqyt")
 tint_under = Color(1, 0, 0, 1)
 
 [node name="detectPlayer" type="Area2D" parent="."]
-position = Vector2(19, 27)
+position = Vector2(9.53674e-07, 1.66667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
 position = Vector2(0, 0.333)

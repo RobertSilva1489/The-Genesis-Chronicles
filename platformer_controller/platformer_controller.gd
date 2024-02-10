@@ -4,7 +4,6 @@ class_name PlatformerController2D
 
 signal jumped(is_ground_jump: bool)
 signal hit_ground()
-var attack = false
 var _direction = 1
 var arrow: PackedScene = preload("res://scene/arrow.tscn")
 var special: PackedScene = preload("res://scene/arrow_shower.tscn")
@@ -341,13 +340,10 @@ func calculate_speed(p_max_speed, p_friction):
 func _attack():
 	if Input.is_action_just_pressed("meele"):
 		$AnimationPlayer.play("attack")
-		Global.attackPla = true
 		_stop()
 	if Input.is_action_just_pressed("bow"):
 		if Global.quiver > 0:
-			attack = true
 			$AnimationPlayer.play("bow")
-			Global.attackPla = true
 			_stop()
 	if Input.is_action_just_pressed("special1"):
 		if Global.mana >= 100 and special != null:
@@ -360,7 +356,6 @@ func _attack():
 			_stop()
 			Global.freeze_frame(0.05,0.2)
 			Global.mana-= 50
-#	Global.attackPla = false
 func take_damage(dame):
 	if invecible != true:
 		Global.health-=dame
@@ -399,7 +394,6 @@ func _stop() -> void:
 		input_jump = "jump"
 		input_left = "move_left"
 		input_right = "move_right"
-		Global.attackPla = false
 func _on_special_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.damage(50)

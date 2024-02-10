@@ -49,6 +49,7 @@ func damage (dame) -> void:
 		dead = true
 		$TextureProgressBar.hide()
 		$AnimationPlayer.play("death")
+		Global.wave-= 1
 		await $AnimationPlayer.animation_finished	
 func _on_attack_body_entered(body):
 	if body.is_in_group("player"):

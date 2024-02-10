@@ -61,6 +61,7 @@ func damage (dame) -> void:
 		dead = true
 		$TextureProgressBar.hide()
 		$AnimationPlayer.play("death")
+		Global.wave-= 1
 		await $AnimationPlayer.animation_finished	
 		
 func _patrol():

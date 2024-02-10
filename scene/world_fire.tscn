@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://djyq0mhw1bmfh"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_2eec3"]
+[ext_resource type="Script" path="res://scripts/world_fire.gd" id="1_bnp1k"]
 [ext_resource type="Texture2D" uid="uid://djgvjfsa3kbnm" path="res://assent/scenario/3Z_2104.w020.n001.1230B.p15.1230.jpg" id="2_ixnad"]
 [ext_resource type="Shader" path="res://shader/smoke.gdshader" id="3_l2l5p"]
 [ext_resource type="Texture2D" uid="uid://ccmd5yso83ya0" path="res://assent/scenario/2304.w026.n002.3510B.p1.3510.jpg" id="4_feecb"]
@@ -167,7 +167,7 @@ _data = {
 }
 
 [node name="world_fire" type="Node2D"]
-script = ExtResource("1_2eec3")
+script = ExtResource("1_bnp1k")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -219,7 +219,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(1414, -228)
+position = Vector2(1414, -378)
 rotation = 3.14159
 scale = Vector2(0.4, 1.5)
 collision_layer = 8

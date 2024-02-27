@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var attack_cooldown : float = 1.5
 @export var attack_player = false
 @export var DIST_FOLLOW := 500
-@export var DIST_ATTACK := 200
+@export var DIST_ATTACK := 40
 @onready var leaf: CharacterBody2D = $"../Leaf"
 var distance := 0.0
 var _position
@@ -30,10 +30,12 @@ func _process(delta: float) -> void:
 		distance = global_position.distance_to(leaf.global_position)
 	if distance <=DIST_FOLLOW:
 		follow = true
+		print(follow)
 	else:
 		follow = false 
 		$AnimationPlayer.play("idle")
 	if distance <=DIST_ATTACK:
+		print(attack_player,"POW")
 		attack_player = true
 	else:
 		attack_player = false

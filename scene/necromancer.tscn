@@ -869,7 +869,6 @@ _data = {
 collision_layer = 2
 collision_mask = 12
 script = ExtResource("1_rb2bn")
-health = 1
 DIST_ATTACK = 200
 
 [node name="Marker2D" type="Marker2D" parent="."]

@@ -19,6 +19,7 @@ var dano: int
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
+	Global.wave+= 1
 func _process(delta: float) -> void:
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)

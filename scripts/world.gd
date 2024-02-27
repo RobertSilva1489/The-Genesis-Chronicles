@@ -1,5 +1,7 @@
 extends Node2D
-
+@onready var hud = $"/root/Hud"
+func _ready() -> void:
+	hud.hide()
 func _process(delta: float) -> void:
 	Global.mana = 0
 	Global.quiver = 0

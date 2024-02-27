@@ -396,7 +396,7 @@ func _stop() -> void:
 		input_right = "move_right"
 func _on_special_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damage(50)
+		body.damage(int(randf_range(30,50)))
 
 
 func _on_timer_timeout() -> void:

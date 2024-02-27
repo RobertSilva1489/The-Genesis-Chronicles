@@ -19,6 +19,7 @@ var dead = false
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
+	Global.wave+= 1
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta

@@ -2841,9 +2841,9 @@ grow_vertical = 2
 [node name="rain" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_eqe87")
 offset_left = -143.0
-offset_top = -53.0
+offset_top = -288.0
 offset_right = 1459.0
-offset_bottom = 407.0
+offset_bottom = 503.0
 color = Color(1, 1, 1, 0)
 
 [node name="fire" type="ColorRect" parent="CanvasLayer"]
@@ -2916,7 +2916,6 @@ input_jump = ""
 max_jump_amount = 0
 max_acceleration = 8000
 friction = 2000
-can_hold_jump = true
 
 [node name="false_floor" type="StaticBody2D" parent="."]
 position = Vector2(1333, 145)

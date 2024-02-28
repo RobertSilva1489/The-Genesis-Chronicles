@@ -16,7 +16,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damage(100)
+		body.damage(50)
 
 
 func _on_body_exited(body: Node2D) -> void:

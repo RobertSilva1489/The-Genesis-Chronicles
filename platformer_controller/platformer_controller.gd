@@ -340,10 +340,12 @@ func calculate_speed(p_max_speed, p_friction):
 func _attack():
 	if Input.is_action_just_pressed("meele"):
 		$AnimationPlayer.play("attack")
+		$AnimationPlayer.speed_scale = 1.5
 		_stop()
 	if Input.is_action_just_pressed("bow"):
 		if Global.quiver > 0:
 			$AnimationPlayer.play("bow")
+			$AnimationPlayer.speed_scale = 2.2
 			_stop()
 	if Input.is_action_just_pressed("special1"):
 		if Global.mana >= 100 and special != null:
@@ -419,6 +421,7 @@ func _on_timer_timeout() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if Global.health > 0:
 		$AnimationPlayer.play("idle")
+		$AnimationPlayer.speed_scale = 1
 	
 func _roll() -> void:
 	$AnimationPlayer.play("roll")

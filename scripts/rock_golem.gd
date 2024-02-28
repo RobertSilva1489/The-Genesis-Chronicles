@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 50
+@export var speed = randf_range(50,70)
 @export var health = 100
 @export var strong = 20
 @export var gravity = 980

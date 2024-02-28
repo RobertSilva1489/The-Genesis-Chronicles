@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var speed = 50
+@export var speed = randf_range(70,100)
 @export var health = 100
 @export var strong = 20
 @export var gravity = 980
@@ -7,8 +7,8 @@ extends CharacterBody2D
 @export var follow = false
 @export var attack_cooldown : float = 3.5
 @export var attack_player = false
-@export var DIST_FOLLOW := 300
-@export var DIST_ATTACK := 100
+@export var DIST_FOLLOW := 2000
+@export var DIST_ATTACK := 300
 @onready var leaf: CharacterBody2D = $"../Leaf"
 var hurricane: PackedScene = preload("res://scene/hurricane_fire.tscn")
 var rain_fire: PackedScene = preload("res://scene/rain_fire.tscn")
@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
-		if distance <=DIST_FOLLOW and can_attack == false:
+		if distance <=DIST_FOLLOW:
 			follow = true
 		else:
 			follow = false
@@ -45,7 +45,6 @@ func _process(delta: float) -> void:
 		direction = sign(_position)
 		if attack_player and can_attack:
 			attack()
-			print("atacou!")
 		elif follow and attack_player !=true:
 			$AnimationPlayer.play("walk")
 			_patrol()
@@ -104,3 +103,5 @@ func attack_fly_head():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0 and dead == false:
 		$AnimationPlayer.play("idle")
+	if dead == true:
+		$AnimationPlayer.play("death")

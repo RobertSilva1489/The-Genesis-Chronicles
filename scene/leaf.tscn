@@ -387,7 +387,7 @@ position = Vector2(8, 30)
 position = Vector2(130, 0)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

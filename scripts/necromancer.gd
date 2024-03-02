@@ -23,7 +23,7 @@ var _position
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
-	Global.wave+= 1
+	randomize()
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -62,6 +62,7 @@ func damage (dame) -> void:
 		$TextureProgressBar.hide()
 		$AnimationPlayer.play("death")
 		Global.wave-= 1
+		Global.scene_enemy-=1
 		await $AnimationPlayer.animation_finished	
 		
 func _patrol():

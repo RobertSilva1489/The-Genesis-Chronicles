@@ -7,6 +7,9 @@ signal hit_ground()
 var _direction = 1
 var arrow: PackedScene = preload("res://scene/arrow.tscn")
 var special: PackedScene = preload("res://scene/arrow_shower.tscn")
+var recovery_health 
+var recovery_mana
+var recovery_quive
 # Set these to the name of your action (in the Input Map)
 ## Name of input action to move left.
 @export var input_left : String = "move_left"
@@ -123,6 +126,7 @@ func _init():
 
 
 func _ready():
+	randomize()
 	if is_coyote_time_enabled:
 		add_child(coyote_timer)
 		coyote_timer.wait_time = coyote_time
@@ -197,7 +201,10 @@ func _physics_process(delta):
 	
 	_was_on_ground = is_feet_on_ground()
 	move_and_slide()
-
+func _process(delta: float) -> void:
+	recovery_health = Global.recovery_health
+	recovery_mana = Global.recovery_mana
+	recovery_quive = Global.recovery_quive
 
 ## Use this instead of coyote_timer.start() to check if the coyote_timer is enabled first
 func start_coyote_timer():
@@ -373,7 +380,7 @@ func take_damage(dame):
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damage(int(randf_range(5,10)))
+		body.damage(int(randf_range(15,20)))
 
 func _fire_arrow() -> void:
 	var arrows = arrow.instantiate()
@@ -403,17 +410,17 @@ func _on_special_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	if Global.health < 100:
-		Global.health+= 10
+		Global.health+= recovery_health
 	if Global.health > 100:
 		Global.health = 100
 	if Global.health <= 0:
 		Global.health = 0
 	if Global.mana < 100:
-		Global.mana+= 10
+		Global.mana+= recovery_mana
 	if Global.mana > 100:
 		Global.mana = 100
 	if Global.quiver < 10:
-		Global.quiver+=1
+		Global.quiver+=recovery_quive
 	if Global.quiver > 10:
 		Global.quiver = 10
 

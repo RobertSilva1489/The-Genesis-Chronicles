@@ -4,6 +4,11 @@ extends Node
 @export var health = 100
 @export var mana = 100
 @export var wave = 0
+@export var scene_enemy = 0
+@export var recovery_health = 10
+@export var recovery_mana = 10
+@export var recovery_quive = 1
+
 var showwave = false
 func _process(delta: float) -> void:
 	pass

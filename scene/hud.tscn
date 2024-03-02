@@ -71,15 +71,16 @@ position = Vector2(462, 0)
 
 [node name="TextEdit" type="TextEdit" parent="Node2D"]
 texture_filter = 1
-offset_right = 75.0
+offset_left = -9.0
+offset_right = 66.0
 offset_bottom = 32.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sacgl")
-text = "WAVE: "
+text = "ENEMY: "
 
 [node name="TextEdit2" type="TextEdit" parent="Node2D"]
 texture_filter = 1
-offset_left = 54.0
-offset_right = 83.0
+offset_left = 53.0
+offset_right = 82.0
 offset_bottom = 26.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_op51s")
 text = "00"

@@ -3,7 +3,7 @@ extends Node2D
 var golem = preload("res://scene/fire_golem.tscn")
 var necromancer = preload("res://scene/necromancer.tscn")
 var boss = preload("res://scene/fire.tscn")
-@export var wave_lenght = 1
+@export var wave_lenght = 30
 @onready var spawn1 = $spawn
 @onready var spawn2 = $spawn2
 @onready var spawn3 = $spawn3
@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 		$AnimationPlayer.play("open")
 		Global.wave = -1
 		Global.showwave = false
-		$Boss.start()
 func spawn_enemy():
 	wave_lenght-=1
 	Global.scene_enemy+=1
@@ -51,8 +50,8 @@ func spawn_boss():
 func _on_boss_timeout() -> void:
 	spawn_boss()
 	
-
-
 func _on_area_boss_body_entered(body: Node2D) -> void:
 	$AnimationPlayer.play("close")
+	$rainFire.emitting = true
+	$Boss.start()
 	$AreaBoss.queue_free()

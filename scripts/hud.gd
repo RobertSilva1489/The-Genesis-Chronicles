@@ -7,6 +7,8 @@ func _ready() -> void:
 	$Sprite2D2/arrow.value = Global.quiver
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$hud_boss/Boss.value = Global.boss_health
+	$hud_boss/Boss.max_value = 400
 	$health.value = Global.health
 	$mana.value = Global.mana
 	$Sprite2D2/arrow.value = Global.quiver
@@ -15,3 +17,8 @@ func _process(delta: float) -> void:
 		$Node2D.visible = true
 	else:
 		$Node2D.visible = false
+	if Global.show_boss == true:
+		$hud_boss.visible = true
+	else:
+		$hud_boss.visible = false
+	

@@ -9,32 +9,34 @@ var dead = false
 var distance
 var move :int
 var selected_animation
+var damage_apply = randi_range(15,30)
 @export var invencible = false
 @export var speed = 70
 @export var health = 100
-@export var strong = 30
 @export var gravity = 3000
 @export var attack_cooldown : float = 1.0
 @export var countHit = 0
 @export var attack_player = false
 @export var can_attack = true
 @export var follow = false
-@export var damage_apply = randi_range(5,20)
 @onready var tree: AnimationTree = $AnimationTree
 @onready var leaf: CharacterBody2D = $"../Leaf"
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	randomize()
 	$AnimationPlayer.play("idle")
+	Global.show_boss = true
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		move_and_slide()
 
 func _process(delta: float) -> void:
+	Global.boss_health = health
 	if leaf != null and dead == false:
 		distance = leaf.global_position.x - global_position.x
 		direction = sign(distance)
+		invencible = false
 		if attack_player and can_attack:
 			attack()
 		if follow and attack_player !=true:
@@ -84,7 +86,11 @@ func damage (dame) -> void:
 		$CollisionShape2D.shape = null
 		gravity = 0
 		$AnimationPlayer.play("death")
+		$attacks.monitoring = false
+		$followPlayer.monitoring = false
+		$detectPlayer.monitoring = false
 		dead = true
+		Global.show_boss = false
 
 func _free():
 	queue_free()
@@ -116,3 +122,7 @@ func _on_follow_body_exited(body: Node2D) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0:
 		$AnimationPlayer.play("idle")
+	elif health < 0:
+		$AnimationPlayer.play("death")
+		$AnimationPlayer.animation_finished
+		$AnimationPlayer.pause()

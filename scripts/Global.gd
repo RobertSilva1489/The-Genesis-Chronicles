@@ -8,7 +8,8 @@ extends Node
 @export var recovery_health = 10
 @export var recovery_mana = 10
 @export var recovery_quive = 1
-
+@export var show_boss = false
+@export var boss_health = 0
 var showwave = false
 func _process(delta: float) -> void:
 	pass

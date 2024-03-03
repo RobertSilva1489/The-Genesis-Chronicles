@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4muf76kgfb77"]
+[gd_scene load_steps=14 format=3 uid="uid://c4muf76kgfb77"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_7bswo"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="4_kcijc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://vncylhb4jggh" path="res://assent/HUD/custom2.png" id="5_sjs26"]
 [ext_resource type="Texture2D" uid="uid://0ymca165k3uq" path="res://assent/leaf_ranger.png" id="6_0bwfw"]
 [ext_resource type="Texture2D" uid="uid://0l3434yahwd6" path="res://assent/HUD/hud_bg_without_custom_meter.png" id="6_bibaq"]
+[ext_resource type="Texture2D" uid="uid://3jbujalxf50r" path="res://assent/scenario/ParallaxBG/Layer 1.png" id="7_1e2o6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k4tnl"]
 
@@ -14,6 +15,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sacgl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_op51s"]
+
+[sub_resource type="SystemFont" id="SystemFont_jbark"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0eef4"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7bswo")
@@ -67,7 +72,8 @@ value = 10.0
 texture_progress = ExtResource("5_sjs26")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(462, 0)
+position = Vector2(400, 20)
+scale = Vector2(1.5, 1.5)
 
 [node name="TextEdit" type="TextEdit" parent="Node2D"]
 texture_filter = 1
@@ -85,3 +91,44 @@ offset_bottom = 26.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_op51s")
 text = "00"
 scroll_past_end_of_file = true
+
+[node name="hud_boss" type="Node2D" parent="."]
+
+[node name="Boss" type="TextureProgressBar" parent="hud_boss"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 509.0
+offset_right = 1760.0
+offset_bottom = 1409.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.03)
+texture_under = ExtResource("7_1e2o6")
+texture_progress = ExtResource("7_1e2o6")
+tint_under = Color(0.0823529, 0.0823529, 0.0823529, 0.709804)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="TextEdit" type="TextEdit" parent="hud_boss"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 368.0
+offset_top = 500.0
+offset_right = 432.0
+offset_bottom = 532.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = SubResource("SystemFont_jbark")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0eef4")
+placeholder_text = "boss"

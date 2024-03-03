@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://djyq0mhw1bmfh"]
+[gd_scene load_steps=23 format=3 uid="uid://djyq0mhw1bmfh"]
 
 [ext_resource type="Script" path="res://scripts/world_fire.gd" id="1_bnp1k"]
 [ext_resource type="Texture2D" uid="uid://djgvjfsa3kbnm" path="res://assent/scenario/3Z_2104.w020.n001.1230B.p15.1230.jpg" id="2_ixnad"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="6_75uxu"]
 [ext_resource type="Shader" path="res://shader/Noise Offset.gdshader" id="7_5qeyu"]
 [ext_resource type="Texture2D" uid="uid://bal1y8wcmir0e" path="res://assent/scenario/Textures/LAVA.png" id="8_0ji7y"]
-[ext_resource type="Texture2D" uid="uid://mllsc1a8v5lu" path="res://assent/scenario/rainfire.png" id="9_ualce"]
+[ext_resource type="Texture2D" uid="uid://bvvktqf6ardoa" path="res://assent/scenario/Fx_pack #3/2/1_12.png" id="9_u2vqk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_stag4"]
 shader = ExtResource("3_l2l5p")
@@ -172,19 +172,26 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q61pl"]
 size = Vector2(139.5, 244)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5qivq"]
-lifetime_randomness = 1.0
-emission_shape = 1
-emission_sphere_radius = 99.65
-particle_flag_align_y = true
+[sub_resource type="Gradient" id="Gradient_5nog1"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r0lji"]
+gradient = SubResource("Gradient_5nog1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xq3wj"]
+emission_shape = 3
+emission_box_extents = Vector3(300, 100, 1)
 particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-gravity = Vector3(0, 98, 0)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 0.1
-scale_max = 0.3
-color = Color(1, 0.72549, 0, 1)
+scale_min = 0.2
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_r0lji")
 
 [node name="world_fire" type="Node2D"]
 script = ExtResource("1_bnp1k")
@@ -224,15 +231,15 @@ anchor_left = -0.704
 anchor_top = -2.487
 anchor_right = 6.285
 anchor_bottom = 1.0
-offset_left = -42.8
-offset_top = 153.2
-offset_right = -13.0005
-offset_bottom = -183.0
+offset_left = -108.8
+offset_top = 201.2
+offset_right = -79.0005
+offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(1414, -37)
+position = Vector2(1414, -200)
 rotation = 3.14159
 scale = Vector2(0.4, 1.5)
 collision_layer = 8
@@ -255,7 +262,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 95.945, 96.4976)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-visible = false
 position = Vector2(49.9993, 66.5001)
 shape = SubResource("RectangleShape2D_v4r5j")
 
@@ -291,7 +297,7 @@ position = Vector2(942, -112)
 position = Vector2(1836, -265)
 
 [node name="Leaf" parent="." instance=ExtResource("6_75uxu")]
-position = Vector2(665, -119)
+position = Vector2(570, -295)
 falling_gravity_multiplier = 1.2
 max_acceleration = 2000
 
@@ -300,7 +306,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="Boss" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="AreaBoss" type="Area2D" parent="."]
@@ -311,14 +317,14 @@ collision_layer = 0
 position = Vector2(85.25, -67)
 shape = SubResource("RectangleShape2D_q61pl")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(1759, -240)
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_5qivq")
-texture = ExtResource("9_ualce")
+[node name="rainFire" type="GPUParticles2D" parent="."]
+position = Vector2(1755, -265)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_xq3wj")
+texture = ExtResource("9_u2vqk")
 lifetime = 5.0
-randomness = 1.0
-visibility_rect = Rect2(-100, -100, 302, 200)
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Boss" to="." method="_on_boss_timeout"]

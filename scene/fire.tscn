@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4p66m4wmkdi8"]
+[gd_scene load_steps=17 format=3 uid="uid://4p66m4wmkdi8"]
 
 [ext_resource type="Texture2D" uid="uid://dwra1ir67ea4a" path="res://assent/bosses/fire_FREE_SpriteSheet_288x128.png" id="1_dl5nf"]
 [ext_resource type="Script" path="res://scripts/fire.gd" id="1_ncpdh"]
@@ -420,12 +420,6 @@ size = Vector2(66, 26)
 radius = 36.0
 height = 72.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eok8a"]
-size = Vector2(550.5, 45)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3r5b"]
-size = Vector2(73, 20)
-
 [node name="Fire" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(113, 75)
 collision_layer = 2
@@ -438,12 +432,10 @@ texture = ExtResource("1_dl5nf")
 centered = false
 hframes = 28
 vframes = 14
-frame = 376
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 6)
 shape = SubResource("CapsuleShape2D_mhf0t")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -479,24 +471,5 @@ disabled = true
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="followPlayer" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="followPlayer"]
-position = Vector2(286.75, 6.5)
-shape = SubResource("RectangleShape2D_eok8a")
-
-[node name="detectPlayer" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
-position = Vector2(48.5, 15)
-shape = SubResource("RectangleShape2D_t3r5b")
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attacks" to="." method="_on_attacks_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="followPlayer" to="." method="_on_follow_body_entered"]
-[connection signal="body_exited" from="followPlayer" to="." method="_on_follow_body_exited"]
-[connection signal="body_entered" from="detectPlayer" to="." method="_on_attack_player_body_entered"]
-[connection signal="body_exited" from="detectPlayer" to="." method="_on_attack_player_body_exited"]

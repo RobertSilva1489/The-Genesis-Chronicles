@@ -297,7 +297,7 @@ position = Vector2(942, -112)
 position = Vector2(1836, -265)
 
 [node name="Leaf" parent="." instance=ExtResource("6_75uxu")]
-position = Vector2(1518, -333)
+position = Vector2(567, -186)
 roll_distance = 1500
 falling_gravity_multiplier = 1.2
 max_acceleration = 2000

@@ -195,7 +195,7 @@ color_ramp = SubResource("GradientTexture1D_r0lji")
 
 [node name="world_fire" type="Node2D"]
 script = ExtResource("1_bnp1k")
-wave_lenght = 1
+wave_lenght = 0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -298,7 +298,7 @@ position = Vector2(942, -112)
 position = Vector2(1836, -265)
 
 [node name="Leaf" parent="." instance=ExtResource("6_75uxu")]
-position = Vector2(570, -295)
+position = Vector2(1518, -333)
 roll_distance = 1500
 falling_gravity_multiplier = 1.2
 max_acceleration = 2000
@@ -308,7 +308,6 @@ wait_time = 3.0
 autostart = true
 
 [node name="Boss" type="Timer" parent="."]
-wait_time = 5.0
 one_shot = true
 
 [node name="AreaBoss" type="Area2D" parent="."]

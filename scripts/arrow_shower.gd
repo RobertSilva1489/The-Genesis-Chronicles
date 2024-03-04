@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	await get_tree().create_timer(1).timeout
+#	await get_tree().create_timer(1).timeout
 	$".".monitoring = false
 	$CollisionShape2D.disabled = true
 	queue_free()

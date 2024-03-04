@@ -4,7 +4,6 @@ var attack_hold = 1
 var attacks = ["attack1","attack2","attack3","defender","defender"]
 var special = ["special1","special2","defender","defender"]
 var special2 = ["special1","special2","attack1","attack2","attack3"]
-var _death = ["death"]
 var direction = 0
 var dead = false
 var distance
@@ -25,6 +24,7 @@ var damage_apply = randi_range(15,30)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	randomize()
+	$AnimationPlayer.clear_caches()
 	$AnimationPlayer.play("idle")
 	Global.show_boss = true
 	Global.boss_name = "Fire"
@@ -61,24 +61,22 @@ func _flip() -> void:
 		transform.x.x = 1
 		$Timer.start(0.5)
 func attack():
-	_check_death()
-	var attack_animations
-	var selected_animation
-	if countHit < 7 and health > 30:
-		attack_animations = attacks
-	elif countHit >= 7 and health > 30:
-		attack_animations = special
-	elif  health < 30:
-		attack_animations = special2
-	elif health <= 0:
-		attack_animations = _death
-	for attackSet in attack_animations:
-		selected_animation = attackSet
-		can_attack = false
-		$AnimationPlayer.play(selected_animation)
-		await get_tree().create_timer(attack_cooldown).timeout
-		if dead == false:
-			can_attack = true
+	if dead == false:
+		print("ATAQUE")
+		var attack_animations
+		var selected_animation
+		if countHit < 7 and health > 30:
+			attack_animations = attacks
+		elif countHit >= 7 and health > 30:
+			attack_animations = special
+		elif  health < 30:
+			attack_animations = special2
+		for attackSet in attack_animations:
+			selected_animation = attackSet
+			can_attack = false
+			$AnimationPlayer.play(selected_animation)
+	#		await get_tree().create_timer(attack_cooldown).timeout
+			$Timer.start()
 func damage (dame) -> void:
 	if invencible !=true:
 		blink()
@@ -87,16 +85,18 @@ func damage (dame) -> void:
 		countHit+=1
 	if health <= 0:
 		dead = true
-		print($AnimationPlayer.current_animation)
-		$CollisionShape2D.shape = null
 		gravity = 0
-		$attacks.monitoring = false
-		$followPlayer.monitoring = false
-		$detectPlayer.monitoring = false
 		Global.show_boss = false
-
-func _free():
-	queue_free()
+		can_attack = false
+		leaf = null
+		$CollisionShape2D.shape = null
+		$detectPlayer/CollisionShape2D.shape = null
+		$followPlayer/CollisionShape2D.shape = null
+		$AnimationPlayer.speed_scale = 1
+		$AnimationPlayer.play("death")
+		await $AnimationPlayer.animation_finished
+		print("Dead? ",$AnimationPlayer.current_animation)
+	
 func blink() -> void:
 	$Sprite2D.modulate = Color(10,10,10,10)
 	await get_tree().create_timer(.1).timeout
@@ -121,16 +121,11 @@ func _on_follow_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		follow = false
 
-func _check_death():
-	if dead == true or health <= 0:
-		$AnimationPlayer.play("death")
-		await $AnimationPlayer.animation_finished
-		$AnimationPlayer.clear_queue()
-		$AnimationPlayer.pause()
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if health > 0:
+	if health > 0 and dead == false:
 		$AnimationPlayer.play("idle")
 
 
-func _on_animation_player_animation_changed(old_name: StringName, new_name: StringName) -> void:
-	_check_death()
+func _on_timer_timeout() -> void:
+	print("Ataque ai va ")
+	can_attack = true

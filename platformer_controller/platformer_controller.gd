@@ -365,7 +365,7 @@ func _attack():
 			$AnimationPlayer.play("especial2")
 			_stop()
 			Global.hit_stop_short()
-			Global.mana-= 0
+			Global.mana-= 50
 func take_damage(dame):
 	if invecible != true:
 		Global.health-=dame

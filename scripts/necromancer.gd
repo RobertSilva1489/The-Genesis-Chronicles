@@ -57,12 +57,14 @@ func blink() -> void:
 func damage (dame) -> void:
 	health -= dame
 	blink()
+	Global.hit_stop_short()
 	if health <=0:
 		dead = true
 		$TextureProgressBar.hide()
 		$AnimationPlayer.play("death")
 		Global.wave-= 1
 		Global.scene_enemy-=1
+		Global.hit_stop_long()
 		await $AnimationPlayer.animation_finished	
 		
 func _patrol():

@@ -3,7 +3,8 @@ extends CharacterBody2D
 var attack_hold = 1
 var attacks = ["attack1","attack2","attack3","defender","defender"]
 var special = ["special1","special2","defender","defender"]
-var special2 = ["special1","special2","defender","defender","defender","defender","defender"]
+var special2 = ["special1","special2","attack1","attack2","attack3"]
+var _death = ["death"]
 var direction = 0
 var dead = false
 var distance
@@ -26,6 +27,7 @@ func _ready() -> void:
 	randomize()
 	$AnimationPlayer.play("idle")
 	Global.show_boss = true
+	Global.boss_name = "Fire"
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -42,8 +44,6 @@ func _process(delta: float) -> void:
 		if follow and attack_player !=true:
 			$AnimationPlayer.play("run")
 			_patrol()
-		if dead:
-			$AnimationPlayer.play("death")
 	_flip()	
 
 func _patrol():
@@ -61,21 +61,24 @@ func _flip() -> void:
 		transform.x.x = 1
 		$Timer.start(0.5)
 func attack():
+	_check_death()
 	var attack_animations
 	var selected_animation
 	if countHit < 7 and health > 30:
 		attack_animations = attacks
 	elif countHit >= 7 and health > 30:
 		attack_animations = special
-
 	elif  health < 30:
 		attack_animations = special2
+	elif health <= 0:
+		attack_animations = _death
 	for attackSet in attack_animations:
 		selected_animation = attackSet
 		can_attack = false
 		$AnimationPlayer.play(selected_animation)
 		await get_tree().create_timer(attack_cooldown).timeout
-		can_attack = true
+		if dead == false:
+			can_attack = true
 func damage (dame) -> void:
 	if invencible !=true:
 		blink()
@@ -83,13 +86,13 @@ func damage (dame) -> void:
 		print(health)
 		countHit+=1
 	if health <= 0:
+		dead = true
+		print($AnimationPlayer.current_animation)
 		$CollisionShape2D.shape = null
 		gravity = 0
-		$AnimationPlayer.play("death")
 		$attacks.monitoring = false
 		$followPlayer.monitoring = false
 		$detectPlayer.monitoring = false
-		dead = true
 		Global.show_boss = false
 
 func _free():
@@ -118,11 +121,16 @@ func _on_follow_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		follow = false
 
-
+func _check_death():
+	if dead == true or health <= 0:
+		$AnimationPlayer.play("death")
+		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.clear_queue()
+		$AnimationPlayer.pause()
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0:
 		$AnimationPlayer.play("idle")
-	elif health < 0:
-		$AnimationPlayer.play("death")
-		$AnimationPlayer.animation_finished
-		$AnimationPlayer.pause()
+
+
+func _on_animation_player_animation_changed(old_name: StringName, new_name: StringName) -> void:
+	_check_death()

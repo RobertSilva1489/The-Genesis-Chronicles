@@ -8,6 +8,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$hud_boss/Boss.value = Global.boss_health
+	$hud_boss/TextEdit.text = Global.boss_name
 	$hud_boss/Boss.max_value = 400
 	$health.value = Global.health
 	$mana.value = Global.mana

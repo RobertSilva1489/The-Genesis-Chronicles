@@ -10,6 +10,7 @@ var special: PackedScene = preload("res://scene/arrow_shower.tscn")
 var recovery_health 
 var recovery_mana
 var recovery_quive
+@export var is_attacking = false
 # Set these to the name of your action (in the Input Map)
 ## Name of input action to move left.
 @export var input_left : String = "move_left"
@@ -18,7 +19,7 @@ var recovery_quive
 ## Name of input action to jump.
 @export var input_jump : String = "jump"
 @export var invecible = false
-
+@export var roll_distance = 1000
 const DEFAULT_MAX_JUMP_HEIGHT = 150
 const DEFAULT_MIN_JUMP_HEIGHT = 60
 const DEFAULT_DOUBLE_JUMP_HEIGHT = 100
@@ -345,26 +346,26 @@ func calculate_speed(p_max_speed, p_friction):
 
 
 func _attack():
-	if Input.is_action_just_pressed("meele"):
+	if Input.is_action_just_pressed("meele") and is_attacking == false:
 		$AnimationPlayer.play("attack")
 		$AnimationPlayer.speed_scale = 1.5
 		_stop()
-	if Input.is_action_just_pressed("bow"):
+	if Input.is_action_just_pressed("bow") and is_attacking == false:
 		if Global.quiver > 0:
 			$AnimationPlayer.play("bow")
 			$AnimationPlayer.speed_scale = 2.2
 			_stop()
-	if Input.is_action_just_pressed("special1"):
+	if Input.is_action_just_pressed("special1") and is_attacking == false:
 		if Global.mana >= 100 and special != null:
 			$AnimationPlayer.play("especial")
 			_stop()
-			Global.freeze_frame(0.05,0.2)
-	if Input.is_action_just_pressed("special2"):
+			Global.hit_stop_short()
+	if Input.is_action_just_pressed("special2") and is_attacking == false:
 		if Global.mana >= 50:
 			$AnimationPlayer.play("especial2")
 			_stop()
-			Global.freeze_frame(0.05,0.2)
-			Global.mana-= 50
+			Global.hit_stop_short()
+			Global.mana-= 0
 func take_damage(dame):
 	if invecible != true:
 		Global.health-=dame
@@ -380,9 +381,10 @@ func take_damage(dame):
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damage(int(randf_range(15,20)))
+		body.damage(int(randf_range(25,30)))
 
 func _fire_arrow() -> void:
+	_stop()
 	var arrows = arrow.instantiate()
 	get_parent().add_child(arrows)
 	arrows.global_position = $bowAim.global_position
@@ -432,5 +434,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
 func _roll() -> void:
 	$AnimationPlayer.play("roll")
-	velocity.x +=500 * _direction
+	velocity.x = roll_distance * _direction
 	_stop()

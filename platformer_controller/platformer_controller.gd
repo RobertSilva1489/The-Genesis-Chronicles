@@ -381,7 +381,7 @@ func take_damage(dame):
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damage(int(randf_range(25,30)))
+		body.damage(int(randf_range(20,25)))
 
 func _fire_arrow() -> void:
 	_stop()
@@ -431,7 +431,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if Global.health > 0:
 		$AnimationPlayer.play("idle")
 		$AnimationPlayer.speed_scale = 1
-	
+		is_attacking = false
 func _roll() -> void:
 	$AnimationPlayer.play("roll")
 	velocity.x = roll_distance * _direction

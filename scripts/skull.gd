@@ -1,7 +1,7 @@
 extends Area2D
 @export var speed = 200
 var direction = 0
-var hit = int(randf_range(10,20))
+var hit = int(randf_range(5,15))
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
 	pass

@@ -42,11 +42,13 @@ func _process(delta: float) -> void:
 		distance = global_position.distance_to(leaf.global_position)
 		if distance <=DIST_FOLLOW:
 			follow = true
+			invencible = false
 		else:
 			follow = false
 			$AnimationPlayer.play("idle")
 		if distance <=DIST_ATTACK:
 			attack_player = true
+			invencible = false
 		else:
 			attack_player = false
 	if leaf != null and dead == false:

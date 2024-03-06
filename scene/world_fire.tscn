@@ -282,22 +282,22 @@ libraries = {
 }
 
 [node name="spawn" type="StaticBody2D" parent="."]
-position = Vector2(817, -74)
+position = Vector2(951, -70)
 
 [node name="spawn2" type="StaticBody2D" parent="."]
-position = Vector2(1286, -65)
+position = Vector2(1330, -65)
 
 [node name="spawn3" type="StaticBody2D" parent="."]
-position = Vector2(1158, -100)
+position = Vector2(1246, -99)
 
 [node name="spawn4" type="StaticBody2D" parent="."]
-position = Vector2(942, -112)
+position = Vector2(1089, -109)
 
 [node name="spawn5" type="StaticBody2D" parent="."]
 position = Vector2(1836, -265)
 
 [node name="Leaf" parent="." instance=ExtResource("6_75uxu")]
-position = Vector2(1492, -322)
+position = Vector2(582, -181)
 roll_distance = 1500
 falling_gravity_multiplier = 1.2
 max_acceleration = 2000

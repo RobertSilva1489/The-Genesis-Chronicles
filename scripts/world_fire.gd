@@ -3,6 +3,8 @@ extends Node2D
 var golem = preload("res://scene/fire_golem.tscn")
 var necromancer = preload("res://scene/necromancer.tscn")
 var boss = preload("res://scene/fire.tscn")
+var fire_check = true
+@onready var leaf: CharacterBody2D = $Leaf
 @export var wave_lenght = 30
 @onready var spawn1 = $spawn
 @onready var spawn2 = $spawn2
@@ -18,10 +20,16 @@ func _ready() -> void:
 	spawn_enemy()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var fire: CharacterBody2D = $Fire
 	if Global.wave == 0:
 		$AnimationPlayer.play("open")
 		Global.wave = -1
 		Global.showwave = false
+	if fire != null:
+		if fire.health <=0 and fire_check == true:
+			fire_check = false
+			await get_tree().create_timer(10).timeout
+			leaf._out()
 func spawn_enemy():
 	wave_lenght-=1
 	Global.scene_enemy+=1

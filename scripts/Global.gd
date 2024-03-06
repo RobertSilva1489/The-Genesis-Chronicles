@@ -14,6 +14,8 @@ var boss_name = ""
 var showwave = false
 func _process(delta: float) -> void:
 	pass
+	if Input.is_action_just_pressed("Pause"):
+		print("Pausou")
 func freeze_frame(time, duration):
 	Engine.time_scale = time
 	await get_tree().create_timer(duration * time).timeout
@@ -21,6 +23,10 @@ func freeze_frame(time, duration):
 func hit_stop_short():
 	Engine.time_scale = 0
 	await get_tree().create_timer(0.09,true,false,true).timeout
+	Engine.time_scale = 1
+func hit_stop_mediun():
+	Engine.time_scale = 0
+	await get_tree().create_timer(0.5,true,false,true).timeout
 	Engine.time_scale = 1
 func hit_stop_long():
 	Engine.time_scale = 0

@@ -2,6 +2,9 @@ extends Node2D
 @onready var hud = $"/root/Hud"
 func _ready() -> void:
 	hud.hide()
+	if Global.boss_name == "Fire":
+		$CanvasLayer/fire.visible = false
+		$fires.visible = false
 func _process(delta: float) -> void:
 	Global.mana = 0
 	Global.quiver = 0

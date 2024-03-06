@@ -10,6 +10,7 @@ var special: PackedScene = preload("res://scene/arrow_shower.tscn")
 var recovery_health 
 var recovery_mana
 var recovery_quive
+var boss_defeat = false
 @export var is_attacking = false
 # Set these to the name of your action (in the Input Map)
 ## Name of input action to move left.
@@ -138,10 +139,10 @@ func _ready():
 		jump_buffer_timer.wait_time = jump_buffer
 		jump_buffer_timer.one_shot = true
 
-
+	Global.hit_stop_mediun()
 func _input(_event):
 	acc.x = 0
-	if Input.is_action_pressed(input_left):
+	if Input.is_action_pressed(input_left) and is_attacking == false:
 		acc.x = -max_acceleration
 		_direction = -1
 		$attack.monitoring = false
@@ -151,7 +152,7 @@ func _input(_event):
 	if Input.is_action_just_released(input_left):
 			$AnimationPlayer.play("idle")
 		
-	if Input.is_action_pressed(input_right):
+	if Input.is_action_pressed(input_right) and is_attacking == false:
 		acc.x = max_acceleration
 		_direction = 1
 		$attack.monitoring = false
@@ -173,7 +174,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("ui_down"):
 		_roll()
 func _physics_process(delta):
-	_attack()
+	
 	if is_coyote_timer_running() or current_jump_type == JumpType.NONE:
 		jumps_left = max_jump_amount
 	if is_feet_on_ground() and current_jump_type == JumpType.NONE:
@@ -203,6 +204,7 @@ func _physics_process(delta):
 	_was_on_ground = is_feet_on_ground()
 	move_and_slide()
 func _process(delta: float) -> void:
+	_attack()
 	recovery_health = Global.recovery_health
 	recovery_mana = Global.recovery_mana
 	recovery_quive = Global.recovery_quive
@@ -369,6 +371,7 @@ func _attack():
 func take_damage(dame):
 	if invecible != true:
 		Global.health-=dame
+		Global.hit_stop_short()
 		$AnimationPlayer.play("hit")
 		_stop()
 		if Global.health<=0:
@@ -428,11 +431,22 @@ func _on_timer_timeout() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if Global.health > 0:
+	if Global.health > 0 and boss_defeat == false:
 		$AnimationPlayer.play("idle")
 		$AnimationPlayer.speed_scale = 1
 		is_attacking = false
 func _roll() -> void:
-	$AnimationPlayer.play("roll")
-	velocity.x = roll_distance * _direction
-	_stop()
+	if is_attacking == false:
+		$AnimationPlayer.play("roll")
+		velocity.x = roll_distance * _direction
+		_stop()
+func _out() -> void:
+	boss_defeat = true
+	$AnimationPlayer.play("teleport_out")
+func _endstage() -> void:
+	input_left = ""
+	input_right = ""
+	input_jump = ""
+	await $AnimationPlayer.animation_finished
+	get_tree().change_scene_to_file("res://scene/world.tscn")
+	

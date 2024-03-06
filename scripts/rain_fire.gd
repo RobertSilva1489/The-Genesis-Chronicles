@@ -1,8 +1,9 @@
 extends Area2D
-var hit = int(randf_range(1,5))
+var hit = int(randf_range(10,20))
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.take_damage(hit)
+		queue_free()
 func _make_rain():
 	$fire2.play("default")
 	$fire3.play("default")

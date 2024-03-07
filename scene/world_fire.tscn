@@ -298,8 +298,12 @@ position = Vector2(1089, -109)
 [node name="spawn5" type="StaticBody2D" parent="."]
 position = Vector2(1836, -265)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(854, -208)
+
 [node name="Leaf" parent="." instance=ExtResource("6_75uxu")]
 position = Vector2(582, -181)
+invecible = false
 roll_distance = 1500
 falling_gravity_multiplier = 1.2
 max_acceleration = 2000

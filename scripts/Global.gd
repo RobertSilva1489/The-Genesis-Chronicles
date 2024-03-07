@@ -1,7 +1,7 @@
 extends Node
 
 @export var quiver = 10
-@export var health = 100
+@export var health = 400
 @export var mana = 100
 @export var wave = 0
 @export var scene_enemy = 0

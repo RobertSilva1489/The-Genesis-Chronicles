@@ -25,6 +25,8 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _process(delta: float) -> void:
+	if Global.health <= 0:
+		$AnimationPlayer.play("idle")
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
 	if distance <=DIST_FOLLOW:

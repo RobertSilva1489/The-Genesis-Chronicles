@@ -149,20 +149,22 @@ func _input(_event):
 		$attack.monitoring = false
 		$attack/CollisionShape2D.disabled = true
 		$AnimationPlayer.play("run")
+		$leaftrail.emitting = true
 		transform.x.x = -1
 	if Input.is_action_just_released(input_left):
 			$AnimationPlayer.play("idle")
-		
+			$leaftrail.emitting = false
 	if Input.is_action_pressed(input_right) and is_attacking == false:
 		acc.x = max_acceleration
 		_direction = 1
 		$attack.monitoring = false
 		$attack/CollisionShape2D.disabled = true
 		$AnimationPlayer.play("run")
+		$leaftrail.emitting = true
 		transform.x.x = 1
 	if Input.is_action_just_released(input_right):
 			$AnimationPlayer.play("idle")
-			
+			$leaftrail.emitting = false
 	if Input.is_action_just_pressed(input_jump):
 		$AnimationPlayer.play("jump")
 		holding_jump = true
@@ -415,10 +417,10 @@ func _on_special_body_entered(body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if Global.health < 100:
+	if Global.health < 400:
 		Global.health+= recovery_health
-	if Global.health > 100:
-		Global.health = 100
+	if Global.health > 400:
+		Global.health = 400
 	if Global.health <= 0:
 		Global.health = 0
 	if Global.mana < 100:

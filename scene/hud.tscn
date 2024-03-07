@@ -55,6 +55,7 @@ offset_left = 82.0
 offset_top = 26.0
 offset_right = 397.0
 offset_bottom = 116.0
+max_value = 400.0
 texture_progress = ExtResource("4_kcijc")
 tint_progress = Color(1, 0, 0, 1)
 

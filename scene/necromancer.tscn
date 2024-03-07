@@ -880,7 +880,7 @@ DIST_ATTACK = 200
 position = Vector2(-80, -77)
 sprite_frames = SubResource("SpriteFrames_tu2j3")
 animation = &"attack1"
-frame = 11
+frame = 12
 centered = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

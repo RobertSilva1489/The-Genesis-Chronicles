@@ -558,7 +558,7 @@ height = 72.0
 [sub_resource type="Gradient" id="Gradient_1brod"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uletj"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ta3hw"]
 gradient = SubResource("Gradient_1brod")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_158w2"]
@@ -574,7 +574,7 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 3.0
 scale_max = 4.0
-color_ramp = SubResource("GradientTexture1D_uletj")
+color_ramp = SubResource("GradientTexture1D_ta3hw")
 
 [node name="Fire" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(113, 75)

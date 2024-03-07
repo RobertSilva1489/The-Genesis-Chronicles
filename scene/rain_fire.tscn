@@ -87,7 +87,7 @@ tracks/2/path = NodePath("CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.5),
+"times": PackedFloat32Array(0, 1.2, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -192,7 +192,6 @@ modulate = Color(1, 0.219608, 0.0627451, 1)
 position = Vector2(104, 0)
 scale = Vector2(1, 0.742424)
 sprite_frames = SubResource("SpriteFrames_sy7en")
-frame = 2
 centered = false
 
 [node name="fire2" type="AnimatedSprite2D" parent="."]
@@ -238,9 +237,9 @@ sprite_frames = SubResource("SpriteFrames_sy7en")
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.0156863, 0, 0.552941)
-position = Vector2(127, 460)
-scale = Vector2(4.02299, 0.129213)
+modulate = Color(1, 0.0156863, 0, 0.109804)
+position = Vector2(160, 460)
+scale = Vector2(3.87931, 0.140449)
 texture = ExtResource("7_x15js")
 centered = false
 

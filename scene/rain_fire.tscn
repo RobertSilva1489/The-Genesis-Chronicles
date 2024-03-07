@@ -52,7 +52,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ogwv"]
-size = Vector2(675, 100)
+size = Vector2(680, 100)
 
 [sub_resource type="Animation" id="Animation_i4uwx"]
 length = 1.6
@@ -187,64 +187,65 @@ monitoring = false
 script = ExtResource("1_agvli")
 
 [node name="fire" type="AnimatedSprite2D" parent="."]
-visible = false
-modulate = Color(1, 0.219608, 0.0627451, 1)
-position = Vector2(104, 0)
-scale = Vector2(1, 0.742424)
+modulate = Color(0.301961, 0, 0, 0.945098)
+position = Vector2(104, -820)
+scale = Vector2(0.5, 2)
 sprite_frames = SubResource("SpriteFrames_sy7en")
+frame = 4
 centered = false
 
 [node name="fire2" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.219608, 0.0627451, 1)
-position = Vector2(180, 0)
-scale = Vector2(1, 0.742424)
+modulate = Color(0.301961, 0, 0, 0.945098)
+position = Vector2(180, -820)
+scale = Vector2(0.5, 2)
 sprite_frames = SubResource("SpriteFrames_sy7en")
 centered = false
 
 [node name="fire3" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.219608, 0.0627451, 1)
-position = Vector2(291, 0)
-scale = Vector2(1, 0.742424)
+modulate = Color(0.301961, 0, 0, 0.945098)
+position = Vector2(291, -820)
+scale = Vector2(0.5, 2)
 sprite_frames = SubResource("SpriteFrames_sy7en")
 centered = false
 
 [node name="fire4" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.219608, 0.0627451, 1)
-position = Vector2(398, 0)
-scale = Vector2(1, 0.742424)
+modulate = Color(0.301961, 0, 0, 0.945098)
+position = Vector2(398, -820)
+scale = Vector2(0.5, 2)
 sprite_frames = SubResource("SpriteFrames_sy7en")
 centered = false
 
 [node name="fire5" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.219608, 0.0627451, 1)
-position = Vector2(509, 0)
-scale = Vector2(1, 0.742424)
+modulate = Color(0.301961, 0, 0, 0.945098)
+position = Vector2(509, -820)
+scale = Vector2(0.5, 2)
 sprite_frames = SubResource("SpriteFrames_sy7en")
 centered = false
 
 [node name="fire6" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.219608, 0.0627451, 1)
-position = Vector2(623, 0)
-scale = Vector2(1, 0.742424)
+modulate = Color(0.301961, 0, 0, 0.945098)
+position = Vector2(623, -820)
+scale = Vector2(0.5, 2)
 sprite_frames = SubResource("SpriteFrames_sy7en")
 centered = false
 
 [node name="fire7" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0.219608, 0.0627451, 1)
-position = Vector2(734, 0)
-scale = Vector2(1, 0.742424)
+modulate = Color(0.301961, 0, 0, 0.945098)
+position = Vector2(734, -820)
+scale = Vector2(0.5, 2)
 sprite_frames = SubResource("SpriteFrames_sy7en")
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.0156863, 0, 0.109804)
-position = Vector2(160, 460)
-scale = Vector2(3.87931, 0.140449)
+modulate = Color(1, 0.0156863, 0, 0.819608)
+position = Vector2(95, 450)
+scale = Vector2(4.05172, 0.140449)
 texture = ExtResource("7_x15js")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(497.5, 427)
+position = Vector2(455, 410)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7ogwv")
 disabled = true
 

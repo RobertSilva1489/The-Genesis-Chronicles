@@ -140,6 +140,7 @@ func _ready():
 		jump_buffer_timer.one_shot = true
 
 	Global.hit_stop_mediun()
+	is_attacking = true
 func _input(_event):
 	acc.x = 0
 	if Input.is_action_pressed(input_left) and is_attacking == false:

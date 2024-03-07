@@ -13,7 +13,7 @@ extends CharacterBody2D
 var hurricane: PackedScene = preload("res://scene/hurricane_fire.tscn")
 var rain_fire: PackedScene = preload("res://scene/rain_fire.tscn")
 var skull: PackedScene = preload("res://scene/skull.tscn")
-var attacks = ["attack1","attack2","attack3"]
+var attacks = ["attack1","attack2","attack3","attack2","attack3"]
 var direction = 0
 var enter_state = true
 var dead = false

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ba2swoga1uo20"
+path="res://.godot/imported/Against All Odds - Finish game.wav-9683410cd04c36de44c07f63f942627c.sample"
+
+[deps]
+
+source_file="res://sfx/Against All Odds - Finish game.wav"
+dest_files=["res://.godot/imported/Against All Odds - Finish game.wav-9683410cd04c36de44c07f63f942627c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

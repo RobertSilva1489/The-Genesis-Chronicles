@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dg2wodnv0r537"
+path="res://.godot/imported/Demons and Death - Menu.mp3-e324ea3c0fccb3eb46b9dc9a9378b5be.mp3str"
+
+[deps]
+
+source_file="res://sfx/Demons and Death - Menu.mp3"
+dest_files=["res://.godot/imported/Demons and Death - Menu.mp3-e324ea3c0fccb3eb46b9dc9a9378b5be.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

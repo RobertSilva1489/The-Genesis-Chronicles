@@ -28,6 +28,8 @@ func _process(delta: float) -> void:
 	if fire != null:
 		if fire.health <=0 and fire_check == true:
 			fire_check = false
+			$level.stream_paused = true
+			$bossDead.play()
 			await get_tree().create_timer(10).timeout
 			leaf._out()
 func spawn_enemy():
@@ -38,6 +40,7 @@ func spawn_enemy():
 	RanPos.append(spawn2)
 	RanPos.append(spawn3)
 	RanPos.append(spawn4)
+	enemy.append(golem)
 	enemy.append(golem)
 	enemy.append(necromancer)
 	var selecte = enemy.pick_random()

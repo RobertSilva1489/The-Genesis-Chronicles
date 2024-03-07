@@ -11,6 +11,7 @@ var move :int
 var selected_animation
 var damage_apply = randi_range(15,30)
 var _position
+@export var is_animation = false
 @export var DIST_FOLLOW := 1000
 @export var DIST_ATTACK := 50
 @export var invencible = false
@@ -31,6 +32,8 @@ func _ready() -> void:
 	$AnimationPlayer.play("idle")
 	Global.show_boss = true
 	Global.boss_name = "Fire"
+	is_animation = false
+	$AnimationPlayer.speed_scale = 1.5
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -56,23 +59,23 @@ func _process(delta: float) -> void:
 		direction = sign(_position)
 		if attack_player and can_attack:
 			attack()
-		elif follow and attack_player !=true:
+		elif follow and attack_player !=true and is_animation == false:
 			$AnimationPlayer.play("run")
 			_patrol()
 	_flip()	
 
 func _patrol():
-	if Global.health > 0 and health > 0:
+	if Global.health > 0 and health > 0 and is_animation == false:
 		velocity.x = direction * speed
 		move_and_slide()
 	if follow == false:
 		velocity.x = 0 
 		$AnimationPlayer.play("idle")
 func _flip() -> void:
-	if direction < 0 and health > 0:
+	if direction < 0 and health > 0 and is_animation == false:
 		transform.x.x = -1
 		$Timer.start(0.5)
-	if direction > 0 and health > 0:
+	if direction > 0 and health > 0 and is_animation == false:
 		transform.x.x = 1
 		$Timer.start(0.5)
 func attack():
@@ -121,4 +124,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$AnimationPlayer.play("idle")
 	if dead == true:
 		$AnimationPlayer.play("death")
+	is_animation = false
 	

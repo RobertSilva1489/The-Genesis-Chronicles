@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://djyq0mhw1bmfh"]
+[gd_scene load_steps=25 format=3 uid="uid://djyq0mhw1bmfh"]
 
 [ext_resource type="Script" path="res://scripts/world_fire.gd" id="1_bnp1k"]
 [ext_resource type="Texture2D" uid="uid://djgvjfsa3kbnm" path="res://assent/scenario/3Z_2104.w020.n001.1230B.p15.1230.jpg" id="2_ixnad"]
@@ -9,6 +9,8 @@
 [ext_resource type="Shader" path="res://shader/Noise Offset.gdshader" id="7_5qeyu"]
 [ext_resource type="Texture2D" uid="uid://bal1y8wcmir0e" path="res://assent/scenario/Textures/LAVA.png" id="8_0ji7y"]
 [ext_resource type="Texture2D" uid="uid://bvvktqf6ardoa" path="res://assent/scenario/Fx_pack #3/2/1_12.png" id="9_u2vqk"]
+[ext_resource type="AudioStream" uid="uid://cr7avm1s8lqyr" path="res://sfx/Nerve monster.ogg" id="10_bt6un"]
+[ext_resource type="AudioStream" uid="uid://cwncm2dm2bil5" path="res://sfx/Goodguys Theme - after defeadt boss.wav" id="11_mkx76"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_stag4"]
 shader = ExtResource("3_l2l5p")
@@ -195,7 +197,6 @@ color_ramp = SubResource("GradientTexture1D_r0lji")
 
 [node name="world_fire" type="Node2D"]
 script = ExtResource("1_bnp1k")
-wave_lenght = 0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -326,6 +327,13 @@ process_material = SubResource("ParticleProcessMaterial_xq3wj")
 texture = ExtResource("9_u2vqk")
 lifetime = 5.0
 one_shot = true
+
+[node name="level" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bt6un")
+autoplay = true
+
+[node name="bossDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_mkx76")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Boss" to="." method="_on_boss_timeout"]

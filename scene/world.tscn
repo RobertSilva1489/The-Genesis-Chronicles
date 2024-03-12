@@ -1485,7 +1485,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_skrmw"]
 shader = ExtResource("363_3bxy4")
-shader_parameter/speed = 5.0
+shader_parameter/speed = 0.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.01
 shader_parameter/strengthScale = 100.0
@@ -2760,6 +2760,7 @@ _data = {
 script = ExtResource("1_tvkmb")
 
 [node name="fires" type="Marker2D" parent="."]
+visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="fires"]
 position = Vector2(203, 95)
@@ -2824,6 +2825,7 @@ texture = ExtResource("3_yhbyb")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="shake" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_tgens")

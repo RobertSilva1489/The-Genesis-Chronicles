@@ -19,7 +19,7 @@ var boss_defeat = false
 @export var input_right : String = "move_right"
 ## Name of input action to jump.
 @export var input_jump : String = "jump"
-@export var invecible = false
+@export var invecible: bool
 @export var roll_distance = 1000
 const DEFAULT_MAX_JUMP_HEIGHT = 150
 const DEFAULT_MIN_JUMP_HEIGHT = 60
@@ -211,7 +211,7 @@ func _process(delta: float) -> void:
 	recovery_health = Global.recovery_health
 	recovery_mana = Global.recovery_mana
 	recovery_quive = Global.recovery_quive
-
+	invecible = Global.god_mode
 ## Use this instead of coyote_timer.start() to check if the coyote_timer is enabled first
 func start_coyote_timer():
 	if is_coyote_time_enabled:

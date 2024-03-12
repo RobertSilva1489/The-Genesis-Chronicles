@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4muf76kgfb77"]
+[gd_scene load_steps=19 format=3 uid="uid://c4muf76kgfb77"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_7bswo"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="4_kcijc"]
@@ -7,12 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://0ymca165k3uq" path="res://assent/leaf_ranger.png" id="6_0bwfw"]
 [ext_resource type="Texture2D" uid="uid://0l3434yahwd6" path="res://assent/HUD/hud_bg_without_custom_meter.png" id="6_bibaq"]
 [ext_resource type="Texture2D" uid="uid://3jbujalxf50r" path="res://assent/scenario/ParallaxBG/Layer 1.png" id="7_1e2o6"]
+[ext_resource type="Texture2D" uid="uid://bnnuq4bixxcf7" path="res://assent/hud_name.png" id="7_s2ems"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k4tnl"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_v3ncn"]
 
+[sub_resource type="ImageTexture" id="ImageTexture_77c1t"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_cgdgo"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sacgl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8qjq2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2qlv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_op51s"]
 
@@ -76,20 +85,41 @@ texture_progress = ExtResource("5_sjs26")
 position = Vector2(400, 20)
 scale = Vector2(1.5, 1.5)
 
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-38, -13.3333)
+scale = Vector2(0.4, 0.438)
+texture = ExtResource("7_s2ems")
+centered = false
+
 [node name="TextEdit" type="TextEdit" parent="Node2D"]
 texture_filter = 1
 offset_left = -9.0
 offset_right = 66.0
 offset_bottom = 32.0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 8
+theme_override_constants/outline_size = 1
+theme_override_icons/tab = SubResource("ImageTexture_77c1t")
+theme_override_icons/space = SubResource("ImageTexture_cgdgo")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sacgl")
-text = "ENEMY: "
+theme_override_styles/focus = SubResource("StyleBoxTexture_8qjq2")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_i2qlv")
+text = "ENEMY:"
+scroll_past_end_of_file = true
 
 [node name="TextEdit2" type="TextEdit" parent="Node2D"]
 texture_filter = 1
 offset_left = 53.0
 offset_right = 82.0
 offset_bottom = 26.0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_op51s")
+theme_override_styles/focus = SubResource("StyleBoxTexture_8qjq2")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_i2qlv")
 text = "00"
 scroll_past_end_of_file = true
 

@@ -17,6 +17,7 @@ var enemy = []
 func _ready() -> void:
 	Global.showwave = true
 	Global.wave = wave_lenght
+	$"/root/Hud".show()
 	spawn_enemy()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

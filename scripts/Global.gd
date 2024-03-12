@@ -10,6 +10,7 @@ extends Node
 @export var recovery_quive = 1
 @export var show_boss = false
 @export var boss_health = 0
+@export var god_mode = false
 var boss_name = ""
 var showwave = false
 func _process(delta: float) -> void:

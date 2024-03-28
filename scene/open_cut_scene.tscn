@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7sbuqiulglf3"]
+[gd_scene load_steps=12 format=3 uid="uid://c7sbuqiulglf3"]
 
+[ext_resource type="Script" path="res://scripts/open_cut_scene.gd" id="1_2wik0"]
 [ext_resource type="Texture2D" uid="uid://cbmpexxrpc021" path="res://assent/Starfields/Starfield_01-512x512.png" id="1_wp458"]
 [ext_resource type="Texture2D" uid="uid://qhnxufhxslvu" path="res://assent/Starfields/3284162660.png" id="2_pqmvf"]
 [ext_resource type="FontFile" uid="uid://balhb42drx84j" path="res://font/GODOFWAR.TTF" id="3_bgxxr"]
+[ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="5_leieu"]
+[ext_resource type="AudioStream" uid="uid://bandk8346aj2x" path="res://sfx/Frozen Forest - before attack.mp3" id="6_bedjm"]
 
 [sub_resource type="Animation" id="Animation_1lswm"]
 resource_name = "new_animation"
@@ -21,6 +24,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 46]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mfox1"]
 _data = {
@@ -32,155 +59,143 @@ resource_name = "new_animation"
 length = 135.5
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("../Label:position")
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Label2:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 10.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(206, 599), Vector2(206, -30)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Label2:visible_ratio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(3, 25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Label2:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(25.4, 26.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Label3:visible_ratio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label3:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(27, 54.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Label3:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Label3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(54.2, 54.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Label4:visible_ratio")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Label4:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(55.6, 80),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Label4:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Label4:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(80.1, 81.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Label5:visible_ratio")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Label5:visible_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(81.5, 106.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../Label5:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Label5:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(106.8, 107.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../Label6:visible_ratio")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Label6:visible_ratio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(108.1, 133.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../Label6:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Label6:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(133.9, 134.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../Label:visible_ratio")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Label:visible_ratio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0, 2.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../Label:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Label:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(3, 3.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -192,11 +207,20 @@ _data = {
 "new_animation": SubResource("Animation_k6usl")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krq06"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 20
+border_width_top = 15
+border_width_right = 22
+border_width_bottom = 25
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [node name="OpenCutScene" type="Node2D"]
+script = ExtResource("1_2wik0")
 
 [node name="Starfield01-512x512" type="Sprite2D" parent="."]
 position = Vector2(-1, -1)
-scale = Vector2(1.55859, 1.16602)
+scale = Vector2(1.57812, 1.17578)
 texture = ExtResource("1_wp458")
 centered = false
 
@@ -205,6 +229,7 @@ position = Vector2(297, 125)
 texture = ExtResource("2_pqmvf")
 centered = false
 hframes = 50
+frame = 39
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "new_animation"
@@ -220,7 +245,6 @@ libraries = {
 }
 
 [node name="Label" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -240,9 +264,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
+visible_characters = 13
+visible_ratio = 0.615385
 
 [node name="Label2" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 offset_left = 108.0
 offset_top = 370.0
 offset_right = 701.0
@@ -258,26 +283,28 @@ vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
 uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Label3" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_left = 108.0
-offset_top = 370.0
-offset_right = 691.0
-offset_bottom = 586.0
+offset_left = 100.0
+offset_top = 327.0
+offset_right = 692.0
+offset_bottom = 582.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_bgxxr")
 theme_override_font_sizes/font_size = 20
-text = "However, envy and ambition festered within the hearts of the elemental gods—Aqua, Ignis, Zephyr, and Terra. They yearned for greater dominion and influence over the universe, and their eyes turned covetously towards Leaf's abundant and flourishing realm. The verdant beauty of AIROTIV, with its sprawling forests, crystal-clear rivers, and diverse ecosystems, sparked jealousy among the elemental gods."
+text = "However, envy and ambition festered within the hearts of the elemental gods: Aqua, Ignis, Zephyr, and Terra. They yearned for greater dominion and influence over the universe, and their eyes turned covetously towards Leaf's abundant and flourishing realm. The verdant beauty of AIROTIV, with its sprawling forests, crystal-clear rivers, and diverse ecosystems, sparked jealousy among the elemental gods."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
 uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Label4" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 offset_left = 122.0
 offset_top = 339.0
 offset_right = 684.0
@@ -292,9 +319,10 @@ vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
 uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Label5" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 offset_left = 126.0
 offset_top = 346.0
 offset_right = 678.0
@@ -310,13 +338,14 @@ vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
 uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Label6" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
 offset_left = 106.0
-offset_top = 323.0
+offset_top = 321.0
 offset_right = 699.0
-offset_bottom = 598.0
+offset_bottom = 596.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_bgxxr")
@@ -328,3 +357,36 @@ vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
 uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.634366)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 651.0
+offset_top = 544.0
+offset_right = 826.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_leieu")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_krq06")
+text = "PRESS ENTER TO SKIP"
+flat = true
+icon_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bedjm")
+autoplay = true
+
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

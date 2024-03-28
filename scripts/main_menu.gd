@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 func _on_start_button_pressed() -> void:
 	$pressed.play()
 	await $pressed.finished
-	get_tree().change_scene_to_file("res://scene/world_fire.tscn")
+	get_tree().change_scene_to_file("res://scene/open_cut_scene.tscn")
 
 func _on_option_buton_pressed() -> void:
 	$pressed.play()

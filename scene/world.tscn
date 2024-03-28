@@ -1,4 +1,4 @@
-[gd_scene load_steps=393 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=392 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dbfg76l1rytj3" path="res://assent/scenario/middle.png" id="3_yhbyb"]
 [ext_resource type="Texture2D" uid="uid://bowilmjwr4lmv" path="res://assent/scenario/Fx_pack #3/1/1_2.png" id="4_2yffh"]
 [ext_resource type="Texture2D" uid="uid://osy1th5nmr2o" path="res://assent/scenario/Fx_pack #3/1/1_3.png" id="5_7c62p"]
-[ext_resource type="Texture2D" uid="uid://io1q87xc6sct" path="res://assent/scenario/Land4.png" id="5_57ilv"]
 [ext_resource type="Texture2D" uid="uid://cgofogwfu071o" path="res://assent/scenario/Fx_pack #3/1/1_4.png" id="6_1kl17"]
 [ext_resource type="Texture2D" uid="uid://d20n83e8dexnr" path="res://assent/scenario/Land1.png" id="6_3at5i"]
 [ext_resource type="Texture2D" uid="uid://xxlcjn7herw7" path="res://assent/scenario/Tiles.png" id="6_fjof3"]
@@ -2709,7 +2708,7 @@ radius = 17.0
 height = 56.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4r5j"]
-size = Vector2(52, 96)
+size = Vector2(52, 612)
 
 [sub_resource type="Animation" id="Animation_sj74x"]
 resource_name = "open"
@@ -2914,31 +2913,20 @@ shape = SubResource("CapsuleShape2D_iiatc")
 [node name="Leaf" parent="." instance=ExtResource("1_nkah1")]
 position = Vector2(670, 111)
 collision_mask = 8
-input_jump = ""
+rolling = false
 max_jump_height = 100.0
 min_jump_height = 10.0
 max_acceleration = 8000
 friction = 2000
 
 [node name="false_floor" type="StaticBody2D" parent="."]
-position = Vector2(1333, 145)
+position = Vector2(-113, 188)
 collision_layer = 8
 collision_mask = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="false_floor"]
-visible = false
-position = Vector2(38, 52)
-scale = Vector2(0.390624, 0.494681)
-texture = ExtResource("5_57ilv")
-centered = false
-region_enabled = true
-region_rect = Rect2(32, 4, 128, 188)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="false_floor"]
-visible = false
-position = Vector2(61, 97)
+position = Vector2(0, -258)
 shape = SubResource("RectangleShape2D_v4r5j")
-one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 0.2

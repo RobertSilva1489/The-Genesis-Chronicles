@@ -11,6 +11,7 @@ var recovery_health
 var recovery_mana
 var recovery_quive
 var boss_defeat = false
+@export var rolling = true
 @export var is_attacking = false
 # Set these to the name of your action (in the Input Map)
 ## Name of input action to move left.
@@ -165,7 +166,7 @@ func _input(_event):
 	if Input.is_action_just_released(input_right):
 			$AnimationPlayer.play("idle")
 			$leaftrail.emitting = false
-	if Input.is_action_just_pressed(input_jump):
+	if Input.is_action_just_pressed(input_jump) and rolling:
 		$AnimationPlayer.play("jump")
 		holding_jump = true
 		start_jump_buffer_timer()
@@ -439,10 +440,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$AnimationPlayer.speed_scale = 1
 		is_attacking = false
 func _roll() -> void:
-	if is_attacking == false:
+	print("roll1")
+	if is_attacking == false and rolling == true:
 		$AnimationPlayer.play("roll")
 		velocity.x = roll_distance * _direction
 		_stop()
+		print("roll2")
 func _out() -> void:
 	boss_defeat = true
 	$AnimationPlayer.play("teleport_out")

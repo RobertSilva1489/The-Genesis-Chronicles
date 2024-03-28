@@ -651,7 +651,8 @@ color_ramp = SubResource("GradientTexture1D_uletj")
 [node name="Leaf" type="CharacterBody2D" groups=["player"]]
 collision_mask = 24
 script = ExtResource("1_qjbl6")
-invecible = true
+input_jump = ""
+roll_distance = 0
 jump_duration = 0.5
 metadata/_edit_vertical_guides_ = [-133.0]
 

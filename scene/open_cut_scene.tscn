@@ -29,7 +29,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_k6usl"]
 resource_name = "new_animation"
-length = 7.0
+length = 180.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,10 +37,58 @@ tracks/0/path = NodePath("../Label:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 7),
+"times": PackedFloat32Array(0, 10.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(208, 599), Vector2(208, -30)]
+"values": [Vector2(206, 599), Vector2(206, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Label2:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(25.4, 26.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Label3:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(27, 54.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Label3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(54.3, 55.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_awkic"]
@@ -57,11 +105,10 @@ texture = ExtResource("1_wp458")
 centered = false
 
 [node name="3284162660" type="Sprite2D" parent="."]
-position = Vector2(297, 179)
+position = Vector2(297, 160)
 texture = ExtResource("2_pqmvf")
 centered = false
 hframes = 50
-frame = 47
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "new_animation"
@@ -77,12 +124,70 @@ libraries = {
 }
 
 [node name="Label" type="Label" parent="."]
-offset_left = 208.0
-offset_top = 599.0
-offset_right = 596.0
-offset_bottom = 632.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 206.0
+offset_top = -30.0
+offset_right = 594.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_bgxxr")
 theme_override_font_sizes/font_size = 30
 text = "The Genesis Chronicles"
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 108.0
+offset_top = 370.0
+offset_right = 701.0
+offset_bottom = 599.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bgxxr")
+theme_override_font_sizes/font_size = 20
+text = "A delicate balance existed among the four elemental gods and the serene goddess Leaf, who watched over the lush and vibrant planet known as AIROTIV. Each deity, custodian of their respective elements, coexisted harmoniously, ensuring the prosperity and vitality of AIROTIV.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 108.0
+offset_top = 370.0
+offset_right = 691.0
+offset_bottom = 586.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bgxxr")
+theme_override_font_sizes/font_size = 20
+text = "However, envy and ambition festered within the hearts of the elemental gods—Aqua, Ignis, Zephyr, and Terra. They yearned for greater dominion and influence over the universe, and their eyes turned covetously towards Leaf's abundant and flourishing realm. The verdant beauty of AIROTIV, with its sprawling forests, crystal-clear rivers, and diverse ecosystems, sparked jealousy among the elemental gods."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 208.0
+offset_top = 599.0
+offset_right = 248.0
+offset_bottom = 622.0
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 208.0
+offset_top = 599.0
+offset_right = 248.0
+offset_bottom = 622.0
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 119.0
+offset_top = 419.0
+offset_right = 687.0
+offset_bottom = 597.0

@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://denqx6vdps1sa"]
+[gd_scene load_steps=13 format=3 uid="uid://cx8opnk1u7lux"]
 
-[ext_resource type="Script" path="res://scripts/Fire_cut_scene.gd" id="1_kmudy"]
-[ext_resource type="Texture2D" uid="uid://cbmpexxrpc021" path="res://assent/Starfields/Starfield_01-512x512.png" id="2_b08u0"]
-[ext_resource type="Texture2D" uid="uid://ojyn1be7gd8n" path="res://assent/Cutscenes/fire_knight.png" id="3_k8fvq"]
-[ext_resource type="FontFile" uid="uid://balhb42drx84j" path="res://font/GODOFWAR.TTF" id="4_lqi7h"]
-[ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="5_q06nu"]
-[ext_resource type="AudioStream" uid="uid://bandk8346aj2x" path="res://sfx/Frozen Forest - before attack.mp3" id="6_bxu7r"]
-[ext_resource type="Texture2D" uid="uid://d2vucehq3yjyc" path="res://assent/Cutscenes/leaf_ranger.png" id="7_w5hjd"]
+[ext_resource type="Script" path="res://scripts/wind_cut_scene.gd" id="1_ma2kf"]
+[ext_resource type="Texture2D" uid="uid://cbmpexxrpc021" path="res://assent/Starfields/Starfield_01-512x512.png" id="2_25a8l"]
+[ext_resource type="FontFile" uid="uid://balhb42drx84j" path="res://font/GODOFWAR.TTF" id="3_0v433"]
+[ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="4_jtc2c"]
+[ext_resource type="AudioStream" uid="uid://bandk8346aj2x" path="res://sfx/Frozen Forest - before attack.mp3" id="5_owl2e"]
+[ext_resource type="Texture2D" uid="uid://dohw6kch7du7b" path="res://assent/Cutscenes/wind_hashashin.png" id="6_3wrdo"]
+[ext_resource type="Texture2D" uid="uid://d2vucehq3yjyc" path="res://assent/Cutscenes/leaf_ranger.png" id="7_3tqxe"]
 
 [sub_resource type="Animation" id="Animation_1lswm"]
 resource_name = "new_animation"
@@ -45,7 +45,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_k6usl"]
 resource_name = "new_animation"
-length = 15.0
+length = 16.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -53,7 +53,7 @@ tracks/0/path = NodePath("../Label2:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 5.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -65,7 +65,7 @@ tracks/1/path = NodePath("../Label2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(5.4, 6.4),
+"times": PackedFloat32Array(5.6, 6.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -77,7 +77,7 @@ tracks/2/path = NodePath("../Label3:visible_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(6.4, 12),
+"times": PackedFloat32Array(6.5, 12),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -89,7 +89,7 @@ tracks/3/path = NodePath("../Label3:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(13, 14.5),
+"times": PackedFloat32Array(13.5, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -101,7 +101,7 @@ tracks/4/path = NodePath("../FireKnight:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 6.4, 14.3),
+"times": PackedFloat32Array(0, 6.5, 14.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -113,7 +113,7 @@ tracks/5/path = NodePath("../LeafRanger:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 6.3),
+"times": PackedFloat32Array(0, 6.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -133,12 +133,12 @@ border_width_bottom = 25
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="OpenCutScene" type="Node2D"]
-script = ExtResource("1_kmudy")
+script = ExtResource("1_ma2kf")
 
 [node name="Starfield01-512x512" type="Sprite2D" parent="."]
 position = Vector2(-1, -1)
 scale = Vector2(1.57812, 1.17578)
-texture = ExtResource("2_b08u0")
+texture = ExtResource("2_25a8l")
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -161,9 +161,9 @@ offset_right = 717.0
 offset_bottom = 434.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_lqi7h")
+theme_override_fonts/font = ExtResource("3_0v433")
 theme_override_font_sizes/font_size = 20
-text = "Ignis, master of flames, why do you let your fires rage upon Veridara?"
+text = "Zephyr, ruler of the winds, why do your tempests assail the peaceful lands of Veridara?"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -179,9 +179,9 @@ offset_right = 802.0
 offset_bottom = 274.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_lqi7h")
+theme_override_fonts/font = ExtResource("3_0v433")
 theme_override_font_sizes/font_size = 20
-text = "Leaf, your verdant paradise overshadows the brilliance of my flames. The world will know the fire's true power."
+text = "Leaf, your gentle breezes stifle the true force of the winds. I shall unleash storms that echo my power across Veridara's skies."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -206,7 +206,7 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("5_q06nu")
+theme_override_fonts/font = ExtResource("4_jtc2c")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_krq06")
 text = "PRESS ENTER TO SKIP"
@@ -214,18 +214,19 @@ flat = true
 icon_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_bxu7r")
+stream = ExtResource("5_owl2e")
 autoplay = true
 
 [node name="FireKnight" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(72, 207)
-texture = ExtResource("3_k8fvq")
+scale = Vector2(-1, 1)
+texture = ExtResource("6_3wrdo")
 
 [node name="LeafRanger" type="Sprite2D" parent="."]
 position = Vector2(749, 381)
 scale = Vector2(-1, 1)
-texture = ExtResource("7_w5hjd")
+texture = ExtResource("7_3tqxe")
 
 [connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

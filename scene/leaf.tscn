@@ -657,7 +657,10 @@ jump_duration = 0.5
 metadata/_edit_vertical_guides_ = [-133.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(3, 4)
 zoom = Vector2(1.5, 1.5)
+limit_top = -300
+limit_bottom = 250
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0

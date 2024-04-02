@@ -1,0 +1,309 @@
+[gd_scene load_steps=13 format=3 uid="uid://denqx6vdps1sa"]
+
+[ext_resource type="Script" path="res://scripts/Fire_cut_scene.gd" id="1_kmudy"]
+[ext_resource type="Texture2D" uid="uid://cbmpexxrpc021" path="res://assent/Starfields/Starfield_01-512x512.png" id="2_b08u0"]
+[ext_resource type="Texture2D" uid="uid://ojyn1be7gd8n" path="res://assent/Cutscenes/fire_knight.png" id="3_k8fvq"]
+[ext_resource type="FontFile" uid="uid://balhb42drx84j" path="res://font/GODOFWAR.TTF" id="4_lqi7h"]
+[ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="5_q06nu"]
+[ext_resource type="AudioStream" uid="uid://bandk8346aj2x" path="res://sfx/Frozen Forest - before attack.mp3" id="6_bxu7r"]
+[ext_resource type="Texture2D" uid="uid://d2vucehq3yjyc" path="res://assent/Cutscenes/leaf_ranger.png" id="7_w5hjd"]
+
+[sub_resource type="Animation" id="Animation_1lswm"]
+resource_name = "new_animation"
+length = 6.0
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3284162660:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 10.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 46]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mfox1"]
+_data = {
+"new_animation": SubResource("Animation_1lswm")
+}
+
+[sub_resource type="Animation" id="Animation_k6usl"]
+resource_name = "new_animation"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Label2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.4, 6.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label3:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.4, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Label3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(13, 14.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FireKnight:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6.4, 14.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../LeafRanger:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_awkic"]
+_data = {
+"new_animation": SubResource("Animation_k6usl")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krq06"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 20
+border_width_top = 15
+border_width_right = 22
+border_width_bottom = 25
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[node name="OpenCutScene" type="Node2D"]
+script = ExtResource("1_kmudy")
+
+[node name="Starfield01-512x512" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(1.57812, 1.17578)
+texture = ExtResource("2_b08u0")
+centered = false
+
+[node name="3284162660" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(297, 125)
+texture = ExtResource("3_k8fvq")
+centered = false
+hframes = 50
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_mfox1")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_awkic")
+}
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 124.0
+offset_top = 342.0
+offset_right = 717.0
+offset_bottom = 434.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_lqi7h")
+theme_override_font_sizes/font_size = 20
+text = "Ignis, master of flames, why do you let your fires rage upon Veridara?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 93.0
+offset_top = 169.0
+offset_right = 802.0
+offset_bottom = 274.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_lqi7h")
+theme_override_font_sizes/font_size = 20
+text = "Leaf, your verdant paradise overshadows the brilliance of my flames. The world will know the fire's true power."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label4" type="Label" parent="."]
+visible = false
+offset_left = 122.0
+offset_top = 339.0
+offset_right = 684.0
+offset_bottom = 590.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_lqi7h")
+theme_override_font_sizes/font_size = 20
+text = "One fateful day, Aqua, the water goddess, conceived a treacherous plan to seize control of AIROTIV's riches. Fueling her desire for dominance, she manipulated Ignis, Zephyr, and Terra, convincing them that Leaf's benevolence and abundance threatened the equilibrium of Cosmosia. In a sinister alliance, they conspired to assail AIROTIV, believing that by subduing Leaf, they could reshape the planet according to their desires."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label5" type="Label" parent="."]
+visible = false
+offset_left = 126.0
+offset_top = 346.0
+offset_right = 678.0
+offset_bottom = 601.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_lqi7h")
+theme_override_font_sizes/font_size = 20
+text = "The united elemental gods launched a coordinated assault on AIROTIV, unleashing devastating floods, scorching wildfires, relentless hurricanes, and seismic upheavals. Leaf, the goddess of the planet, sensed the impending danger and decided to embark on a journey to distant realms in search of a solution. As she left her cherished home behind, the assault escalated, leaving AIROTIV in chaos.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label6" type="Label" parent="."]
+visible = false
+offset_left = 106.0
+offset_top = 321.0
+offset_right = 699.0
+offset_bottom = 596.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_lqi7h")
+theme_override_font_sizes/font_size = 20
+text = "Leaf, the goddess on a quest to save her planet from the destructive ambitions of her fellow deities. Armed with the power of nature and a determination to restore balance, Leaf must navigate through perilous landscapes, and confront her misguided peers to bring an end to the chaos that threatens AIROTIV. The fate of Cosmosia hangs in the balance as Leaf embarks on a journey that will test her strength, and the resilience of the natural world she holds dear.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 651.0
+offset_top = 544.0
+offset_right = 826.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_q06nu")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_krq06")
+text = "PRESS ENTER TO SKIP"
+flat = true
+icon_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bxu7r")
+autoplay = true
+
+[node name="FireKnight" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(72, 207)
+texture = ExtResource("3_k8fvq")
+
+[node name="LeafRanger" type="Sprite2D" parent="."]
+position = Vector2(749, 381)
+scale = Vector2(-1, 1)
+texture = ExtResource("7_w5hjd")
+
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

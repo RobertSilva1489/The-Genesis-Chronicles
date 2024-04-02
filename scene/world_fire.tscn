@@ -205,14 +205,15 @@ transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-1247.5, -1492.5)
-scale = Vector2(1.13, 0.838525)
+position = Vector2(-310, -547.5)
+scale = Vector2(0.913077, 0.524403)
 texture = ExtResource("2_ixnad")
 centered = false
 
 [node name="smoke" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 material = SubResource("ShaderMaterial_stag4")
 position = Vector2(-1010, -1777.5)
+scale = Vector2(1, 1)
 texture = ExtResource("4_feecb")
 centered = false
 
@@ -227,6 +228,7 @@ layer_0/tile_data = PackedInt32Array(393208, 262146, 0, 393209, 262146, 0, 39321
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_gejft")
 anchors_preset = -1
 anchor_left = -0.704
@@ -298,21 +300,18 @@ position = Vector2(1089, -109)
 [node name="spawn5" type="StaticBody2D" parent="."]
 position = Vector2(1836, -265)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(854, -208)
-
-[node name="Leaf" parent="." instance=ExtResource("6_75uxu")]
-position = Vector2(582, -181)
-roll_distance = 1500
-falling_gravity_multiplier = 1.2
-max_acceleration = 2000
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [node name="Boss" type="Timer" parent="."]
 one_shot = true
+
+[node name="Leaf" parent="." instance=ExtResource("6_75uxu")]
+position = Vector2(582, -181)
+roll_distance = 1500
+falling_gravity_multiplier = 1.2
+max_acceleration = 2000
 
 [node name="AreaBoss" type="Area2D" parent="."]
 position = Vector2(1410, -57)

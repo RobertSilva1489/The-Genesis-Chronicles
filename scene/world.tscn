@@ -1,4 +1,4 @@
-[gd_scene load_steps=392 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=393 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
@@ -375,6 +375,7 @@
 [ext_resource type="Texture2D" uid="uid://b2alenjt1ip1b" path="res://assent/scenario/Fx_pack #3/3/1_118.png" id="360_5q0a7"]
 [ext_resource type="Texture2D" uid="uid://d32dh2346jpdc" path="res://assent/scenario/Fx_pack #3/3/1_119.png" id="361_5bumt"]
 [ext_resource type="Shader" path="res://shader/wind.gdshader" id="363_3bxy4"]
+[ext_resource type="Texture2D" uid="uid://4weuhq2nmrhr" path="res://assent/icons_xbox_with_outline_no_fill.png" id="376_uvt7j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovvm5"]
 animations = [{
@@ -2875,7 +2876,7 @@ position = Vector2(1200, 130)
 
 [node name="water" type="Area2D" parent="Mages/water_mage"]
 position = Vector2(32, 31)
-collision_mask = 0
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mages/water_mage/water"]
 shape = SubResource("CapsuleShape2D_iiatc")
@@ -2885,7 +2886,7 @@ position = Vector2(1100, 131)
 
 [node name="wind" type="Area2D" parent="Mages/wind_mage"]
 position = Vector2(32, 31)
-collision_mask = 0
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mages/wind_mage/wind"]
 shape = SubResource("CapsuleShape2D_iiatc")
@@ -2895,7 +2896,7 @@ position = Vector2(900, 130)
 
 [node name="fire" type="Area2D" parent="Mages/fire_mage"]
 position = Vector2(32, 31)
-collision_mask = 0
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mages/fire_mage/fire"]
 shape = SubResource("CapsuleShape2D_iiatc")
@@ -2905,7 +2906,7 @@ position = Vector2(1000, 130)
 
 [node name="ground" type="Area2D" parent="Mages/ground_mage"]
 position = Vector2(32, 31)
-collision_mask = 0
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mages/ground_mage/ground"]
 shape = SubResource("CapsuleShape2D_iiatc")
@@ -2934,7 +2935,51 @@ libraries = {
 "": SubResource("AnimationLibrary_m5phf")
 }
 
+[node name="IconsFire" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(924, 115)
+texture = ExtResource("376_uvt7j")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 64, 16, 16)
+
+[node name="IconsWater" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1224, 115)
+texture = ExtResource("376_uvt7j")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 64, 16, 16)
+
+[node name="IconsWind" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1124, 115)
+texture = ExtResource("376_uvt7j")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 64, 16, 16)
+
+[node name="IconsGround" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1023, 115)
+texture = ExtResource("376_uvt7j")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 64, 16, 16)
+
 [connection signal="body_entered" from="Mages/water_mage/water" to="." method="_on_water_body_entered"]
+[connection signal="body_exited" from="Mages/water_mage/water" to="." method="_on_water_body_exited"]
 [connection signal="body_entered" from="Mages/wind_mage/wind" to="." method="_on_wind_body_entered"]
+[connection signal="body_exited" from="Mages/wind_mage/wind" to="." method="_on_wind_body_exited"]
 [connection signal="body_entered" from="Mages/fire_mage/fire" to="." method="_on_fire_body_entered"]
+[connection signal="body_exited" from="Mages/fire_mage/fire" to="." method="_on_fire_body_exited"]
 [connection signal="body_entered" from="Mages/ground_mage/ground" to="." method="_on_ground_body_entered"]
+[connection signal="body_exited" from="Mages/ground_mage/ground" to="." method="_on_ground_body_exited"]

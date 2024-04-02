@@ -6,16 +6,20 @@ var  player
 
 func _ready() -> void:
 	hud.hide()
-	if Global.boss_name == "Fire":
+
+func _process(delta: float) -> void:
+	if Global.Dfire == true:
 		$CanvasLayer/fire.visible = false
 		$fires.visible = false
-	if Global.boss_name == "Water":
+		$Mages/fire_mage/fire.monitorable = false
+		$GPUParticles2D.emitting = false
+	if Global.Dwater == true:
 		pass
-	if Global.boss_name == "Ground":
+	if Global.Dwind == true:
 		pass
-	if Global.boss_name == "Wind":
+	if Global.Dground == true:
 		pass
-func _process(delta: float) -> void:
+	
 	Global.mana = 0
 	Global.quiver = 0
 	if Input.is_action_just_pressed("special1") and  player!= null:

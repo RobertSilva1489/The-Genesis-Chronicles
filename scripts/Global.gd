@@ -11,6 +11,10 @@ extends Node
 @export var show_boss = false
 @export var boss_health = 0
 @export var god_mode = false
+@export var Dfire = false
+@export var Dwater = false
+@export var Dwind = false
+@export var Dground = false
 var boss_name = ""
 var showwave = false
 func _process(delta: float) -> void:

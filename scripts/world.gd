@@ -14,11 +14,12 @@ func _process(delta: float) -> void:
 		$Mages/fire_mage/fire.monitorable = false
 		$GPUParticles2D.emitting = false
 	if Global.Dwater == true:
-		pass
+		$CanvasLayer/rain.visible = false
 	if Global.Dwind == true:
-		pass
+		$ParallaxBackground/ParallaxLayer2/Sprite2D.material = null
 	if Global.Dground == true:
-		pass
+		$CanvasLayer/shake.visible = false
+		$GPUParticles2D2.emitting = false
 	
 	Global.mana = 0
 	Global.quiver = 0

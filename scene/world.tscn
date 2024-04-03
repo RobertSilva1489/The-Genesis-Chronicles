@@ -1,4 +1,4 @@
-[gd_scene load_steps=396 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=398 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
@@ -374,6 +374,7 @@
 [ext_resource type="Texture2D" uid="uid://d32dh2346jpdc" path="res://assent/scenario/Fx_pack #3/3/1_119.png" id="361_5bumt"]
 [ext_resource type="Shader" path="res://shader/wind.gdshader" id="363_3bxy4"]
 [ext_resource type="Shader" path="res://shader/wave.gdshader" id="366_uxpns"]
+[ext_resource type="Texture2D" uid="uid://dp4108oholctg" path="res://assent/scenario/Rock.png" id="371_jfiks"]
 [ext_resource type="Texture2D" uid="uid://53lfgpdm33qo" path="res://assent/scenario/bubble.png" id="375_rx28x"]
 [ext_resource type="Texture2D" uid="uid://4weuhq2nmrhr" path="res://assent/icons_xbox_with_outline_no_fill.png" id="376_uvt7j"]
 
@@ -2724,6 +2725,19 @@ scale_min = 0.01
 scale_max = 0.02
 color_ramp = SubResource("GradientTexture1D_dgwle")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e2rq6"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 800.0
+emission_ring_inner_radius = 0.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 600, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.5
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iiatc"]
 radius = 17.0
 height = 56.0
@@ -2895,6 +2909,13 @@ process_material = SubResource("ParticleProcessMaterial_jkm3d")
 texture = ExtResource("375_rx28x")
 randomness = 1.0
 visibility_rect = Rect2(-844, -100, 1650, 200)
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(601, -222)
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_e2rq6")
+texture = ExtResource("371_jfiks")
+visibility_rect = Rect2(-813, -100, 1650, 600)
 
 [node name="Mages" type="Marker2D" parent="."]
 

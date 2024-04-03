@@ -1,26 +1,30 @@
 extends Node2D
 @onready var hud = $"/root/Hud"
-@onready var fire_mage: Node2D = $Mages/fire_mage
+@onready var leaf: CharacterBody2D = $Leaf
+
 var teleport = ""
 var  player
-
 func _ready() -> void:
 	hud.hide()
-
-func _process(delta: float) -> void:
+	if Global.Dfire == false and Global.Dwater == false and Global.Dground == false and Global.Dwind == false:
+		leaf.global_position.x = $fires.global_position.x
+	await get_tree().create_timer(2.0).timeout
 	if Global.Dfire == true:
 		$CanvasLayer/fire.visible = false
 		$fires.visible = false
-		$Mages/fire_mage/fire.monitorable = false
+		$Mages/fire_mage/fire.monitoring = false
 		$GPUParticles2D.emitting = false
 	if Global.Dwater == true:
 		$CanvasLayer/rain.visible = false
+		$Mages/water_mage/water.monitoring = false
 	if Global.Dwind == true:
 		$ParallaxBackground/ParallaxLayer2/Sprite2D.material = null
+		$Mages/wind_mage/wind.monitoring = false
 	if Global.Dground == true:
 		$CanvasLayer/shake.visible = false
 		$GPUParticles2D2.emitting = false
-	
+		$Mages/ground_mage/ground.monitoring = false
+func _process(delta: float) -> void:
 	Global.mana = 0
 	Global.quiver = 0
 	if Input.is_action_just_pressed("special1") and  player!= null:

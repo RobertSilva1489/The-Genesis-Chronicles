@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5axspq1bjjvw"]
+[gd_scene load_steps=20 format=3 uid="uid://c5axspq1bjjvw"]
 
+[ext_resource type="Script" path="res://scripts/water_mage.gd" id="1_0c6c5"]
 [ext_resource type="Texture2D" uid="uid://dendw0ncjv7er" path="res://assent/mage_guardian-blue.png" id="1_uefj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txnat"]
@@ -108,10 +109,61 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="water_mage" type="AnimatedSprite2D"]
+[sub_resource type="Animation" id="Animation_2ryw0"]
+resource_name = "broken"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 1, 1), Color(0, 0, 0.180392, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtdf6"]
+_data = {
+"broken": SubResource("Animation_2ryw0")
+}
+
+[node name="water" type="Node2D"]
+script = ExtResource("1_0c6c5")
+
+[node name="water_mage" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 1, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oh3w8")
 autoplay = "default"
-frame_progress = 0.683779
+frame_progress = 0.07254
 centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+texture = ExtResource("1_uefj0")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 48)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(31, 59)
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mtdf6")
+}

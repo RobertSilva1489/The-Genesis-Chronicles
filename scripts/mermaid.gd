@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
-@export var speed = 50
+@export var speed = int(randf_range(30,50))
 @export var health = 100
-@export var strong = 20
+@export var strong = int(randf_range(5,10))
 @export var gravity = 980
 @export var can_attack = true
 @export var follow = false
-@export var attack_cooldown : float = 1.5
+@export var attack_cooldown : float = 2.5
 @export var attack_player = false
-@export var DIST_FOLLOW := 300
-@export var DIST_ATTACK := 50
+@export var DIST_FOLLOW := 500
+@export var DIST_ATTACK := 30
 @onready var leaf: CharacterBody2D = $"../Leaf"
 var distance := 0.0
 var _position
@@ -19,7 +19,6 @@ var dano: int
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
-	Global.wave+= 1
 func _process(delta: float) -> void:
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
@@ -40,6 +39,8 @@ func _process(delta: float) -> void:
 		elif follow and attack_player !=true:
 			$AnimationPlayer.play("idle")
 			_patrol()
+	if health <=0:
+		_dead()
 	_flip()	
 	$TextureProgressBar.value = health
 func blink() -> void:
@@ -50,15 +51,8 @@ func blink() -> void:
 func damage (dame) -> void:
 	health -= dame
 	blink()
-	print(health)
-	if health <=0:
-		dead = true
-		$TextureProgressBar.hide()
-		$AnimationPlayer.play("death")
-		Global.wave-= 1
-		await $AnimationPlayer.animation_finished	
 func _on_attack_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and can_attack == true:
 		body.take_damage(strong)
 func _patrol():
 	if Global.health > 0 and health > 0:
@@ -81,11 +75,18 @@ func _flip() -> void:
 		$Timer.start(0.5)	
 func attack():
 	can_attack = false
-	$AnimationPlayer.play("attack")
+	$AnimationPlayer.play("attack1")
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 	
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0 and dead == false:
 		$AnimationPlayer.play("idle")
+func _dead():
+	dead = true
+	$TextureProgressBar.hide()
+	$AnimationPlayer.play("death")
+	Global.wave-= 1
+	Global.scene_enemy-=1
+	await $AnimationPlayer.animation_finished
+	queue_free()

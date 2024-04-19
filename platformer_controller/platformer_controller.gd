@@ -388,7 +388,7 @@ func take_damage(dame):
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damage(int(randf_range(20,25)))
+		body.damage(int(randf_range(200,250)))
 
 func _fire_arrow() -> void:
 	_stop()
@@ -416,7 +416,6 @@ func _on_special_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.damage(int(randf_range(30,50)))
 
-
 func _on_timer_timeout() -> void:
 	if Global.health < 400:
 		Global.health+= recovery_health
@@ -433,19 +432,16 @@ func _on_timer_timeout() -> void:
 	if Global.quiver > 10:
 		Global.quiver = 10
 
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if Global.health > 0 and boss_defeat == false:
 		$AnimationPlayer.play("idle")
 		$AnimationPlayer.speed_scale = 1
 		is_attacking = false
 func _roll() -> void:
-	print("roll1")
 	if is_attacking == false and rolling == true:
 		$AnimationPlayer.play("roll")
 		velocity.x = roll_distance * _direction
 		_stop()
-		print("roll2")
 func _out() -> void:
 	boss_defeat = true
 	$AnimationPlayer.play("teleport_out")
@@ -455,4 +451,3 @@ func _endstage() -> void:
 	input_jump = ""
 	await $AnimationPlayer.animation_finished
 	get_tree().change_scene_to_file("res://scene/world.tscn")
-	

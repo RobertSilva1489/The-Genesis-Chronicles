@@ -54,12 +54,12 @@ func blink() -> void:
 func damage (dame) -> void:
 	health -= dame
 	blink()
-	print(health)
 	if health <=0:
 		dead = true
 		$TextureProgressBar.hide()
 		$AnimationPlayer.play("death")
 		Global.wave-= 1
+		Global.scene_enemy-=1
 		await $AnimationPlayer.animation_finished	
 func _on_attack_body_entered(body):
 	if body.is_in_group("player"):

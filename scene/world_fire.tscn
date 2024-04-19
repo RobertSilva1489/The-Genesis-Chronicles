@@ -213,7 +213,6 @@ centered = false
 [node name="smoke" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 material = SubResource("ShaderMaterial_stag4")
 position = Vector2(-1010, -1777.5)
-scale = Vector2(1, 1)
 texture = ExtResource("4_feecb")
 centered = false
 

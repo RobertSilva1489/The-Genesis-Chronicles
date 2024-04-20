@@ -5,8 +5,8 @@ extends Node
 @export var mana = 100
 @export var wave = 0
 @export var scene_enemy = 0
-@export var recovery_health = 10
-@export var recovery_mana = 10
+@export var recovery_health = 5
+@export var recovery_mana = 5
 @export var recovery_quive = 1
 @export var show_boss = false
 @export var boss_health = 0

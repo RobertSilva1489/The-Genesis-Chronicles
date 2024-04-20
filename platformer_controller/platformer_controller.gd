@@ -388,7 +388,7 @@ func take_damage(dame):
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damage(int(randf_range(200,250)))
+		body.damage(int(randf_range(20,25)))
 
 func _fire_arrow() -> void:
 	_stop()

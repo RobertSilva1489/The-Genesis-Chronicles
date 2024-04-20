@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var speed = int(randf_range(30,50))
-@export var health = 100
-@export var strong = int(randf_range(5,10))
+@export var speed = int(randf_range(40,50))
+@export var health = 50
+@export var strong = int(randf_range(5,10)) 
 @export var gravity = 980
 @export var can_attack = true
 @export var follow = false
@@ -39,8 +39,7 @@ func _process(delta: float) -> void:
 		elif follow and attack_player !=true:
 			$AnimationPlayer.play("idle")
 			_patrol()
-	if health <=0:
-		_dead()
+
 	_flip()	
 	$TextureProgressBar.value = health
 func blink() -> void:
@@ -51,6 +50,9 @@ func blink() -> void:
 func damage (dame) -> void:
 	health -= dame
 	blink()
+	if health <=0:
+		dead = true
+		_dead()
 func _on_attack_body_entered(body):
 	if body.is_in_group("player") and can_attack == true:
 		body.take_damage(strong)
@@ -83,10 +85,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0 and dead == false:
 		$AnimationPlayer.play("idle")
 func _dead():
-	dead = true
 	$TextureProgressBar.hide()
 	$AnimationPlayer.play("death")
 	Global.wave-= 1
 	Global.scene_enemy-=1
 	await $AnimationPlayer.animation_finished
-	queue_free()

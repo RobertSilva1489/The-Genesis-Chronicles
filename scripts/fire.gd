@@ -31,7 +31,7 @@ func _ready() -> void:
 	$AnimationPlayer.clear_caches()
 	$AnimationPlayer.play("idle")
 	Global.show_boss = true
-	Global.boss_name = "Fire"
+	Global.boss_name = "Ignis"
 	is_animation = false
 	$AnimationPlayer.speed_scale = 1.5
 func _physics_process(delta: float) -> void:
@@ -99,7 +99,6 @@ func damage (dame) -> void:
 	if invencible !=true:
 		blink()
 		health -= dame
-		print(health)
 		countHit+=1
 	if health <= 0:
 		dead = true

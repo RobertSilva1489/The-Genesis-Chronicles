@@ -1,11 +1,10 @@
 extends Node2D
 
-var golem = preload("res://scene/mermaid.tscn")
-var necromancer = preload("res://scene/caco.tscn")
+var mermaid = preload("res://scene/mermaid.tscn")
 var boss = preload("res://scene/water.tscn")
 var water_check = true
 @onready var leaf: CharacterBody2D = $Leaf
-@export var wave_lenght = 20
+@export var wave_lenght = 30
 @onready var spawn1 = $spawn
 @onready var spawn2 = $spawn2
 @onready var spawn3 = $spawn3
@@ -25,6 +24,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var water: CharacterBody2D = $water
 	if Global.wave == 0:
+		Global.wave = -1
 		$AnimationPlayer.play("open")
 		Global.showwave = false
 	if water != null:
@@ -42,16 +42,14 @@ func spawn_enemy():
 	RanPos.append(spawn2)
 	RanPos.append(spawn3)
 	RanPos.append(spawn4)
-	enemy.append(golem)
-	enemy.append(golem)
-	enemy.append(necromancer)
+	enemy.append(mermaid)
 	var selecte = enemy.pick_random()
 	var select = RanPos.pick_random()
 	var Enemy = selecte.instantiate()
 	add_child(Enemy)
 	Enemy.global_position = select.global_position
 func _on_timer_timeout() -> void:
-		if Global.scene_enemy < 4 and wave_lenght > 0:
+		if Global.scene_enemy < 6 and wave_lenght > 0:
 			spawn_enemy()
 			
 func spawn_boss():
@@ -65,6 +63,5 @@ func _on_boss_timeout() -> void:
 	
 func _on_area_boss_body_entered(body: Node2D) -> void:
 	$AnimationPlayer.play("close")
-	$rainFire.emitting = true
-	$Boss.start()
+	$boss.start()
 	$AreaBoss.queue_free()

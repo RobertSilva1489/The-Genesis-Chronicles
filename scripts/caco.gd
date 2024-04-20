@@ -88,8 +88,6 @@ func _on_detect_player_body_entered(body: Node2D) -> void:
 func _on_detect_player_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		attack_player = false
-
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0 and dead == false:
 		$AnimationPlayer.play("idle")

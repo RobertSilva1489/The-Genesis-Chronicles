@@ -86,8 +86,9 @@ func attack():
 	for attackSet in attack_animations:
 		selected_animation = attackSet
 		can_attack = false
-		$AnimationPlayer.play(selected_animation)
-		await get_tree().create_timer(attack_cooldown).timeout
+		if dead == false:
+			$AnimationPlayer.play(selected_animation)
+			await get_tree().create_timer(attack_cooldown).timeout
 		can_attack = true
 func damage (dame) -> void:
 	if invencible !=true:
@@ -99,6 +100,7 @@ func damage (dame) -> void:
 		$CollisionShape2D.shape = null
 		gravity = 0
 		Global.show_boss = false
+		Global.Dwater = true
 		$AnimationPlayer.speed_scale = 1
 		$AnimationPlayer.play("death")
 

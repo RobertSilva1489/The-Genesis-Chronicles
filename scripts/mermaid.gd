@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = int(randf_range(40,50))
-@export var health = 50
+@export var health = 80
 @export var strong = int(randf_range(5,10)) 
 @export var gravity = 980
 @export var can_attack = true

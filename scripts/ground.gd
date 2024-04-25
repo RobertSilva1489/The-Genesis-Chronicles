@@ -11,7 +11,7 @@ var distance
 var move :int
 @export var invencible = false
 @export var speed = 50
-@export var health = 100
+@export var health = 400
 @export var strong = 30
 @export var attack_player = false
 @export var gravity = 3000

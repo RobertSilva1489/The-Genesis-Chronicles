@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
-@export var speed = 50
-@export var health = 100
-@export var strong = 20
+@export var speed = int(randf_range(40,50))
+@export var health = 50
+@export var strong = 30
 @export var gravity = 980
 @export var can_attack = true
 @export var follow = false
 @export var attack_cooldown : float = 1.5
 @export var attack_player = false
 @export var DIST_FOLLOW := 500
-@export var DIST_ATTACK := 200
+@export var DIST_ATTACK := 100
 @onready var leaf: CharacterBody2D = $"../Leaf"
 var attacks = ["attack1","attack2"]
 var distance := 0.0
@@ -19,7 +19,6 @@ var dead = false
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
-	Global.wave+= 1
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -54,12 +53,12 @@ func blink() -> void:
 func damage (dame) -> void:
 	health -= dame
 	blink()
-	print(health)
 	if health <=0:
 		dead = true
 		$TextureProgressBar.hide()
 		$AnimationPlayer.play("death")
 		Global.wave-= 1
+		Global.scene_enemy-=1
 		await $AnimationPlayer.animation_finished	
 func _on_attack_body_entered(body):
 	if body.is_in_group("player"):

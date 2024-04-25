@@ -50,8 +50,8 @@ func spawn_enemy():
 	add_child(Enemy)
 	Enemy.global_position = select.global_position
 func _on_timer_timeout() -> void:
-		if Global.scene_enemy < 6 and wave_lenght > 0:
-			spawn_enemy()
+	if Global.scene_enemy < 6 and wave_lenght > 0:
+		spawn_enemy()
 			
 func spawn_boss():
 	var Boss = boss.instantiate()

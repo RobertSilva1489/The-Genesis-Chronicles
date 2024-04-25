@@ -818,8 +818,6 @@ _data = {
 
 [node name="world_ground" type="Node2D"]
 script = ExtResource("1_e8qah")
-wave_lenght = 1
-sceneEnemy = 1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -890,7 +888,7 @@ layer_0/tile_data = PackedInt32Array(786493, 65538, 0, 852029, 65538, 1, 917565,
 position = Vector2(744, 48)
 max_jump_amount = 2
 max_acceleration = 8000
-friction = 2000
+friction = 200
 can_hold_jump = true
 
 [node name="Area2D" type="Area2D" parent="."]

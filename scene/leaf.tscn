@@ -756,7 +756,12 @@ amount = 200
 process_material = SubResource("ParticleProcessMaterial_1blmt")
 one_shot = true
 
+[node name="hit" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_entered" from="special" to="." method="_on_special_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="hit" to="." method="_on_hit_timeout"]

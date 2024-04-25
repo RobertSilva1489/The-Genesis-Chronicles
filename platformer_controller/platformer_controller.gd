@@ -10,6 +10,8 @@ var special: PackedScene = preload("res://scene/arrow_shower.tscn")
 var recovery_health 
 var recovery_mana
 var recovery_quive
+var strong = int(randf_range(20,25))
+var hit = false
 var boss_defeat = false 
 @export var rolling = true
 @export var is_attacking = false
@@ -376,6 +378,8 @@ func _attack():
 func take_damage(dame):
 	if invecible != true:
 		Global.health-=dame
+		hit = true
+		$hit.start()
 		Global.hit_stop_short()
 		$AnimationPlayer.play("hit")
 		_stop()
@@ -389,7 +393,7 @@ func take_damage(dame):
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.damage(int(randf_range(20,25)))
+		body.damage(strong)
 
 func _fire_arrow() -> void:
 	_stop()
@@ -418,7 +422,7 @@ func _on_special_body_entered(body: Node2D) -> void:
 		body.damage(int(randf_range(30,50)))
 
 func _on_timer_timeout() -> void:
-	if Global.health < 400:
+	if Global.health < 400 and hit == false:
 		Global.health+= recovery_health
 	if Global.health > 400:
 		Global.health = 400
@@ -463,3 +467,7 @@ func powerUP(boosPowerUp: String) ->void:
 		"wind":
 			$PowerUP.process_material.color = Color(0.662745, 0.662745, 0.662745, 1)
 	$PowerUP.emitting = true
+
+
+func _on_hit_timeout() -> void:
+	hit =  false

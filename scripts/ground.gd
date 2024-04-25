@@ -10,7 +10,7 @@ var dead = false
 var distance := 0.0
 var move :int
 @export var DIST_FOLLOW := 500
-@export var DIST_ATTACK := 50
+@export var DIST_ATTACK := 30
 @export var invencible = false
 @export var speed = 50
 @export var health = 400
@@ -38,11 +38,11 @@ func _process(delta: float) -> void:
 	Global.boss_health = health
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
-	if distance <=DIST_FOLLOW and can_attack == true:
+	if distance <=DIST_FOLLOW and can_attack == true and Global.health > 0:
 		follow = true
 	else:
 		follow = false 
-	if distance <=DIST_ATTACK:
+	if distance <=DIST_ATTACK and Global.health > 0:
 		attack_player = true
 		invencible = false
 	else:
@@ -100,7 +100,7 @@ func damage (dame) -> void:
 		$CollisionShape2D.shape = null
 		gravity = 0
 		Global.show_boss = false
-		Global.Dwater = true
+		Global.Dground = true
 		$AnimationPlayer.speed_scale = 1
 		$AnimationPlayer.play("death")
 
@@ -114,8 +114,7 @@ func blink() -> void:
 
 func _on_attacks_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body.take_damage(damage_apply)
-
+		body.take_damage(strong)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0:

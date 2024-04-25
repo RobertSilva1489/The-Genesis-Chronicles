@@ -445,8 +445,7 @@ follow = false
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Marker2D"]
 position = Vector2(-31, -31)
 sprite_frames = SubResource("SpriteFrames_eawmp")
-animation = &"death"
-frame = 6
+animation = &"idle"
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -458,7 +457,6 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.33333)
 shape = SubResource("CapsuleShape2D_2u7sr")
-disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(1.33333, 16.8333)

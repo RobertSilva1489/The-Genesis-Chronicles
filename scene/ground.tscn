@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=3 uid="uid://c3f2a5l6c5yg4"]
+[gd_scene load_steps=147 format=3 uid="uid://c3f2a5l6c5yg4"]
 
 [ext_resource type="Texture2D" uid="uid://d24q6hlhemqvj" path="res://assent/bosses/ground_monk_FREE_v1.3-SpriteSheet_288x128.png" id="1_1uv1f"]
 [ext_resource type="Script" path="res://scripts/ground.gd" id="1_mxxs7"]
@@ -940,8 +940,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gb2fx"]
-height = 38.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy4eh"]
+size = Vector2(16.6667, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_goirr"]
 radius = 8.66667
@@ -1465,12 +1465,6 @@ height = 49.3333
 [sub_resource type="CircleShape2D" id="CircleShape2D_qan7c"]
 radius = 33.34
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yayxr"]
-size = Vector2(21.3333, 17.3333)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h67iw"]
-size = Vector2(182.667, 16)
-
 [node name="ground" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(1, 0)
 scale = Vector2(1.5, 1.5)
@@ -1481,21 +1475,22 @@ script = ExtResource("1_mxxs7")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-145.333, -102.667)
 sprite_frames = SubResource("SpriteFrames_xyh28")
-animation = &"idle"
-frame = 1
+animation = &"run"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.333344, 0.333328)
-shape = SubResource("CapsuleShape2D_gb2fx")
+position = Vector2(0.333334, 2.66667)
+shape = SubResource("RectangleShape2D_fy4eh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
+speed_scale = 2.5
 libraries = {
 "": SubResource("AnimationLibrary_u0cj4")
 }
 
 [node name="attacks" type="Area2D" parent="."]
+monitoring = false
 
 [node name="attack1" type="CollisionShape2D" parent="attacks"]
 position = Vector2(-2.66667, -12.6667)
@@ -1524,24 +1519,8 @@ position = Vector2(41.3333, -6.66667)
 shape = SubResource("CircleShape2D_qan7c")
 disabled = true
 
-[node name="detectPlayer" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
-position = Vector2(20, 8)
-shape = SubResource("RectangleShape2D_yayxr")
-
-[node name="followPlayer" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="followPlayer"]
-position = Vector2(101.333, -10)
-shape = SubResource("RectangleShape2D_h67iw")
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attacks" to="." method="_on_attacks_body_entered"]
-[connection signal="body_entered" from="detectPlayer" to="." method="_on_detect_player_body_entered"]
-[connection signal="body_exited" from="detectPlayer" to="." method="_on_detect_player_body_exited"]
-[connection signal="body_entered" from="followPlayer" to="." method="_on_follow_player_body_entered"]
-[connection signal="body_exited" from="followPlayer" to="." method="_on_follow_player_body_exited"]

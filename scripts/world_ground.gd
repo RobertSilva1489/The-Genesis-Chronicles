@@ -7,6 +7,7 @@ var boss = preload("res://scene/ground.tscn")
 var ground_check = true
 @onready var leaf: CharacterBody2D = $Leaf
 @export var wave_lenght = 30
+@export var sceneEnemy = 6
 @onready var spawn1 = $spawn
 @onready var spawn2 = $spawn2
 @onready var spawn3 = $spawn3
@@ -35,20 +36,22 @@ func _process(delta: float) -> void:
 			ground_check = false
 #			$level.stream_paused = true
 #			$bossDead.play()
-			leaf.powerUP("water")
-			await get_tree().create_timer(10).timeout
+			leaf.powerUP("ground")
+			await get_tree().create_timer(5).timeout
 			leaf._out()
 func spawn_enemy():
 	wave_lenght-=1
 	Global.scene_enemy+=1
 	randomize()
 	RanPos.append(spawn1)
-	RanPos.append(spawn2)
-	RanPos.append(spawn3)
-	RanPos.append(spawn4)
+#	RanPos.append(spawn2)
+#	RanPos.append(spawn1)
+#	RanPos.append(spawn2)
+#	RanPos.append(spawn3)
+#	RanPos.append(spawn4)
 	enemy.append(night_boner)
-	enemy.append(monster)
-	enemy.append(monster)
+#	enemy.append(monster)
+#	enemy.append(monster)
 	var selecte = enemy.pick_random()
 	var select = RanPos.pick_random()
 	var Enemy = selecte.instantiate()
@@ -65,7 +68,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$boss.start()
 
 func _on_timer_timeout() -> void:
-	if Global.scene_enemy < 6 and wave_lenght > 0:
+	if Global.scene_enemy < sceneEnemy and wave_lenght > 0:
 		spawn_enemy()
 
 

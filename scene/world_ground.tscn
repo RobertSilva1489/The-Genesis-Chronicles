@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://ch33xlgw2osxm"]
+[gd_scene load_steps=17 format=3 uid="uid://ch33xlgw2osxm"]
 
 [ext_resource type="Script" path="res://scripts/world_ground.gd" id="1_e8qah"]
 [ext_resource type="Texture2D" uid="uid://cgd8b6vcsrh4l" path="res://assent/scenario/Layers (PNG)/Layer_4.png" id="2_t1s2p"]
 [ext_resource type="Texture2D" uid="uid://dyhnomp216rp0" path="res://assent/scenario/Layers (PNG)/Layer_3.png" id="3_t736w"]
 [ext_resource type="Texture2D" uid="uid://bx5v26v3nflc7" path="res://assent/scenario/Layers (PNG)/Layer_2.png" id="4_veyaf"]
 [ext_resource type="Texture2D" uid="uid://c6lhtw4n4on8p" path="res://assent/scenario/Layers (PNG)/Layer_1.png" id="5_53rq5"]
+[ext_resource type="Texture2D" uid="uid://d065plb1xyu1u" path="res://assent/scenario/drop.png" id="6_1fkex"]
 [ext_resource type="Texture2D" uid="uid://io1q87xc6sct" path="res://assent/scenario/Land4.png" id="6_5t7c7"]
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="7_p6sb5"]
 
@@ -12,11 +13,11 @@
 emission_shape = 3
 emission_box_extents = Vector3(4000, 500, 1)
 particle_flag_disable_z = true
-gravity = Vector3(0, 300, 0)
+gravity = Vector3(0, 500, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 2.0
-scale_max = 3.0
+scale_min = 0.05
+scale_max = 0.1
 color = Color(0, 1, 1, 0.6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2243"]
@@ -817,6 +818,8 @@ _data = {
 
 [node name="world_ground" type="Node2D"]
 script = ExtResource("1_e8qah")
+wave_lenght = 1
+sceneEnemy = 1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -868,11 +871,12 @@ texture = ExtResource("5_53rq5")
 centered = false
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(-165, -36)
+position = Vector2(1355, -16)
 scale = Vector2(0.6, 0.6)
-amount = 100
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_35kh7")
-visibility_rect = Rect2(-100, -110, 4338, 515)
+texture = ExtResource("6_1fkex")
+visibility_rect = Rect2(-1340, -110, 2700, 515)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -943,7 +947,7 @@ position = Vector2(1711, 13)
 position = Vector2(1872, 13)
 
 [node name="spawn5" type="StaticBody2D" parent="."]
-position = Vector2(1812, 498)
+position = Vector2(1672, 435)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

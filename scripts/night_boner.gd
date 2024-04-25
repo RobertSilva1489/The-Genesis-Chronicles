@@ -6,10 +6,10 @@ extends CharacterBody2D
 @export var gravity = 980
 @export var can_attack = true
 @export var follow = false
-@export var attack_cooldown : float = 1.5
+@export var attack_cooldown : float = 2.5
 @export var attack_player = false
 @export var DIST_FOLLOW := 500
-@export var DIST_ATTACK := 100
+@export var DIST_ATTACK := 1
 @onready var leaf: CharacterBody2D = $"../Leaf"
 var distance := 0.0
 var _position

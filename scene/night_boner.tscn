@@ -580,12 +580,13 @@ height = 28.0
 height = 42.0
 
 [node name="NightBoner" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(397, 100)
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 12
+collision_mask = 8
 script = ExtResource("1_68lv7")
 speed = 70
-DIST_ATTACK = 90
+DIST_ATTACK = 30
 
 [node name="Marker2D" type="Marker2D" parent="."]
 

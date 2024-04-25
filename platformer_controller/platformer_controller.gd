@@ -10,7 +10,7 @@ var special: PackedScene = preload("res://scene/arrow_shower.tscn")
 var recovery_health 
 var recovery_mana
 var recovery_quive
-var boss_defeat = false
+var boss_defeat = false 
 @export var rolling = true
 @export var is_attacking = false
 # Set these to the name of your action (in the Input Map)
@@ -142,6 +142,7 @@ func _ready():
 
 	Global.hit_stop_mediun()
 	is_attacking = true
+	var camera = $Camera2D
 func _input(_event):
 	acc.x = 0
 	if Input.is_action_pressed(input_left) and is_attacking == false:
@@ -451,3 +452,14 @@ func _endstage() -> void:
 	input_jump = ""
 	await $AnimationPlayer.animation_finished
 	get_tree().change_scene_to_file("res://scene/world.tscn")
+func powerUP(boosPowerUp: String) ->void:
+	match boosPowerUp:
+		"water":
+			$PowerUP.process_material.color = Color(0, 1, 1, 1)
+		"ground":
+			$PowerUP.process_material.color = Color(0.647059, 0.164706, 0.164706, 1)
+		"fire":
+			$PowerUP.process_material.color = Color(0.862745, 0.0784314, 0.235294, 1)
+		"wind":
+			$PowerUP.process_material.color = Color(0.662745, 0.662745, 0.662745, 1)
+	$PowerUP.emitting = true

@@ -2858,6 +2858,7 @@ texture = ExtResource("3_yhbyb")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="shake" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_tgens")

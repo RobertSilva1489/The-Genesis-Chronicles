@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 			fire_check = false
 			$level.stream_paused = true
 			$bossDead.play()
+			leaf.powerUP("fire")
 			await get_tree().create_timer(10).timeout
 			leaf._out()
 func spawn_enemy():

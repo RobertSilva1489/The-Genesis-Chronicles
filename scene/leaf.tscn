@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bd4lhvh1afe24"]
+[gd_scene load_steps=28 format=3 uid="uid://bd4lhvh1afe24"]
 
 [ext_resource type="Texture2D" uid="uid://bovyxon6775j3" path="res://assent/Elementals_leaf_ranger_288x128_SpriteSheet.png" id="1_grca3"]
 [ext_resource type="Script" path="res://platformer_controller/platformer_controller.gd" id="1_qjbl6"]
@@ -648,6 +648,14 @@ scale_min = 3.0
 scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_uletj")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1blmt"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 20, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
 [node name="Leaf" type="CharacterBody2D" groups=["player"]]
 collision_mask = 24
 script = ExtResource("1_qjbl6")
@@ -667,12 +675,10 @@ rotation_smoothing_enabled = true
 rotation_smoothing_speed = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(1, -39)
 texture = ExtResource("1_grca3")
 hframes = 22
 vframes = 17
-frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "teleport_in"
@@ -723,6 +729,7 @@ one_way_collision = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(1, -74)
+emitting = false
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_y1h4o")
 one_shot = true
@@ -740,6 +747,13 @@ emitting = false
 amount = 300
 process_material = SubResource("ParticleProcessMaterial_qwu03")
 lifetime = 2.0
+one_shot = true
+
+[node name="PowerUP" type="GPUParticles2D" parent="."]
+position = Vector2(1, 6)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_1blmt")
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

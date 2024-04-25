@@ -11,3 +11,9 @@ func _process(delta: float) -> void:
 		$AnimationPlayer.play("open")
 		Global.showwave = false
 		Global.wave = -1
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		$Camera2D2.make_current()
+		print("trocou")

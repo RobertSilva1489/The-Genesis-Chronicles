@@ -148,40 +148,39 @@ func _ready():
 	var camera = $Camera2D
 func _input(_event):
 	acc.x = 0
-	while dead == false:
-		if Input.is_action_pressed(input_left) and is_attacking == false:
-			acc.x = -max_acceleration
-			_direction = -1
-			$attack.monitoring = false
-			$attack/CollisionShape2D.disabled = true
-			$AnimationPlayer.play("run")
-			$leaftrail.emitting = true
-			transform.x.x = -1
-		if Input.is_action_just_released(input_left):
-				$AnimationPlayer.play("idle")
-				$leaftrail.emitting = false
-		if Input.is_action_pressed(input_right) and is_attacking == false:
-			acc.x = max_acceleration
-			_direction = 1
-			$attack.monitoring = false
-			$attack/CollisionShape2D.disabled = true
-			$AnimationPlayer.play("run")
-			$leaftrail.emitting = true
-			transform.x.x = 1
-		if Input.is_action_just_released(input_right):
-				$AnimationPlayer.play("idle")
-				$leaftrail.emitting = false
-		if Input.is_action_just_pressed(input_jump) and rolling:
-			$AnimationPlayer.play("jump")
-			holding_jump = true
-			start_jump_buffer_timer()
-			if (not can_hold_jump and can_ground_jump()) or can_double_jump():
-				jump()
-			
-		if Input.is_action_just_released(input_jump):
-			holding_jump = false
-		if Input.is_action_just_pressed("ui_down"):
-			_roll()
+	if Input.is_action_pressed(input_left) and is_attacking == false:
+		acc.x = -max_acceleration
+		_direction = -1
+		$attack.monitoring = false
+		$attack/CollisionShape2D.disabled = true
+		$AnimationPlayer.play("run")
+		$leaftrail.emitting = true
+		transform.x.x = -1
+	if Input.is_action_just_released(input_left):
+			$AnimationPlayer.play("idle")
+			$leaftrail.emitting = false
+	if Input.is_action_pressed(input_right) and is_attacking == false:
+		acc.x = max_acceleration
+		_direction = 1
+		$attack.monitoring = false
+		$attack/CollisionShape2D.disabled = true
+		$AnimationPlayer.play("run")
+		$leaftrail.emitting = true
+		transform.x.x = 1
+	if Input.is_action_just_released(input_right):
+			$AnimationPlayer.play("idle")
+			$leaftrail.emitting = false
+	if Input.is_action_just_pressed(input_jump) and rolling:
+		$AnimationPlayer.play("jump")
+		holding_jump = true
+		start_jump_buffer_timer()
+		if (not can_hold_jump and can_ground_jump()) or can_double_jump():
+			jump()
+		
+	if Input.is_action_just_released(input_jump):
+		holding_jump = false
+	if Input.is_action_just_pressed("ui_down"):
+		_roll()
 func _physics_process(delta):
 	
 	if is_coyote_timer_running() or current_jump_type == JumpType.NONE:

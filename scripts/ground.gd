@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 func _process(delta: float) -> void:
 	Global.boss_health = health
-	while dead == false:
+	if dead == false:
 		if leaf != null:
 			distance = global_position.distance_to(leaf.global_position)
 		if distance <=DIST_FOLLOW and can_attack == true and Global.health > 0:

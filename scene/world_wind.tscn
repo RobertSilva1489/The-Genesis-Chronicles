@@ -375,7 +375,6 @@ layer_0/tile_data = PackedInt32Array(393207, 2, 2, 393208, 65538, 2, 393209, 655
 
 [node name="Leaf" parent="." instance=ExtResource("9_3oh1v")]
 position = Vector2(2457, -78)
-invecible = false
 max_jump_amount = 2
 max_acceleration = 8000
 friction = 2000
@@ -415,3 +414,13 @@ JUMP = 10
 
 [node name="Yamabushi_tengu" parent="." instance=ExtResource("12_y563a")]
 position = Vector2(2130, 77)
+
+[node name="spawn" type="StaticBody2D" parent="."]
+
+[node name="spawn2" type="StaticBody2D" parent="."]
+
+[node name="spawn3" type="StaticBody2D" parent="."]
+
+[node name="spawn4" type="StaticBody2D" parent="."]
+
+[node name="spawn5" type="StaticBody2D" parent="."]

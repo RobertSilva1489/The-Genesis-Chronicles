@@ -13,6 +13,7 @@ var recovery_quive
 var strong = int(randf_range(20,25))
 var hit = false
 var boss_defeat = false 
+var dead = false
 @export var rolling = true
 @export var is_attacking = false
 # Set these to the name of your action (in the Input Map)
@@ -147,39 +148,40 @@ func _ready():
 	var camera = $Camera2D
 func _input(_event):
 	acc.x = 0
-	if Input.is_action_pressed(input_left) and is_attacking == false:
-		acc.x = -max_acceleration
-		_direction = -1
-		$attack.monitoring = false
-		$attack/CollisionShape2D.disabled = true
-		$AnimationPlayer.play("run")
-		$leaftrail.emitting = true
-		transform.x.x = -1
-	if Input.is_action_just_released(input_left):
-			$AnimationPlayer.play("idle")
-			$leaftrail.emitting = false
-	if Input.is_action_pressed(input_right) and is_attacking == false:
-		acc.x = max_acceleration
-		_direction = 1
-		$attack.monitoring = false
-		$attack/CollisionShape2D.disabled = true
-		$AnimationPlayer.play("run")
-		$leaftrail.emitting = true
-		transform.x.x = 1
-	if Input.is_action_just_released(input_right):
-			$AnimationPlayer.play("idle")
-			$leaftrail.emitting = false
-	if Input.is_action_just_pressed(input_jump) and rolling:
-		$AnimationPlayer.play("jump")
-		holding_jump = true
-		start_jump_buffer_timer()
-		if (not can_hold_jump and can_ground_jump()) or can_double_jump():
-			jump()
-		
-	if Input.is_action_just_released(input_jump):
-		holding_jump = false
-	if Input.is_action_just_pressed("ui_down"):
-		_roll()
+	while dead == false:
+		if Input.is_action_pressed(input_left) and is_attacking == false:
+			acc.x = -max_acceleration
+			_direction = -1
+			$attack.monitoring = false
+			$attack/CollisionShape2D.disabled = true
+			$AnimationPlayer.play("run")
+			$leaftrail.emitting = true
+			transform.x.x = -1
+		if Input.is_action_just_released(input_left):
+				$AnimationPlayer.play("idle")
+				$leaftrail.emitting = false
+		if Input.is_action_pressed(input_right) and is_attacking == false:
+			acc.x = max_acceleration
+			_direction = 1
+			$attack.monitoring = false
+			$attack/CollisionShape2D.disabled = true
+			$AnimationPlayer.play("run")
+			$leaftrail.emitting = true
+			transform.x.x = 1
+		if Input.is_action_just_released(input_right):
+				$AnimationPlayer.play("idle")
+				$leaftrail.emitting = false
+		if Input.is_action_just_pressed(input_jump) and rolling:
+			$AnimationPlayer.play("jump")
+			holding_jump = true
+			start_jump_buffer_timer()
+			if (not can_hold_jump and can_ground_jump()) or can_double_jump():
+				jump()
+			
+		if Input.is_action_just_released(input_jump):
+			holding_jump = false
+		if Input.is_action_just_pressed("ui_down"):
+			_roll()
 func _physics_process(delta):
 	
 	if is_coyote_timer_running() or current_jump_type == JumpType.NONE:
@@ -211,7 +213,8 @@ func _physics_process(delta):
 	_was_on_ground = is_feet_on_ground()
 	move_and_slide()
 func _process(delta: float) -> void:
-	_attack()
+	if dead == false:
+		_attack()
 	recovery_health = Global.recovery_health
 	recovery_mana = Global.recovery_mana
 	recovery_quive = Global.recovery_quive
@@ -384,12 +387,7 @@ func take_damage(dame):
 		$AnimationPlayer.play("hit")
 		_stop()
 		if Global.health<=0:
-			$AnimationPlayer.play("death")
-			input_left = ""
-			input_right = ""
-			input_jump = ""
-			$CollisionShape2D.shape = null
-			$Timer.stop()
+			_dead()
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
@@ -471,3 +469,11 @@ func powerUP(boosPowerUp: String) ->void:
 
 func _on_hit_timeout() -> void:
 	hit =  false
+func _dead():
+	dead = true
+	$AnimationPlayer.play("death")
+	input_left = ""
+	input_right = ""
+	input_jump = ""
+	$CollisionShape2D.shape = null
+	$Timer.stop()

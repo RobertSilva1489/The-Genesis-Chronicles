@@ -818,6 +818,8 @@ _data = {
 
 [node name="world_ground" type="Node2D"]
 script = ExtResource("1_e8qah")
+wave_lenght = 0
+sceneEnemy = 0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -920,7 +922,7 @@ region_rect = Rect2(32, 4, 128, 188)
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(1513, 541)
-zoom = Vector2(0.9, 1.2)
+zoom = Vector2(1, 1.5)
 limit_bottom = 670
 position_smoothing_enabled = true
 drag_top_margin = 0.0

@@ -944,8 +944,8 @@ animations = [{
 size = Vector2(16.6667, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_goirr"]
-radius = 11.3333
-height = 78.6667
+radius = 8.66667
+height = 42.6667
 
 [sub_resource type="Animation" id="Animation_mrlgy"]
 length = 0.6
@@ -1310,6 +1310,66 @@ tracks/1/keys = {
 "update": 1,
 "values": ["run"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attacks/attack1:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("attacks/attack2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attacks/special1:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("attacks/special2:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("attacks/special3:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_0nryy"]
 resource_name = "special1"
@@ -1471,12 +1531,15 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_mxxs7")
-strong = 50
+DIST_ATTACK = 35
+speed = 140
+strong = 20
+attack_cooldown = 1.0
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-145.333, -102.667)
 sprite_frames = SubResource("SpriteFrames_xyh28")
-animation = &"idle"
+animation = &"run"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

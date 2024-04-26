@@ -655,6 +655,8 @@ particle_flag_disable_z = true
 gravity = Vector3(0, -98, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
 
 [node name="Leaf" type="CharacterBody2D" groups=["player"]]
 collision_mask = 24
@@ -752,7 +754,7 @@ one_shot = true
 [node name="PowerUP" type="GPUParticles2D" parent="."]
 position = Vector2(1, 6)
 emitting = false
-amount = 200
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_1blmt")
 one_shot = true
 

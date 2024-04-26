@@ -19,8 +19,7 @@ var move :int
 @export var gravity = 3000
 @export var can_attack = true
 @export var follow = false
-@export var attack_cooldown : float = 1.0
-@export var damage_apply = randi_range(5,20)
+@export var attack_cooldown : float = 0.5
 @onready var tree: AnimationTree = $AnimationTree
 @onready var leaf: CharacterBody2D = $"../Leaf"
 
@@ -36,28 +35,29 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 func _process(delta: float) -> void:
 	Global.boss_health = health
-	if leaf != null:
-		distance = global_position.distance_to(leaf.global_position)
-	if distance <=DIST_FOLLOW and can_attack == true and Global.health > 0:
-		follow = true
-	else:
-		follow = false 
-	if distance <=DIST_ATTACK and Global.health > 0:
-		attack_player = true
-		invencible = false
-	else:
-		attack_player = false
-	if leaf != null and dead == false:
-		distance = leaf.global_position.x - global_position.x
-		direction = sign(distance)
-		if attack_player and can_attack:
-			attack()
-		if follow and attack_player !=true:
-			$AnimationPlayer.play("run")
-			_patrol()
-		if dead:
-			$AnimationPlayer.play("death")
-	_flip()	
+	while dead == false:
+		if leaf != null:
+			distance = global_position.distance_to(leaf.global_position)
+		if distance <=DIST_FOLLOW and can_attack == true and Global.health > 0:
+			follow = true
+		else:
+			follow = false 
+		if distance <=DIST_ATTACK and Global.health > 0:
+			attack_player = true
+			invencible = false
+		else:
+			attack_player = false
+		if leaf != null and dead == false:
+			distance = leaf.global_position.x - global_position.x
+			direction = sign(distance)
+			if attack_player and can_attack:
+				attack()
+			if follow and attack_player !=true:
+				$AnimationPlayer.play("run")
+				_patrol()
+			if dead:
+				$AnimationPlayer.play("death")
+		_flip()	
 
 func _patrol():
 	if Global.health > 0 and health > 0:

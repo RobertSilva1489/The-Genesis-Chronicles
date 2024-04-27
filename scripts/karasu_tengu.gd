@@ -73,6 +73,11 @@ func _patrol():
 	if Global.health > 0 and health > 0:
 		velocity.x = direction * speed
 		move_and_slide()
+	if global_position.y != leaf.global_position.y:
+		if global_position.y < leaf.global_position.y:
+			velocity.y = speed
+		if global_position.y > leaf.global_position.y:
+			velocity.y = -speed
 	if follow == false:
 		velocity.x = 0 
 		

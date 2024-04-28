@@ -71,7 +71,6 @@ func _on_timer_timeout() -> void:
 	if Global.scene_enemy < sceneEnemy and wave_lenght > 0:
 		spawn_enemy()
 
-
 func _on_boss_timeout() -> void:
 	spawn_boss()
 

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var speed = 50
+@export var speed = int(randf_range(40,50))
 @export var health = 100
 @export var strong = 20
 @export var gravity = 980
@@ -20,7 +20,6 @@ var _position
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
-	Global.wave+= 1
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -28,7 +27,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
-	if distance <=DIST_FOLLOW:
+	if distance <=DIST_FOLLOW and Global.health > 0:
 		follow = true
 	else:
 		follow = false
@@ -36,7 +35,7 @@ func _process(delta: float) -> void:
 	if leaf != null and dead == false:
 		_position = leaf.global_position.x - global_position.x
 		direction = sign(_position)
-		if attack_player and can_attack:
+		if attack_player and can_attack and Global.health > 0:
 			attack()
 		elif follow and attack_player !=true:
 			$AnimationPlayer.play("walk")

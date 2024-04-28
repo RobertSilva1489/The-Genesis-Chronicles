@@ -1,8 +1,9 @@
 extends Node2D
 
-var night_boner = preload("res://scene/night_boner.tscn")
-var monster = preload("res://scene/monster.tscn")
-var boss = preload("res://scene/ground.tscn")
+var bringer_of_Death = preload("res://scene/Bringer_of_Death.tscn")
+var yamabushi = preload("res://scene/yamabushi_tengu.tscn")
+var karasu = preload("res://scene/karasu_tengu.tscn")
+var boss = preload("res://scene/wind.tscn")
 var ground_check = true
 @onready var leaf: CharacterBody2D = $Leaf
 @export var wave_lenght = 30
@@ -21,8 +22,8 @@ func _ready() -> void:
 	Global.mana = 100
 	Global.quiver = 10
 	$"/root/Hud".show()
-#	spawn_enemy()
 
+	spawn_enemy()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var ground: CharacterBody2D = $ground
@@ -44,20 +45,27 @@ func spawn_enemy():
 	randomize()
 	RanPos.append(spawn1)
 	RanPos.append(spawn2)
-	RanPos.append(spawn1)
-	RanPos.append(spawn2)
 	RanPos.append(spawn3)
 	RanPos.append(spawn4)
-	enemy.append(night_boner)
-	enemy.append(monster)
-	enemy.append(monster)
+	enemy.append(bringer_of_Death)
+	enemy.append(karasu)
+	enemy.append(yamabushi)
+	enemy.append(karasu)
+	enemy.append(yamabushi)
 	var selecte = enemy.pick_random()
 	var select = RanPos.pick_random()
 	var Enemy = selecte.instantiate()
 	add_child(Enemy)
 	Enemy.global_position = select.global_position
-
+	print("aqui spawn")
 func spawn_boss():
 	var Boss = boss.instantiate()
 	add_child(Boss)
 	Boss.global_position = boss_spawn.global_position
+
+func _on_timer_timeout() -> void:
+	if Global.scene_enemy < sceneEnemy and wave_lenght > 0:
+		spawn_enemy()
+		print("aqui timer")
+func _on_boss_timeout() -> void:
+	spawn_boss()

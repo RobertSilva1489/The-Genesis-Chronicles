@@ -948,7 +948,6 @@ position = Vector2(1872, 13)
 position = Vector2(1672, 435)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [node name="boss" type="Timer" parent="."]

@@ -27,12 +27,12 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
-	if distance <=DIST_FOLLOW:
+	if distance <=DIST_FOLLOW and Global.health > 0:
 		follow = true
 	else:
 		follow = false 
 		$AnimationPlayer.play("idle")
-	if distance <=DIST_ATTACK:
+	if distance <=DIST_ATTACK and Global.health > 0:
 		attack_player = true
 	else:
 		attack_player = false

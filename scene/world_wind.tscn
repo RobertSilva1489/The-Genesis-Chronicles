@@ -347,6 +347,7 @@ _data = {
 
 [node name="world_wind" type="Node2D"]
 script = ExtResource("1_5on8r")
+sceneEnemy = 4
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -462,11 +463,17 @@ randomness = 1.0
 visibility_rect = Rect2(-100, -234, 2000, 500)
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="boss" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 autoplay = "new_animation"
 libraries = {
 "": SubResource("AnimationLibrary_6gmcw")
 }
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="boss" to="." method="_on_boss_timeout"]

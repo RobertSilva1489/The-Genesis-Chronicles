@@ -300,7 +300,6 @@ position = Vector2(1089, -109)
 position = Vector2(1836, -265)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
 autostart = true
 
 [node name="Boss" type="Timer" parent="."]

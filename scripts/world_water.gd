@@ -19,7 +19,6 @@ func _ready() -> void:
 	Global.mana = 100
 	Global.quiver = 10
 	$"/root/Hud".show()
-	spawn_enemy()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var water: CharacterBody2D = $water

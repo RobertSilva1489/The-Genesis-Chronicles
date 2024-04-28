@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://c06y25ocyh3i0"]
+
+[ext_resource type="Script" path="res://scripts/pause.gd" id="1_r8kuj"]
+[ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="3_oyb24"]
+[ext_resource type="StyleBox" uid="uid://bhtxhfetoawoi" path="res://scene/button_focus.tres" id="4_g8qju"]
+[ext_resource type="AudioStream" uid="uid://bqgjbnhhemfs5" path="res://sfx/Retro3.ogg" id="7_g5hmg"]
+[ext_resource type="AudioStream" uid="uid://pmdjk4lmruwh" path="res://sfx/Retro8.ogg" id="8_f00c6"]
+[ext_resource type="AudioStream" uid="uid://dg2wodnv0r537" path="res://sfx/Demons and Death - Menu.mp3" id="9_yiftw"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_r8kuj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_direction = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -52.0
+offset_right = 2.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_pressed_color = Color(0, 0.843137, 0, 0.709804)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_oyb24")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("4_g8qju")
+text = "RESUME"
+flat = true
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_pressed_color = Color(0, 0.843137, 0, 0.709804)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_oyb24")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("4_g8qju")
+text = "MENU"
+flat = true
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_pressed_color = Color(0, 0.843137, 0, 0.709804)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_oyb24")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("4_g8qju")
+text = "EXIT
+"
+flat = true
+
+[node name="focus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_g5hmg")
+
+[node name="pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f00c6")
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_yiftw")
+autoplay = true

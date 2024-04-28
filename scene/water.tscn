@@ -1667,6 +1667,7 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_s05rs")
+speed = 100
 health = 400
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

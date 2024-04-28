@@ -583,6 +583,7 @@ collision_mask = 8
 script = ExtResource("1_ncpdh")
 is_animation = true
 DIST_ATTACK = 100
+speed = 100
 health = 400
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -4,7 +4,7 @@ var bringer_of_Death = preload("res://scene/Bringer_of_Death.tscn")
 var yamabushi = preload("res://scene/yamabushi_tengu.tscn")
 var karasu = preload("res://scene/karasu_tengu.tscn")
 var boss = preload("res://scene/wind.tscn")
-var ground_check = true
+var wind_check = true
 @onready var leaf: CharacterBody2D = $Leaf
 @export var wave_lenght = 30
 @export var sceneEnemy = 6
@@ -23,17 +23,17 @@ func _ready() -> void:
 	Global.quiver = 10
 	$"/root/Hud".show()
 
-	spawn_enemy()
+#	spawn_enemy()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var ground: CharacterBody2D = $ground
+	var wind: CharacterBody2D = $wind
 	if Global.wave == 0:
 		Global.wave = -1
 		$AnimationPlayer.play("open")
 		Global.showwave = false
-	if ground != null:
-		if ground.health <=0 and ground_check == true:
-			ground_check = false
+	if wind != null:
+		if wind.health <=0 and wind_check == true:
+			wind_check = false
 #			$level.stream_paused = true
 #			$bossDead.play()
 			leaf.powerUP("ground")
@@ -57,7 +57,6 @@ func spawn_enemy():
 	var Enemy = selecte.instantiate()
 	add_child(Enemy)
 	Enemy.global_position = select.global_position
-	print("aqui spawn")
 func spawn_boss():
 	var Boss = boss.instantiate()
 	add_child(Boss)
@@ -66,6 +65,18 @@ func spawn_boss():
 func _on_timer_timeout() -> void:
 	if Global.scene_enemy < sceneEnemy and wave_lenght > 0:
 		spawn_enemy()
-		print("aqui timer")
 func _on_boss_timeout() -> void:
 	spawn_boss()
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	$boss.start()
+	$Area2D.queue_free()
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		Global.health = 0
+		Global.mana = 0
+		Global.quiver = 0
+		body.timer.stop()
+		body.dead = true

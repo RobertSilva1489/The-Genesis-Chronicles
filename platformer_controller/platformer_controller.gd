@@ -7,6 +7,7 @@ signal hit_ground()
 var _direction = 1
 var arrow: PackedScene = preload("res://scene/arrow.tscn")
 var special: PackedScene = preload("res://scene/arrow_shower.tscn")
+@onready var timer: Timer = $Timer
 var recovery_health 
 var recovery_mana
 var recovery_quive
@@ -133,6 +134,7 @@ func _init():
 
 func _ready():
 	randomize()
+	
 	if is_coyote_time_enabled:
 		add_child(coyote_timer)
 		coyote_timer.wait_time = coyote_time

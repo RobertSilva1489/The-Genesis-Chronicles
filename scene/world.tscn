@@ -1,4 +1,4 @@
-[gd_scene load_steps=400 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=431 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
@@ -379,6 +379,30 @@
 [ext_resource type="Texture2D" uid="uid://4weuhq2nmrhr" path="res://assent/icons_xbox_with_outline_no_fill.png" id="376_uvt7j"]
 [ext_resource type="AudioStream" uid="uid://k2x84vwnotkp" path="res://sfx/The Propehecy - After attack.wav" id="378_qagb4"]
 [ext_resource type="AudioStream" uid="uid://df6p0dtdu3wgl" path="res://sfx/Against-All-Odds-Finish-game.mp3" id="379_vi2s2"]
+[ext_resource type="Texture2D" uid="uid://c5baeuhd23vsb" path="res://assent/NPCs/Idle1/1.png" id="380_yml75"]
+[ext_resource type="Texture2D" uid="uid://wj6krper5m2" path="res://assent/NPCs/Idle1/2.png" id="381_432v7"]
+[ext_resource type="Texture2D" uid="uid://c0tdq7eeihhrb" path="res://assent/NPCs/Idle1/3.png" id="382_mnn6c"]
+[ext_resource type="Texture2D" uid="uid://bs5pswjwvxcow" path="res://assent/NPCs/Idle1/4.png" id="383_oskqq"]
+[ext_resource type="Texture2D" uid="uid://cco4hcq7ppwnv" path="res://assent/NPCs/Speak1/1.png" id="384_pi1x1"]
+[ext_resource type="Texture2D" uid="uid://brsg8kkke5lni" path="res://assent/NPCs/Speak1/2.png" id="385_bugv4"]
+[ext_resource type="Texture2D" uid="uid://bpaae8af11j66" path="res://assent/NPCs/Speak1/3.png" id="386_38m63"]
+[ext_resource type="Texture2D" uid="uid://cu6um2131e83x" path="res://assent/NPCs/Speak1/4.png" id="387_drhhk"]
+[ext_resource type="Texture2D" uid="uid://vvg0g0wdtacb" path="res://assent/NPCs/Idle2/1.png" id="388_8tu3t"]
+[ext_resource type="Texture2D" uid="uid://b8rbk6if8lh4q" path="res://assent/NPCs/Idle2/2.png" id="389_0axg1"]
+[ext_resource type="Texture2D" uid="uid://b3ve5kukoowr5" path="res://assent/NPCs/Idle2/3.png" id="390_buap5"]
+[ext_resource type="Texture2D" uid="uid://bqobrrxqfcirr" path="res://assent/NPCs/Idle2/4.png" id="391_anr18"]
+[ext_resource type="Texture2D" uid="uid://dprpvr8xl5qjh" path="res://assent/NPCs/Speak2/1.png" id="392_6648y"]
+[ext_resource type="Texture2D" uid="uid://dcb3t0moy0w7h" path="res://assent/NPCs/Speak2/2.png" id="393_v7hx4"]
+[ext_resource type="Texture2D" uid="uid://cibmi0446na6q" path="res://assent/NPCs/Speak2/3.png" id="394_f5oit"]
+[ext_resource type="Texture2D" uid="uid://dc7wt6t3nmpn8" path="res://assent/NPCs/Speak2/4.png" id="395_kfstf"]
+[ext_resource type="Texture2D" uid="uid://da1vou324gbs1" path="res://assent/NPCs/Idle3/1.png" id="396_dkqp7"]
+[ext_resource type="Texture2D" uid="uid://cu2ctvc47a8qe" path="res://assent/NPCs/Idle3/2.png" id="397_d82ix"]
+[ext_resource type="Texture2D" uid="uid://d0utvssdmjvhh" path="res://assent/NPCs/Idle3/3.png" id="398_pli7a"]
+[ext_resource type="Texture2D" uid="uid://c1s0uwkke62bo" path="res://assent/NPCs/Idle3/4.png" id="399_n85uq"]
+[ext_resource type="Texture2D" uid="uid://bro3b26io2pyo" path="res://assent/NPCs/Speak3/1.png" id="400_u56e5"]
+[ext_resource type="Texture2D" uid="uid://ck4omddnerfxx" path="res://assent/NPCs/Speak3/2.png" id="401_ypdn4"]
+[ext_resource type="Texture2D" uid="uid://bpgvm570i4ghr" path="res://assent/NPCs/Speak3/3.png" id="402_y4pcv"]
+[ext_resource type="Texture2D" uid="uid://c4sp463m5ruqx" path="res://assent/NPCs/Speak3/4.png" id="403_syl0x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovvm5"]
 animations = [{
@@ -2744,6 +2768,126 @@ scale_max = 0.5
 radius = 17.0
 height = 56.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_fy5pl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("380_yml75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("381_432v7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("382_mnn6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("383_oskqq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("384_pi1x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("385_bugv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("386_38m63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("387_drhhk")
+}],
+"loop": true,
+"name": &"speak",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wejqn"]
+size = Vector2(94.2857, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_phqwp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("388_8tu3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("389_0axg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("390_buap5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("391_anr18")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("392_6648y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("393_v7hx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("394_f5oit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("395_kfstf")
+}],
+"loop": true,
+"name": &"speak",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc2gh"]
+size = Vector2(84.2857, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qy3g8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("396_dkqp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("397_d82ix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("398_pli7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("399_n85uq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("400_u56e5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("401_ypdn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("402_y4pcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("403_syl0x")
+}],
+"loop": true,
+"name": &"speak",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4sxh"]
+size = Vector2(77.1428, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4r5j"]
 size = Vector2(52, 612)
 
@@ -2791,6 +2935,9 @@ tracks/2/keys = {
 _data = {
 "open": SubResource("Animation_sj74x")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcuc1"]
+size = Vector2(40, 46)
 
 [node name="world_Leaf" type="Node2D"]
 script = ExtResource("1_tvkmb")
@@ -2860,6 +3007,7 @@ texture = ExtResource("3_yhbyb")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="shake" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_tgens")
@@ -2961,6 +3109,57 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mages/ground_mage/ground"]
 shape = SubResource("CapsuleShape2D_iiatc")
 
+[node name="NPCs" type="Marker2D" parent="."]
+visible = false
+position = Vector2(-2, -5)
+
+[node name="oldman" type="AnimatedSprite2D" parent="NPCs"]
+position = Vector2(180, 180)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_fy5pl")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="oldman" type="Area2D" parent="NPCs/oldman"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/oldman/oldman"]
+position = Vector2(20, 1.52588e-05)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wejqn")
+
+[node name="guy" type="AnimatedSprite2D" parent="NPCs"]
+position = Vector2(820, 178)
+scale = Vector2(-0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_phqwp")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="guy" type="Area2D" parent="NPCs/guy"]
+position = Vector2(-2.85706, 1.42857)
+scale = Vector2(1, 1)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/guy/guy"]
+position = Vector2(19.2856, 0)
+shape = SubResource("RectangleShape2D_kc2gh")
+
+[node name="oldwoman" type="AnimatedSprite2D" parent="NPCs"]
+position = Vector2(379, 179)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_qy3g8")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="oldwoman" type="Area2D" parent="NPCs/oldwoman"]
+position = Vector2(-3.05176e-05, 5.71429)
+scale = Vector2(1, 1)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/oldwoman/oldwoman"]
+position = Vector2(22.8571, 0)
+shape = SubResource("RectangleShape2D_j4sxh")
+
 [node name="Leaf" parent="." instance=ExtResource("1_nkah1")]
 position = Vector2(670, 111)
 collision_mask = 8
@@ -3025,6 +3224,16 @@ centered = false
 region_enabled = true
 region_rect = Rect2(16, 64, 16, 16)
 
+[node name="doorLeaf2" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(56, 130)
+texture = ExtResource("376_uvt7j")
+centered = false
+region_enabled = true
+region_rect = Rect2(16, 64, 16, 16)
+
 [node name="attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("378_qagb4")
 
@@ -3034,6 +3243,14 @@ stream = ExtResource("379_vi2s2")
 [node name="tele" type="Marker2D" parent="."]
 position = Vector2(671, 111)
 
+[node name="doorLeaf" type="Area2D" parent="."]
+position = Vector2(64, 164)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="doorLeaf"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_qcuc1")
+
 [connection signal="body_entered" from="Mages/water_mage/water" to="." method="_on_water_body_entered"]
 [connection signal="body_exited" from="Mages/water_mage/water" to="." method="_on_water_body_exited"]
 [connection signal="body_entered" from="Mages/wind_mage/wind" to="." method="_on_wind_body_entered"]
@@ -3042,3 +3259,11 @@ position = Vector2(671, 111)
 [connection signal="body_exited" from="Mages/fire_mage/fire" to="." method="_on_fire_body_exited"]
 [connection signal="body_entered" from="Mages/ground_mage/ground" to="." method="_on_ground_body_entered"]
 [connection signal="body_exited" from="Mages/ground_mage/ground" to="." method="_on_ground_body_exited"]
+[connection signal="body_entered" from="NPCs/oldman/oldman" to="." method="_on_oldman_body_entered"]
+[connection signal="body_exited" from="NPCs/oldman/oldman" to="." method="_on_oldman_body_exited"]
+[connection signal="body_entered" from="NPCs/guy/guy" to="." method="_on_guy_body_entered"]
+[connection signal="body_exited" from="NPCs/guy/guy" to="." method="_on_guy_body_exited"]
+[connection signal="body_entered" from="NPCs/oldwoman/oldwoman" to="." method="_on_oldwoman_body_entered"]
+[connection signal="body_exited" from="NPCs/oldwoman/oldwoman" to="." method="_on_oldwoman_body_exited"]
+[connection signal="body_entered" from="doorLeaf" to="." method="_on_door_leaf_body_entered"]
+[connection signal="body_exited" from="doorLeaf" to="." method="_on_door_leaf_body_exited"]

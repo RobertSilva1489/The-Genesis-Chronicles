@@ -15,6 +15,7 @@ func _ready() -> void:
 	if Global.Dfire and Global.Dwater and Global.Dground and Global.Dwind:
 		$attack.stream_paused = true
 		$defeadtAllBoss.play()
+		NPCs()
 	await get_tree().create_timer(2.0).timeout
 	if Global.Dfire == true:
 		$CanvasLayer/fire.visible = false
@@ -46,6 +47,9 @@ func _process(delta: float) -> void:
 				get_tree().change_scene_to_file("res://scene/Fire_cut_scene.tscn")
 			"ground":
 				get_tree().change_scene_to_file("res://scene/Ground_cut_scene.tscn")
+			"house":
+				$defeadtAllBoss.stream_paused = true
+				get_tree().change_scene_to_file("res://scene/final_scene.tscn")
 func _on_water_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		teleport = "water"
@@ -92,3 +96,50 @@ func _on_ground_body_exited(body: Node2D) -> void:
 		teleport = ""
 		player = null
 		$IconsGround.visible = false
+
+
+func _on_oldman_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		$NPCs/oldman.play("speak")
+		print("hi")
+
+func _on_guy_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		$NPCs/guy.play("speak")
+		print("hi")
+
+func _on_oldwoman_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		$NPCs/oldwoman.play("speak")
+		print("hi")
+
+
+func _on_oldman_body_exited(body: Node2D) -> void:
+	$NPCs/oldman.play("idle")
+
+
+func _on_guy_body_exited(body: Node2D) -> void:
+	$NPCs/guy.play("idle")
+
+
+func _on_oldwoman_body_exited(body: Node2D) -> void:
+	$NPCs/oldman.play("idle")
+
+func NPCs():
+	$NPCs.show()
+	$NPCs/oldman/oldman.monitoring = true
+	$NPCs/oldwoman/oldwoman.monitoring = true
+	$NPCs/guy/guy.monitoring = true
+	$doorLeaf.monitoring = true
+
+func _on_door_leaf_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		teleport = "house"
+		player = body
+		$doorLeaf2.show()
+
+func _on_door_leaf_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player = null
+		teleport = ""
+		$doorLeaf2.hide()

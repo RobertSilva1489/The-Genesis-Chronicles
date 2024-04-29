@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b046shlkquc5x"
+path="res://.godot/imported/13- Full Strength Unleashed.mp3-d38e6d45ba756a2ec41d718bcaa7be42.mp3str"
+
+[deps]
+
+source_file="res://sfx/13- Full Strength Unleashed.mp3"
+dest_files=["res://.godot/imported/13- Full Strength Unleashed.mp3-d38e6d45ba756a2ec41d718bcaa7be42.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

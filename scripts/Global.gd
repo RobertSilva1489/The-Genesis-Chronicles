@@ -12,7 +12,7 @@ extends Node
 @export var boss_health = 0
 @export var god_mode = false
 @export var Dfire = true
-@export var Dwater = false
+@export var Dwater = true
 @export var Dwind = true
 @export var Dground = true
 var can_pause = true

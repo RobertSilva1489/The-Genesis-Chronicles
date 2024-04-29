@@ -30,8 +30,8 @@ func _process(delta: float) -> void:
 	if water != null:
 		if water.health <=0 and water_check == true:
 			water_check = false
-#			$level.stream_paused = true
-#			$bossDead.play()
+			$level.stream_paused = true
+			$bossDead.play()
 			leaf.powerUP("water")
 			await get_tree().create_timer(10).timeout
 			leaf._out()

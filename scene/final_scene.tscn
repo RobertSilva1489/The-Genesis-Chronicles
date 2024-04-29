@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b04mf8juf50q3"]
+[gd_scene load_steps=11 format=3 uid="uid://b04mf8juf50q3"]
 
 [ext_resource type="Script" path="res://scripts/final_scene.gd" id="1_6tarj"]
 [ext_resource type="Texture2D" uid="uid://dsmt40wai14qy" path="res://assent/Menu.jpg" id="1_ya67q"]
@@ -6,6 +6,29 @@
 [ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="3_k1yua"]
 [ext_resource type="StyleBox" uid="uid://bhtxhfetoawoi" path="res://scene/button_focus.tres" id="4_d7rdu"]
 [ext_resource type="FontFile" uid="uid://balhb42drx84j" path="res://font/GODOFWAR.TTF" id="6_h1qj4"]
+[ext_resource type="AudioStream" uid="uid://pmdjk4lmruwh" path="res://sfx/Retro8.ogg" id="7_yl303"]
+[ext_resource type="AudioStream" uid="uid://bqgjbnhhemfs5" path="res://sfx/Retro3.ogg" id="8_3kdr6"]
+
+[sub_resource type="Animation" id="Animation_ae7ih"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s1inf"]
+_data = {
+"new_animation": SubResource("Animation_ae7ih")
+}
 
 [node name="finalScene" type="Node2D"]
 script = ExtResource("1_6tarj")
@@ -49,10 +72,10 @@ text = "Exit"
 flat = true
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 302.0
-offset_top = 22.0
-offset_right = 799.0
-offset_bottom = 481.0
+offset_left = 494.0
+offset_top = 9.0
+offset_right = 796.0
+offset_bottom = 468.0
 editable = false
 context_menu_enabled = false
 shortcut_keys_enabled = false
@@ -63,31 +86,43 @@ virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 302.0
-offset_top = 22.0
-offset_right = 793.0
-offset_bottom = 499.0
+offset_left = 503.0
+offset_top = 4.0
+offset_right = 796.0
+offset_bottom = 481.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("6_h1qj4")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 12
 text = "Leaf (Goddess of the Planet):
 \"Dear Adventurer,
 As the guardian of Veridara, I extend my deepest gratitude to you for embarking on this arduous journey with me. Your courage, wisdom, and perseverance have restored balance to Cosmosia and saved its myriad lives.
 
 Your journey through our world may have reached its conclusion, but the memories of your bravery and the peace you've helped forge will resonate throughout the ages. We hope your time in Veridara was as enchanting and thrilling as the adventure you've lived.
 
-May the winds guide you forward, the waters refresh your spirit, the earth steady your steps, and the fires ignite your path to new adventures. Thank you for being the hero Veridara needed. Until we meet again in the tales yet untold.Leaf (Goddess of the Planet):
+May the winds guide you forward, the waters refresh your spirit, the earth steady your steps, and the fires ignite your path to new adventures. Thank you for being the hero Veridara needed. Until we meet again in the tales yet untold.
 
-\"Dear Adventurer,
-
-As the guardian of Veridara, I extend my deepest gratitude to you for embarking on this arduous journey with me. Your courage, wisdom, and perseverance have restored balance to Cosmosia and saved its myriad lives.
-
-Your journey through our world may have reached its conclusion, but the memories of your bravery and the peace you've helped forge will resonate throughout the ages. We hope your time in Veridara was as enchanting and thrilling as the adventure you've lived.
-
-May the winds guide you forward, the waters refresh your spirit, the earth steady your steps, and the fires ignite your path to new adventures. Thank you for being the hero Veridara needed. Until we meet again in the tales yet untold."
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+speed_scale = 0.3
+libraries = {
+"": SubResource("AnimationLibrary_s1inf")
+}
+
+[node name="pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_yl303")
+
+[node name="focus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3kdr6")
+
+[connection signal="focus_entered" from="VBoxContainer/menu" to="." method="_on_menu_focus_entered"]
+[connection signal="pressed" from="VBoxContainer/menu" to="." method="_on_menu_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/exit" to="." method="_on_exit_focus_entered"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]

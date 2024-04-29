@@ -391,6 +391,7 @@
 [ext_resource type="Texture2D" uid="uid://b8rbk6if8lh4q" path="res://assent/NPCs/Idle2/2.png" id="389_0axg1"]
 [ext_resource type="Texture2D" uid="uid://b3ve5kukoowr5" path="res://assent/NPCs/Idle2/3.png" id="390_buap5"]
 [ext_resource type="Texture2D" uid="uid://bqobrrxqfcirr" path="res://assent/NPCs/Idle2/4.png" id="391_anr18"]
+[ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="392_43jla"]
 [ext_resource type="Texture2D" uid="uid://dprpvr8xl5qjh" path="res://assent/NPCs/Speak2/1.png" id="392_6648y"]
 [ext_resource type="Texture2D" uid="uid://dcb3t0moy0w7h" path="res://assent/NPCs/Speak2/2.png" id="393_v7hx4"]
 [ext_resource type="Texture2D" uid="uid://cibmi0446na6q" path="res://assent/NPCs/Speak2/3.png" id="394_f5oit"]
@@ -2891,50 +2892,7 @@ size = Vector2(77.1428, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4r5j"]
 size = Vector2(52, 612)
 
-[sub_resource type="Animation" id="Animation_sj74x"]
-resource_name = "open"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("false_floor:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("false_floor/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("false_floor:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1333, 145), Vector2(1363, 145), Vector2(1383, 145), Vector2(1390, 145)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m5phf"]
-_data = {
-"open": SubResource("Animation_sj74x")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcuc1"]
 size = Vector2(40, 46)
@@ -3110,7 +3068,6 @@ collision_layer = 0
 shape = SubResource("CapsuleShape2D_iiatc")
 
 [node name="NPCs" type="Marker2D" parent="."]
-visible = false
 position = Vector2(-2, -5)
 
 [node name="oldman" type="AnimatedSprite2D" parent="NPCs"]
@@ -3128,6 +3085,10 @@ position = Vector2(20, 1.52588e-05)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wejqn")
 
+[node name="Label" type="Label" parent="NPCs/oldman"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="guy" type="AnimatedSprite2D" parent="NPCs"]
 position = Vector2(820, 178)
 scale = Vector2(-0.7, 0.7)
@@ -3143,6 +3104,23 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/guy/guy"]
 position = Vector2(19.2856, 0)
 shape = SubResource("RectangleShape2D_kc2gh")
+
+[node name="Label" type="Label" parent="NPCs/guy"]
+offset_left = 14.2856
+offset_top = -92.8571
+offset_right = 156.286
+offset_bottom = -8.85715
+scale = Vector2(-1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("392_43jla")
+theme_override_font_sizes/font_size = 15
+text = "Leaf, you've restored our fields and our spirits. Our village will sing your praises forevermore."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
 
 [node name="oldwoman" type="AnimatedSprite2D" parent="NPCs"]
 position = Vector2(379, 179)
@@ -3170,7 +3148,7 @@ max_acceleration = 8000
 friction = 2000
 
 [node name="false_floor" type="StaticBody2D" parent="."]
-position = Vector2(-113, 188)
+position = Vector2(1400, 187)
 collision_layer = 8
 collision_mask = 0
 

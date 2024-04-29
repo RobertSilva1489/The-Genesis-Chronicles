@@ -23,7 +23,7 @@ func _on_option_buton_pressed() -> void:
 	$VBoxContainer2.visible = true
 	$VBoxContainer2/Button.grab_focus()
 func _on_exist_button_pressed() -> void:
-	
+
 	$pressed.play()
 	await $pressed.finished
 	get_tree().quit()

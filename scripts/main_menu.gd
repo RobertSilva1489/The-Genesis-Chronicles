@@ -6,7 +6,7 @@ var check = 0
 func _ready() -> void:
 	$"/root/Hud".hide()
 	$VBoxContainer/StartButton.grab_focus()
-
+	Global.can_pause = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -17,7 +17,6 @@ func _on_start_button_pressed() -> void:
 	$pressed.play()
 	await $pressed.finished
 	get_tree().change_scene_to_file("res://scene/open_cut_scene.tscn")
-
 func _on_option_buton_pressed() -> void:
 	$pressed.play()
 	$VBoxContainer2.visible = true
@@ -46,10 +45,8 @@ func _on_exist_button_focus_entered() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	_play = true
 
-
 func _on_button_focus_entered() -> void:
 	$focus.play()
-
 
 func _on_button_pressed() -> void:
 	$pressed.play()
@@ -61,14 +58,11 @@ func _on_button_pressed() -> void:
 func _on_button_2_pressed() -> void:
 	$pressed.play()
 
-
 func _on_button_2_focus_entered() -> void:
 	$focus.play()
 
-
 func _on_load_button_pressed() -> void:
 	$pressed.play()
-
 
 func _on_load_button_focus_entered() -> void:
 	$focus.play()

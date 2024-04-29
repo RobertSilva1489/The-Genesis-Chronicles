@@ -6,7 +6,7 @@ func _ready():
 	hide() 
 	pass
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Pause") and not is_paused:
+	if Input.is_action_just_pressed("Pause") and not is_paused and Global.can_pause:
 		_toggle_pause()
 		$VBoxContainer/Button.grab_focus()
 func _toggle_pause():

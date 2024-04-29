@@ -439,6 +439,7 @@ collision_mask = 12
 script = ExtResource("1_nueyw")
 health = 50
 follow = false
+DIST_ATTACK = 30
 
 [node name="Marker2D" type="Marker2D" parent="."]
 

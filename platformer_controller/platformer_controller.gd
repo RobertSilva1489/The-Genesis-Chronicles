@@ -15,6 +15,8 @@ var strong = int(randf_range(20,25))
 var hit = false
 var boss_defeat = false 
 var dead = false
+@export var special_1 = false
+@export var special_2 = false
 @export var rolling = true
 @export var is_attacking = false
 # Set these to the name of your action (in the Input Map)
@@ -178,8 +180,7 @@ func _input(_event):
 			holding_jump = true
 			start_jump_buffer_timer()
 			if (not can_hold_jump and can_ground_jump()) or can_double_jump():
-				jump()
-			
+				jump()		
 		if Input.is_action_just_released(input_jump):
 			holding_jump = false
 		if Input.is_action_just_pressed("ui_down"):
@@ -221,6 +222,19 @@ func _process(delta: float) -> void:
 	recovery_mana = Global.recovery_mana
 	recovery_quive = Global.recovery_quive
 	invecible = Global.god_mode
+	if  not Global.Dfire and not Global.Dwind:
+		Global.mana = 0
+		Global.recovery_mana = 0
+	if Global.Dfire and not Global.Dwater:
+		special_1 = true
+		Global.recovery_mana = 5
+	if Global.Dwind and not Global.Dwater:
+		special_2 = true
+		Global.recovery_mana = 5
+	if Global.Dwater:
+		Global.recovery_mana = 10
+	if Global.Dground:
+		Global.recovery_health = 10
 ## Use this instead of coyote_timer.start() to check if the coyote_timer is enabled first
 func start_coyote_timer():
 	if is_coyote_time_enabled:
@@ -369,12 +383,12 @@ func _attack():
 			$AnimationPlayer.play("bow")
 			$AnimationPlayer.speed_scale = 2.2
 			_stop()
-	if Input.is_action_just_pressed("special1") and is_attacking == false:
+	if Input.is_action_just_pressed("special1") and is_attacking == false and special_1 == true:
 		if Global.mana >= 100 and special != null:
 			$AnimationPlayer.play("especial")
 			_stop()
 			Global.hit_stop_short()
-	if Input.is_action_just_pressed("special2") and is_attacking == false:
+	if Input.is_action_just_pressed("special2") and is_attacking == false and special_2 == true:
 		if Global.mana >= 50:
 			$AnimationPlayer.play("especial2")
 			_stop()

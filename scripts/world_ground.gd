@@ -17,6 +17,7 @@ var RanPos = []
 var enemy = []
 
 func _ready() -> void:
+	Global.can_pause = true
 	Global.showwave = true
 	Global.wave = wave_lenght
 	Global.mana = 100

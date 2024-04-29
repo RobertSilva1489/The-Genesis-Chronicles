@@ -15,6 +15,7 @@ extends Node
 @export var Dwater = false
 @export var Dwind = false
 @export var Dground = false
+var can_pause = true
 var boss_name = ""
 var showwave = false
 func _process(delta: float) -> void:

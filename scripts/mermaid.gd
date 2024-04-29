@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var speed = int(randf_range(60,70))
+@export var speed = int(randf_range(70,80))
 @export var health = 80
 @export var strong = int(randf_range(20,30)) 
 @export var gravity = 980
 @export var can_attack = true
 @export var follow = false
-@export var attack_cooldown : float = 2.5
+@export var attack_cooldown : float = 1.5
 @export var attack_player = false
 @export var DIST_FOLLOW := 500
 @export var DIST_ATTACK := 30
@@ -54,7 +54,8 @@ func damage (dame) -> void:
 		dead = true
 		_dead()
 func _on_attack_body_entered(body):
-	if body.is_in_group("player") and can_attack == true:
+	if body.is_in_group("player"):
+		print("hit")
 		body.take_damage(strong)
 func _patrol():
 	if Global.health > 0 and health > 0:

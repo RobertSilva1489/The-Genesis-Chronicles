@@ -33,8 +33,8 @@ func _process(delta: float) -> void:
 	if wind != null:
 		if wind.health <=0 and wind_check == true:
 			wind_check = false
-#			$level.stream_paused = true
-#			$bossDead.play()
+			$level.stream_paused = true
+			$bossDead.play()
 			leaf.powerUP("ground")
 			await get_tree().create_timer(5).timeout
 			leaf._out()

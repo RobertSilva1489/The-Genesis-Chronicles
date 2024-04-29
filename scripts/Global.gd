@@ -11,10 +11,10 @@ extends Node
 @export var show_boss = false
 @export var boss_health = 0
 @export var god_mode = false
-@export var Dfire = false
+@export var Dfire = true
 @export var Dwater = false
-@export var Dwind = false
-@export var Dground = false
+@export var Dwind = true
+@export var Dground = true
 var can_pause = true
 var boss_name = ""
 var showwave = false

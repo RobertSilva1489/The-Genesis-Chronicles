@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://csudobtpkv4um"]
+[gd_scene load_steps=24 format=3 uid="uid://csudobtpkv4um"]
 
 [ext_resource type="Script" path="res://scripts/world_wind.gd" id="1_5on8r"]
 [ext_resource type="Texture2D" uid="uid://3jbujalxf50r" path="res://assent/scenario/ParallaxBG/Layer 1.png" id="2_5diyc"]
@@ -9,6 +9,8 @@
 [ext_resource type="Shader" path="res://shader/wind.gdshader" id="8_5qavr"]
 [ext_resource type="Texture2D" uid="uid://cljey4p8i22hh" path="res://assent/scenario/Land2.png" id="8_xl5fn"]
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="9_3oh1v"]
+[ext_resource type="AudioStream" uid="uid://ddcrvwvj0n1o8" path="res://sfx/3- Ancient Prisoner - wind.mp3" id="10_2gwru"]
+[ext_resource type="AudioStream" uid="uid://cwncm2dm2bil5" path="res://sfx/Goodguys Theme - after defeadt boss.wav" id="11_puy80"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7a0m1"]
 shader = ExtResource("8_5qavr")
@@ -497,6 +499,13 @@ position = Vector2(282, 159)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_p1401")
+
+[node name="level" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_2gwru")
+autoplay = true
+
+[node name="bossDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_puy80")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="boss" to="." method="_on_boss_timeout"]

@@ -11,7 +11,7 @@ var special: PackedScene = preload("res://scene/arrow_shower.tscn")
 var recovery_health 
 var recovery_mana
 var recovery_quive
-var strong = int(randf_range(20,25))
+var strong = int(randf_range(30,40))
 var hit = false
 var boss_defeat = false 
 var dead = false
@@ -381,7 +381,7 @@ func _attack():
 	if Input.is_action_just_pressed("bow") and is_attacking == false:
 		if Global.quiver > 0:
 			$AnimationPlayer.play("bow")
-			$AnimationPlayer.speed_scale = 2.2
+			$AnimationPlayer.speed_scale = 2.5
 			_stop()
 	if Input.is_action_just_pressed("special1") and is_attacking == false and special_1 == true:
 		if Global.mana >= 100 and special != null:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ch33xlgw2osxm"]
+[gd_scene load_steps=19 format=3 uid="uid://ch33xlgw2osxm"]
 
 [ext_resource type="Script" path="res://scripts/world_ground.gd" id="1_e8qah"]
 [ext_resource type="Texture2D" uid="uid://cgd8b6vcsrh4l" path="res://assent/scenario/Layers (PNG)/Layer_4.png" id="2_t1s2p"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d065plb1xyu1u" path="res://assent/scenario/drop.png" id="6_1fkex"]
 [ext_resource type="Texture2D" uid="uid://io1q87xc6sct" path="res://assent/scenario/Land4.png" id="6_5t7c7"]
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="7_p6sb5"]
+[ext_resource type="AudioStream" uid="uid://bduwyx86lily6" path="res://sfx/8- It's right below your feet - ground.mp3" id="9_sop20"]
+[ext_resource type="AudioStream" uid="uid://cwncm2dm2bil5" path="res://sfx/Goodguys Theme - after defeadt boss.wav" id="10_nkc05"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_35kh7"]
 emission_shape = 3
@@ -954,6 +956,13 @@ autostart = true
 [node name="boss" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="level" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_sop20")
+autoplay = true
+
+[node name="bossDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_nkc05")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

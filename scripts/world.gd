@@ -1,13 +1,20 @@
 extends Node2D
 @onready var hud = $"/root/Hud"
 @onready var leaf: CharacterBody2D = $Leaf
-
+@export var play = false
 var teleport = ""
 var  player
 func _ready() -> void:
 	hud.hide()
 	if Global.Dfire == false and Global.Dwater == false and Global.Dground == false and Global.Dwind == false:
 		leaf.global_position.x = $fires.global_position.x
+		$attack.play()
+	else:
+		$attack.play()
+		leaf.global_position.x = $tele.global_position.x
+	if Global.Dfire and Global.Dwater and Global.Dground and Global.Dwind:
+		$attack.stream_paused = true
+		$defeadtAllBoss.play()
 	await get_tree().create_timer(2.0).timeout
 	if Global.Dfire == true:
 		$CanvasLayer/fire.visible = false
@@ -24,6 +31,8 @@ func _ready() -> void:
 		$CanvasLayer/shake.visible = false
 		$GPUParticles2D2.emitting = false
 		$Mages/ground_mage/ground.monitoring = false
+
+
 func _process(delta: float) -> void:
 	Global.mana = 0
 	Global.quiver = 0
@@ -37,7 +46,6 @@ func _process(delta: float) -> void:
 				get_tree().change_scene_to_file("res://scene/Fire_cut_scene.tscn")
 			"ground":
 				get_tree().change_scene_to_file("res://scene/Ground_cut_scene.tscn")
-
 func _on_water_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		teleport = "water"

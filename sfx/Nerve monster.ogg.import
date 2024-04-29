@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Nerve monster.ogg-13c5ed4621a745796b458ccdceb
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

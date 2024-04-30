@@ -1,4 +1,4 @@
-[gd_scene load_steps=431 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=439 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
@@ -392,6 +392,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ve5kukoowr5" path="res://assent/NPCs/Idle2/3.png" id="390_buap5"]
 [ext_resource type="Texture2D" uid="uid://bqobrrxqfcirr" path="res://assent/NPCs/Idle2/4.png" id="391_anr18"]
 [ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="392_43jla"]
+[ext_resource type="Texture2D" uid="uid://ex7hdqc4qdnp" path="res://assent/pngwing.com.png" id="392_304ys"]
 [ext_resource type="Texture2D" uid="uid://dprpvr8xl5qjh" path="res://assent/NPCs/Speak2/1.png" id="392_6648y"]
 [ext_resource type="Texture2D" uid="uid://dcb3t0moy0w7h" path="res://assent/NPCs/Speak2/2.png" id="393_v7hx4"]
 [ext_resource type="Texture2D" uid="uid://cibmi0446na6q" path="res://assent/NPCs/Speak2/3.png" id="394_f5oit"]
@@ -404,6 +405,7 @@
 [ext_resource type="Texture2D" uid="uid://ck4omddnerfxx" path="res://assent/NPCs/Speak3/2.png" id="401_ypdn4"]
 [ext_resource type="Texture2D" uid="uid://bpgvm570i4ghr" path="res://assent/NPCs/Speak3/3.png" id="402_y4pcv"]
 [ext_resource type="Texture2D" uid="uid://c4sp463m5ruqx" path="res://assent/NPCs/Speak3/4.png" id="403_syl0x"]
+[ext_resource type="AudioStream" uid="uid://2sm1aase63aq" path="res://sfx/speech.MP3" id="406_8nvf7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovvm5"]
 animations = [{
@@ -2892,7 +2894,287 @@ size = Vector2(77.1428, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4r5j"]
 size = Vector2(52, 612)
 
+[sub_resource type="Animation" id="Animation_kb7lc"]
+resource_name = "guy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCs/guy/Pngwingcom:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCs/guy/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("speech:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_uhd4l"]
+resource_name = "man"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCs/oldman/Pngwingcom3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCs/oldman/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NPCs/oldman/Label2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.4, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NPCs/oldman/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("speech:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_sdbku"]
+resource_name = "woman"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCs/oldwoman/Pngwingcom2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCs/oldwoman/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("speech:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3117y"]
+resource_name = "guy_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCs/guy/Pngwingcom:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCs/guy/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("speech:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_es8bv"]
+resource_name = "woman_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCs/oldwoman/Pngwingcom2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCs/oldwoman/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("speech:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d2nl0"]
+resource_name = "man_2"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCs/oldman/Pngwingcom3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCs/oldman/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NPCs/oldman/Label2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("speech:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m5phf"]
+_data = {
+"guy": SubResource("Animation_kb7lc"),
+"guy_2": SubResource("Animation_3117y"),
+"man": SubResource("Animation_uhd4l"),
+"man_2": SubResource("Animation_d2nl0"),
+"woman": SubResource("Animation_sdbku"),
+"woman_2": SubResource("Animation_es8bv")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcuc1"]
 size = Vector2(40, 46)
@@ -3082,12 +3364,52 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/oldman/oldman"]
 position = Vector2(20, 1.52588e-05)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wejqn")
 
+[node name="Pngwingcom3" type="Sprite2D" parent="NPCs/oldman"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(45.1805, -95.3674)
+rotation = 3.14159
+scale = Vector2(0.196075, -0.166963)
+texture = ExtResource("392_304ys")
+
 [node name="Label" type="Label" parent="NPCs/oldman"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -21.4285
+offset_top = -141.428
+offset_right = 118.572
+offset_bottom = -68.4285
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("392_43jla")
+theme_override_font_sizes/font_size = 15
+text = "Mighty Leaf, the forest thrives again, safe from harm. We owe you our peace, eternally grateful."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label2" type="Label" parent="NPCs/oldman"]
+offset_left = -23.0
+offset_top = -133.0
+offset_right = 126.0
+offset_bottom = -79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("392_43jla")
+theme_override_font_sizes/font_size = 15
+text = "Now you deserve to rest. We've tidied up your home, go and rest."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="guy" type="AnimatedSprite2D" parent="NPCs"]
 position = Vector2(820, 178)
@@ -3098,22 +3420,29 @@ autoplay = "idle"
 
 [node name="guy" type="Area2D" parent="NPCs/guy"]
 position = Vector2(-2.85706, 1.42857)
-scale = Vector2(1, 1)
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/guy/guy"]
 position = Vector2(19.2856, 0)
 shape = SubResource("RectangleShape2D_kc2gh")
 
+[node name="Pngwingcom" type="Sprite2D" parent="NPCs/guy"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-55.1807, -92.5104)
+scale = Vector2(0.196075, 0.166963)
+texture = ExtResource("392_304ys")
+
 [node name="Label" type="Label" parent="NPCs/guy"]
-offset_left = 14.2856
-offset_top = -92.8571
-offset_right = 156.286
-offset_bottom = -8.85715
+offset_left = 11.9619
+offset_top = -142.51
+offset_right = 150.962
+offset_bottom = -58.5102
 scale = Vector2(-1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("392_43jla")
 theme_override_font_sizes/font_size = 15
 text = "Leaf, you've restored our fields and our spirits. Our village will sing your praises forevermore."
@@ -3121,6 +3450,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="oldwoman" type="AnimatedSprite2D" parent="NPCs"]
 position = Vector2(379, 179)
@@ -3130,13 +3461,39 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="oldwoman" type="Area2D" parent="NPCs/oldwoman"]
-position = Vector2(-3.05176e-05, 5.71429)
+position = Vector2(-6.10352e-05, 5.71429)
 scale = Vector2(1, 1)
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/oldwoman/oldwoman"]
 position = Vector2(22.8571, 0)
 shape = SubResource("RectangleShape2D_j4sxh")
+
+[node name="Pngwingcom2" type="Sprite2D" parent="NPCs/oldwoman"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(56.6091, -72.5104)
+rotation = 3.14159
+scale = Vector2(0.196075, -0.166963)
+texture = ExtResource("392_304ys")
+
+[node name="Label" type="Label" parent="NPCs/oldwoman"]
+offset_left = -4.81985
+offset_top = -108.225
+offset_right = 129.18
+offset_bottom = -54.2246
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("392_43jla")
+theme_override_font_sizes/font_size = 15
+text = "Thanks, Leaf! The rivers are alive again, and so is our hope. You're my hero!\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Leaf" parent="." instance=ExtResource("1_nkah1")]
 position = Vector2(670, 111)
@@ -3157,7 +3514,7 @@ position = Vector2(0, -258)
 shape = SubResource("RectangleShape2D_v4r5j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 0.2
+speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_m5phf")
 }
@@ -3217,6 +3574,7 @@ stream = ExtResource("378_qagb4")
 
 [node name="defeadtAllBoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("379_vi2s2")
+volume_db = -2.0
 
 [node name="tele" type="Marker2D" parent="."]
 position = Vector2(671, 111)
@@ -3228,6 +3586,11 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="doorLeaf"]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_qcuc1")
+
+[node name="speech" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("406_8nvf7")
+volume_db = 20.0
+pitch_scale = 4.0
 
 [connection signal="body_entered" from="Mages/water_mage/water" to="." method="_on_water_body_entered"]
 [connection signal="body_exited" from="Mages/water_mage/water" to="." method="_on_water_body_exited"]

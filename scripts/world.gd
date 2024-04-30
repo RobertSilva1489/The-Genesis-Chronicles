@@ -101,30 +101,30 @@ func _on_ground_body_exited(body: Node2D) -> void:
 func _on_oldman_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		$NPCs/oldman.play("speak")
-		print("hi")
+		$AnimationPlayer.play("man")
 
 func _on_guy_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		$NPCs/guy.play("speak")
-		print("hi")
+		$AnimationPlayer.play("guy")
 
 func _on_oldwoman_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		$NPCs/oldwoman.play("speak")
-		print("hi")
+		$AnimationPlayer.play("woman")
 
 
 func _on_oldman_body_exited(body: Node2D) -> void:
 	$NPCs/oldman.play("idle")
-
+	$AnimationPlayer.play("man_2")
 
 func _on_guy_body_exited(body: Node2D) -> void:
 	$NPCs/guy.play("idle")
-
+	$AnimationPlayer.play("guy_2")
 
 func _on_oldwoman_body_exited(body: Node2D) -> void:
 	$NPCs/oldman.play("idle")
-
+	$AnimationPlayer.play("woman_2")
 func NPCs():
 	$NPCs.show()
 	$NPCs/oldman/oldman.monitoring = true

@@ -14,6 +14,7 @@ var RanPos = []
 var enemy = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.stage = "water"
 	Global.can_pause = true
 	Global.showwave = true
 	Global.wave = wave_lenght

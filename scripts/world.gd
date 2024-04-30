@@ -5,6 +5,7 @@ extends Node2D
 var teleport = ""
 var  player
 func _ready() -> void:
+	Global.stage = ""
 	hud.hide()
 	if Global.Dfire == false and Global.Dwater == false and Global.Dground == false and Global.Dwind == false:
 		leaf.global_position.x = $fires.global_position.x

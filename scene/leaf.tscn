@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bd4lhvh1afe24"]
+[gd_scene load_steps=41 format=3 uid="uid://bd4lhvh1afe24"]
 
 [ext_resource type="Texture2D" uid="uid://bovyxon6775j3" path="res://assent/Elementals_leaf_ranger_288x128_SpriteSheet.png" id="1_grca3"]
 [ext_resource type="Script" path="res://platformer_controller/platformer_controller.gd" id="1_qjbl6"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dvi34jjtfuqpw" path="res://sfx/leaf/wind.wav" id="5_bc2o6"]
 [ext_resource type="AudioStream" uid="uid://cgv86l6jlfw4q" path="res://sfx/leaf/beam.wav" id="5_ptegi"]
 [ext_resource type="AudioStream" uid="uid://dbnhooc28b83e" path="res://sfx/leaf/fire.wav" id="6_ornwi"]
+[ext_resource type="AudioStream" uid="uid://bc4ksheesw56j" path="res://sfx/leaf/melee.MP3" id="9_e0bbv"]
 
 [sub_resource type="Animation" id="Animation_i0p7e"]
 resource_name = "attack"
@@ -71,6 +72,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/melee:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ss6ts"]
@@ -869,7 +882,7 @@ position = Vector2(1, -39)
 texture = ExtResource("1_grca3")
 hframes = 22
 vframes = 17
-frame = 286
+frame = 220
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "teleport_in"
@@ -890,6 +903,7 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_36qkg")
+disabled = true
 
 [node name="special" type="Area2D" parent="."]
 position = Vector2(25, -8)
@@ -1026,34 +1040,47 @@ libraries = {
 
 [node name="steepWater" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_x2yss")
+volume_db = 5.0
 
 [node name="steepFire" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_bc2o6")
+volume_db = 5.0
 
 [node name="steepWind" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("6_ornwi")
+volume_db = 5.0
 
 [node name="steepGround" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_cxict")
+volume_db = 5.0
 
 [node name="fire" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_3jtd0")
+volume_db = 5.0
 pitch_scale = 2.0
 
 [node name="melee" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("9_e0bbv")
+volume_db = 5.0
 
 [node name="rainArrow" type="AudioStreamPlayer" parent="sfx"]
+volume_db = 5.0
 
 [node name="powerBeam" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_ptegi")
+volume_db = 5.0
 
 [node name="hit" type="AudioStreamPlayer" parent="sfx"]
+volume_db = 5.0
 
 [node name="roll" type="AudioStreamPlayer" parent="sfx"]
+volume_db = 5.0
 
 [node name="teleport" type="AudioStreamPlayer" parent="sfx"]
+volume_db = 5.0
 
 [node name="death" type="AudioStreamPlayer" parent="sfx"]
+volume_db = 5.0
 
 [node name="step" type="Timer" parent="."]
 one_shot = true

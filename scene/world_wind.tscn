@@ -502,6 +502,7 @@ shape = SubResource("RectangleShape2D_p1401")
 
 [node name="level" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_2gwru")
+volume_db = -5.0
 autoplay = true
 
 [node name="bossDead" type="AudioStreamPlayer" parent="."]

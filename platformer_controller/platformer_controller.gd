@@ -161,9 +161,11 @@ func _input(_event):
 			$AnimationPlayer.play("run")
 			$leaftrail.emitting = true
 			transform.x.x = -1
+			_step()
 		if Input.is_action_just_released(input_left):
 				$AnimationPlayer.play("idle")
 				$leaftrail.emitting = false
+				_stepStop()
 		if Input.is_action_pressed(input_right) and is_attacking == false:
 			acc.x = max_acceleration
 			_direction = 1
@@ -172,9 +174,11 @@ func _input(_event):
 			$AnimationPlayer.play("run")
 			$leaftrail.emitting = true
 			transform.x.x = 1
+			_step()
 		if Input.is_action_just_released(input_right):
 				$AnimationPlayer.play("idle")
 				$leaftrail.emitting = false
+				_stepStop()
 		if Input.is_action_just_pressed(input_jump) and rolling:
 			$AnimationPlayer.play("jump")
 			holding_jump = true
@@ -501,3 +505,25 @@ func _upgrade_player():
 	if Global.Dground:
 		$powerUP.play("health")
 		Global.recovery_health = 10
+func _step():
+	if $step.time_left <=0:
+		match Global.stage:
+			"water":
+				$sfx/steepWater.pitch_scale = randf_range(0.8,1.2)
+				$sfx/steepWater.playing = true
+			"ground":
+				$sfx/steepGround.pitch_scale = randf_range(0.8,1.2)
+				$sfx/steepGround.playing = true
+			"fire":
+				$sfx/steepFire.pitch_scale = randf_range(0.8,1.2)
+				$sfx/steepFire.playing = true
+			"wind":
+				$sfx/steepWind.pitch_scale = randf_range(0.8,1.2)
+				$sfx/steepWind.playing = true
+
+		$step.start(0.2)
+func _stepStop():
+	$sfx/steepWind.playing = false
+	$sfx/steepWater.playing = false
+	$sfx/steepFire.playing = false
+	$sfx/steepGround.playing = false

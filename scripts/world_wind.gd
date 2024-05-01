@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 			wind_check = false
 			$level.stream_paused = true
 			$bossDead.play()
-			leaf.powerUP("ground")
+			leaf.powerUP("wind")
 			await get_tree().create_timer(5).timeout
 			leaf._out()
 func spawn_enemy():

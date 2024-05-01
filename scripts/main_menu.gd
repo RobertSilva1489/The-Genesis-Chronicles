@@ -8,11 +8,6 @@ func _ready() -> void:
 	$VBoxContainer/StartButton.grab_focus()
 	Global.can_pause = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-	
 func _on_start_button_pressed() -> void:
 	$pressed.play()
 	await $pressed.finished

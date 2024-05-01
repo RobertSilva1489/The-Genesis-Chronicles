@@ -890,7 +890,7 @@ position = Vector2(1, -39)
 texture = ExtResource("1_grca3")
 hframes = 22
 vframes = 17
-frame = 275
+frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "teleport_in"
@@ -1003,9 +1003,9 @@ uppercase = true
 [node name="rain_arrow" type="Label" parent="."]
 visible = false
 offset_left = -43.0
-offset_top = -60.0
+offset_top = -45.0
 offset_right = 44.0
-offset_bottom = -41.0
+offset_bottom = -26.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_constants/line_spacing = 0
@@ -1019,9 +1019,9 @@ uppercase = true
 [node name="power_beam" type="Label" parent="."]
 visible = false
 offset_left = -42.0
-offset_top = -60.0
+offset_top = -45.0
 offset_right = 42.0
-offset_bottom = -41.0
+offset_bottom = -26.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_constants/line_spacing = 0
@@ -1047,19 +1047,19 @@ libraries = {
 
 [node name="steepWater" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_x2yss")
-volume_db = 5.0
+volume_db = 7.0
 
 [node name="steepFire" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_bc2o6")
-volume_db = 5.0
+volume_db = 7.0
 
 [node name="steepWind" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("6_ornwi")
-volume_db = 5.0
+volume_db = 7.0
 
 [node name="steepGround" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_cxict")
-volume_db = 5.0
+volume_db = 7.0
 
 [node name="fire" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_3jtd0")

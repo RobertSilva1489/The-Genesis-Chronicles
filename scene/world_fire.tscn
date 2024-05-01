@@ -197,7 +197,7 @@ color_ramp = SubResource("GradientTexture1D_r0lji")
 
 [node name="world_fire" type="Node2D"]
 script = ExtResource("1_bnp1k")
-wave_lenght = 20
+wave_lenght = 0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.4, 0.4)

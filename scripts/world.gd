@@ -6,6 +6,7 @@ var teleport = ""
 var  player
 func _ready() -> void:
 	Global.stage = ""
+	Global.can_pause = true
 	hud.hide()
 	if Global.Dfire == false and Global.Dwater == false and Global.Dground == false and Global.Dwind == false:
 		leaf.global_position.x = $fires.global_position.x
@@ -17,7 +18,6 @@ func _ready() -> void:
 		$attack.stream_paused = true
 		$defeadtAllBoss.play()
 		NPCs()
-	await get_tree().create_timer(2.0).timeout
 	if Global.Dfire == true:
 		$CanvasLayer/fire.visible = false
 		$fires.visible = false

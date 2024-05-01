@@ -17,13 +17,13 @@ var RanPos = []
 var enemy = []
 
 func _ready() -> void:
+	Global.stage = "ground"
 	Global.can_pause = true
 	Global.showwave = true
 	Global.wave = wave_lenght
 	Global.mana = 100
 	Global.quiver = 10
 	$"/root/Hud".show()
-	Global.stage = "ground"
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var ground: CharacterBody2D = $ground

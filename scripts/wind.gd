@@ -101,7 +101,8 @@ func damage (dame) -> void:
 		gravity = 0
 		Global.show_boss = false
 		Global.Dwind = true
-		$AnimationPlayer.speed_scale = 1
+		Global.unlock+=1
+		$AnimationPlayer.speed_scale = 0.5
 		$AnimationPlayer.play("death")
 
 func _free():

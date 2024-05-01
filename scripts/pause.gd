@@ -5,7 +5,6 @@ var is_paused = false
 func _ready():
 	hide() 
 	Global.can_pause = false
-	pass
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause") and not is_paused and Global.can_pause:
 		_toggle_pause()

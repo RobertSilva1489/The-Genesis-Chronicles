@@ -15,12 +15,8 @@ var strong = int(randf_range(30,40))
 var hit = false
 var boss_defeat = false 
 var dead = false
-var powerwater = true
-var powerfire = true
-var powerwind = true
-var powerground = true
-@export var special_1 = false
-@export var special_2 = false
+var special_1 = Global.special1
+var special_2 = Global.special2
 @export var rolling = true
 @export var is_attacking = false
 # Set these to the name of your action (in the Input Map)
@@ -153,7 +149,6 @@ func _ready():
 
 	Global.hit_stop_mediun()
 	is_attacking = true
-	var camera = $Camera2D
 func _input(_event):
 	acc.x = 0
 	if dead == false:
@@ -230,9 +225,7 @@ func _process(delta: float) -> void:
 	recovery_mana = Global.recovery_mana
 	recovery_quive = Global.recovery_quive
 	invecible = Global.god_mode
-	if  not Global.Dfire and not Global.Dwind:
-		Global.mana = 0
-		Global.recovery_mana = 0
+	_upgrade_player()
 ## Use this instead of coyote_timer.start() to check if the coyote_timer is enabled first
 func start_coyote_timer():
 	if is_coyote_time_enabled:
@@ -472,18 +465,13 @@ func powerUP(boosPowerUp: String) ->void:
 	match boosPowerUp:
 		"water":
 			$PowerUP.process_material.color = Color(0, 1, 1, 1)
-			_upgrade_player()
 		"ground":
 			$PowerUP.process_material.color = Color(0.647059, 0.164706, 0.164706, 1)
-			_upgrade_player()
 		"fire":
 			$PowerUP.process_material.color = Color(0.862745, 0.0784314, 0.235294, 1)
-			_upgrade_player()
 		"wind":
 			$PowerUP.process_material.color = Color(0.662745, 0.662745, 0.662745, 1)
-			_upgrade_player()
 	$PowerUP.emitting = true
-
 
 func _on_hit_timeout() -> void:
 	hit =  false
@@ -496,22 +484,37 @@ func _dead():
 	$CollisionShape2D.shape = null
 	$Timer.stop()
 func _upgrade_player():
-	if Global.Dfire and not Global.Dwater:
+	if  not Global.Dfire and not Global.Dwind:
+		Global.mana = 0
+		Global.recovery_mana = 0
+	if Global.Dfire and not Global.Dwater and Global.powerfire and Global.unlock < 4:
 		$powerUP.play("rain")
-		special_1 = true
+		Global.special1 = true
 		Global.recovery_mana = 5
 		Global.mana = 100
-	if Global.Dwind and not Global.Dwater:
+		Global.powerfire = false
+		print("FIRE")
+	else:
+		Global.recovery_mana = 5
+	if Global.Dwind and not Global.Dwater and Global.powerwind and Global.unlock < 4: 
 		$powerUP.play("beam")
-		special_2 = true
+		Global.special2 = true
 		Global.recovery_mana = 5
 		Global.mana = 100
-	if Global.Dwater:
+		Global.powerwind = false
+		print("WIND")
+	else:
+		Global.recovery_mana = 5
+	if Global.Dwater and Global.powerwater and Global.unlock < 4:
 		$powerUP.play("mana")
 		Global.recovery_mana = 10
-	if Global.Dground:
+		Global.powerwater = false
+		print("WATER")
+	if Global.Dground and Global.powerground and Global.unlock < 4:
 		$powerUP.play("health")
 		Global.recovery_health = 10
+		Global.powerground = false
+		print("GROUND")
 func _step():
 	if $step.time_left <=0:
 		match Global.stage:

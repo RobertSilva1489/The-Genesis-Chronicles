@@ -15,13 +15,17 @@ extends Node
 @export var Dwater = false
 @export var Dwind = false
 @export var Dground = false
+var powerwater = true
+var powerfire = true
+var powerwind = true
+var powerground = true
+var special1 = false
+var special2 = false
+var unlock = 0
 @export var stage = ""
-var can_pause = true
+var can_pause = false
 var boss_name = ""
 var showwave = false
-func _process(delta: float) -> void:
-	pass
-
 func freeze_frame(time, duration):
 	Engine.time_scale = time
 	await get_tree().create_timer(duration * time).timeout

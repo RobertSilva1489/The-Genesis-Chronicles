@@ -101,6 +101,7 @@ func damage (dame) -> void:
 		gravity = 0
 		Global.show_boss = false
 		Global.Dground = true
+		Global.unlock+=1
 		$AnimationPlayer.speed_scale = 1
 		$AnimationPlayer.play("death")
 

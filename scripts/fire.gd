@@ -108,6 +108,7 @@ func damage (dame) -> void:
 		$CollisionShape2D.shape = null
 		$AnimationPlayer.speed_scale = 1
 		Global.Dfire == true
+		Global.unlock+=1
 		$AnimationPlayer.play("death")
 		await $AnimationPlayer.animation_finished
 	

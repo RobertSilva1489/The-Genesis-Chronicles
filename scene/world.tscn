@@ -1,4 +1,4 @@
-[gd_scene load_steps=439 format=3 uid="uid://bec8hrk6km5ow"]
+[gd_scene load_steps=437 format=3 uid="uid://bec8hrk6km5ow"]
 
 [ext_resource type="PackedScene" uid="uid://bd4lhvh1afe24" path="res://scene/leaf.tscn" id="1_nkah1"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_tvkmb"]
@@ -374,8 +374,8 @@
 [ext_resource type="Texture2D" uid="uid://d32dh2346jpdc" path="res://assent/scenario/Fx_pack #3/3/1_119.png" id="361_5bumt"]
 [ext_resource type="Shader" path="res://shader/wind.gdshader" id="363_3bxy4"]
 [ext_resource type="Shader" path="res://shader/wave.gdshader" id="366_uxpns"]
+[ext_resource type="Texture2D" uid="uid://birt6gmo0846y" path="res://assent/scenario/FFX_nyknck.png" id="370_w4kr4"]
 [ext_resource type="Texture2D" uid="uid://dp4108oholctg" path="res://assent/scenario/Rock.png" id="371_jfiks"]
-[ext_resource type="Texture2D" uid="uid://53lfgpdm33qo" path="res://assent/scenario/bubble.png" id="375_rx28x"]
 [ext_resource type="Texture2D" uid="uid://4weuhq2nmrhr" path="res://assent/icons_xbox_with_outline_no_fill.png" id="376_uvt7j"]
 [ext_resource type="AudioStream" uid="uid://k2x84vwnotkp" path="res://sfx/The Propehecy - After attack.wav" id="378_qagb4"]
 [ext_resource type="AudioStream" uid="uid://df6p0dtdu3wgl" path="res://sfx/Against-All-Odds-Finish-game.mp3" id="379_vi2s2"]
@@ -2735,12 +2735,6 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetAtlasSource_n2243")
 
-[sub_resource type="Gradient" id="Gradient_do3wv"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.215686, 0, 0.788235)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dgwle"]
-gradient = SubResource("Gradient_do3wv")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jkm3d"]
 emission_shape = 3
 emission_box_extents = Vector3(800, 10, 1)
@@ -2750,9 +2744,8 @@ gravity = Vector3(0, -30, 0)
 initial_velocity_max = 10.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 0.01
-scale_max = 0.02
-color_ramp = SubResource("GradientTexture1D_dgwle")
+scale_min = 0.1
+scale_max = 0.2
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e2rq6"]
 emission_shape = 6
@@ -3247,7 +3240,6 @@ texture = ExtResource("3_yhbyb")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="shake" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_tgens")
@@ -3296,7 +3288,7 @@ layer_0/tile_data = PackedInt32Array(786493, 65538, 0, 852029, 65538, 1, 917565,
 position = Vector2(626, 208)
 amount = 2000
 process_material = SubResource("ParticleProcessMaterial_jkm3d")
-texture = ExtResource("375_rx28x")
+texture = ExtResource("370_w4kr4")
 randomness = 1.0
 visibility_rect = Rect2(-844, -100, 1650, 200)
 
@@ -3350,6 +3342,7 @@ collision_layer = 0
 shape = SubResource("CapsuleShape2D_iiatc")
 
 [node name="NPCs" type="Marker2D" parent="."]
+visible = false
 position = Vector2(-2, -5)
 
 [node name="oldman" type="AnimatedSprite2D" parent="NPCs"]

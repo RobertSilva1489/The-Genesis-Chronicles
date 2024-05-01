@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bd4lhvh1afe24"]
+[gd_scene load_steps=42 format=3 uid="uid://bd4lhvh1afe24"]
 
 [ext_resource type="Texture2D" uid="uid://bovyxon6775j3" path="res://assent/Elementals_leaf_ranger_288x128_SpriteSheet.png" id="1_grca3"]
 [ext_resource type="Script" path="res://platformer_controller/platformer_controller.gd" id="1_qjbl6"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cgv86l6jlfw4q" path="res://sfx/leaf/beam.wav" id="5_ptegi"]
 [ext_resource type="AudioStream" uid="uid://dbnhooc28b83e" path="res://sfx/leaf/fire.wav" id="6_ornwi"]
 [ext_resource type="AudioStream" uid="uid://bc4ksheesw56j" path="res://sfx/leaf/melee.MP3" id="9_e0bbv"]
+[ext_resource type="AudioStream" uid="uid://dpfxbnxoj0os3" path="res://sfx/leaf/rainArrow.MP3" id="10_qoiov"]
 
 [sub_resource type="Animation" id="Animation_i0p7e"]
 resource_name = "attack"
@@ -246,6 +247,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/rainArrow:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_vdi3o"]
@@ -740,7 +753,6 @@ scale_max = 2.0
 
 [sub_resource type="Animation" id="Animation_p7b5l"]
 resource_name = "mana"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -748,7 +760,7 @@ tracks/0/path = NodePath("mana+:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.4),
+"times": PackedFloat32Array(0.1, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-20, -45), Vector2(-20, -60)]
@@ -760,7 +772,7 @@ tracks/1/path = NodePath("mana+:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
+"times": PackedFloat32Array(0, 0.1, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -768,7 +780,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_tuoym"]
 resource_name = "health"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -776,7 +787,7 @@ tracks/0/path = NodePath("health+:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.4),
+"times": PackedFloat32Array(0.1, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-20, -45), Vector2(-20, -60)]
@@ -788,7 +799,7 @@ tracks/1/path = NodePath("health+:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
+"times": PackedFloat32Array(0, 0.1, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -796,7 +807,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_jewwj"]
 resource_name = "beam"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -804,7 +814,7 @@ tracks/0/path = NodePath("power_beam:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
+"times": PackedFloat32Array(0, 0.1, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -816,7 +826,7 @@ tracks/1/path = NodePath("power_beam:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.4),
+"times": PackedFloat32Array(0.1, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-42, -45), Vector2(-42, -60)]
@@ -824,7 +834,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_6kl4s"]
 resource_name = "rain"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -832,7 +841,7 @@ tracks/0/path = NodePath("rain_arrow:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.5),
+"times": PackedFloat32Array(0.1, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-43, -45), Vector2(-43, -60)]
@@ -844,7 +853,7 @@ tracks/1/path = NodePath("rain_arrow:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
+"times": PackedFloat32Array(0, 0.1, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -861,7 +870,6 @@ _data = {
 [node name="Leaf" type="CharacterBody2D" groups=["player"]]
 collision_mask = 24
 script = ExtResource("1_qjbl6")
-is_attacking = true
 input_jump = ""
 roll_distance = 0
 jump_duration = 0.5
@@ -882,7 +890,7 @@ position = Vector2(1, -39)
 texture = ExtResource("1_grca3")
 hframes = 22
 vframes = 17
-frame = 220
+frame = 275
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "teleport_in"
@@ -892,7 +900,6 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_uw7tc")
-disabled = true
 
 [node name="attack" type="Area2D" parent="."]
 position = Vector2(67, -8)
@@ -964,9 +971,9 @@ one_shot = true
 [node name="mana+" type="Label" parent="."]
 visible = false
 offset_left = -20.0
-offset_top = -45.0
+offset_top = -60.0
 offset_right = 20.0
-offset_bottom = -26.0
+offset_bottom = -41.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_constants/line_spacing = 0
@@ -996,9 +1003,9 @@ uppercase = true
 [node name="rain_arrow" type="Label" parent="."]
 visible = false
 offset_left = -43.0
-offset_top = -45.0
+offset_top = -60.0
 offset_right = 44.0
-offset_bottom = -26.0
+offset_bottom = -41.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_constants/line_spacing = 0
@@ -1064,7 +1071,8 @@ stream = ExtResource("9_e0bbv")
 volume_db = 5.0
 
 [node name="rainArrow" type="AudioStreamPlayer" parent="sfx"]
-volume_db = 5.0
+stream = ExtResource("10_qoiov")
+volume_db = 3.0
 
 [node name="powerBeam" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_ptegi")

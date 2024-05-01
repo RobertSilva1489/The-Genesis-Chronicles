@@ -9,7 +9,7 @@ var dead = false
 var distance
 var move :int
 var selected_animation
-var damage_apply = randi_range(15,30)
+@export var damage_apply = 30
 var _position
 @export var is_animation = false
 @export var DIST_FOLLOW := 1000

@@ -583,7 +583,7 @@ collision_mask = 8
 script = ExtResource("1_ncpdh")
 is_animation = true
 speed = 120
-health = 10
+health = 600
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-144, -99)

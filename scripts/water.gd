@@ -20,7 +20,6 @@ var move :int
 @export var can_attack = true
 @export var follow = false
 @export var attack_cooldown : float = 1.0
-@export var damage_apply = randi_range(10,20)
 @onready var tree: AnimationTree = $AnimationTree
 @onready var leaf: CharacterBody2D = $"../Leaf"
 
@@ -115,7 +114,7 @@ func blink() -> void:
 
 func _on_attacks_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body.take_damage(damage_apply)
+		body.take_damage(strong)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0:

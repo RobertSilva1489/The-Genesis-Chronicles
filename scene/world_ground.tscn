@@ -890,9 +890,9 @@ layer_0/tile_data = PackedInt32Array(786493, 65538, 0, 852029, 65538, 1, 917565,
 
 [node name="Leaf" parent="." instance=ExtResource("7_p6sb5")]
 position = Vector2(744, 48)
+roll_distance = 1500
 max_jump_amount = 2
-max_acceleration = 8000
-friction = 200
+max_acceleration = 2000
 can_hold_jump = true
 
 [node name="Area2D" type="Area2D" parent="."]

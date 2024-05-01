@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bd4lhvh1afe24"]
+[gd_scene load_steps=44 format=3 uid="uid://bd4lhvh1afe24"]
 
 [ext_resource type="Texture2D" uid="uid://bovyxon6775j3" path="res://assent/Elementals_leaf_ranger_288x128_SpriteSheet.png" id="1_grca3"]
 [ext_resource type="Script" path="res://platformer_controller/platformer_controller.gd" id="1_qjbl6"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://dbnhooc28b83e" path="res://sfx/leaf/fire.wav" id="6_ornwi"]
 [ext_resource type="AudioStream" uid="uid://bc4ksheesw56j" path="res://sfx/leaf/melee.MP3" id="9_e0bbv"]
 [ext_resource type="AudioStream" uid="uid://dpfxbnxoj0os3" path="res://sfx/leaf/rainArrow.MP3" id="10_qoiov"]
+[ext_resource type="AudioStream" uid="uid://occgu2lx7kug" path="res://sfx/leaf/hit.wav" id="12_x3c2b"]
+[ext_resource type="AudioStream" uid="uid://dilla75nbhort" path="res://sfx/leaf/roll.wav" id="13_s36f5"]
 
 [sub_resource type="Animation" id="Animation_i0p7e"]
 resource_name = "attack"
@@ -364,6 +366,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [330, 331, 332, 333, 334, 335]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx/hit:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_yxxi4"]
 resource_name = "idle"
@@ -508,6 +522,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/roll:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_eyp6i"]
@@ -751,31 +777,31 @@ orbit_velocity_max = 0.0
 scale_min = 2.0
 scale_max = 2.0
 
-[sub_resource type="Animation" id="Animation_p7b5l"]
-resource_name = "mana"
+[sub_resource type="Animation" id="Animation_jewwj"]
+resource_name = "beam"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("mana+:position")
+tracks/0/path = NodePath("power_beam:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-20, -45), Vector2(-20, -60)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("mana+:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("power_beam:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-42, -45), Vector2(-42, -60)]
 }
 
 [sub_resource type="Animation" id="Animation_tuoym"]
@@ -805,31 +831,31 @@ tracks/1/keys = {
 "values": [false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_jewwj"]
-resource_name = "beam"
+[sub_resource type="Animation" id="Animation_p7b5l"]
+resource_name = "mana"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("power_beam:visible")
+tracks/0/path = NodePath("mana+:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-20, -45), Vector2(-20, -60)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("power_beam:position")
+tracks/1/path = NodePath("mana+:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-42, -45), Vector2(-42, -60)]
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_6kl4s"]
@@ -890,7 +916,6 @@ position = Vector2(1, -39)
 texture = ExtResource("1_grca3")
 hframes = 22
 vframes = 17
-frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "teleport_in"
@@ -1079,9 +1104,11 @@ stream = ExtResource("5_ptegi")
 volume_db = 5.0
 
 [node name="hit" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("12_x3c2b")
 volume_db = 5.0
 
 [node name="roll" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("13_s36f5")
 volume_db = 5.0
 
 [node name="teleport" type="AudioStreamPlayer" parent="sfx"]

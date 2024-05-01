@@ -149,6 +149,7 @@ func _ready():
 
 	Global.hit_stop_mediun()
 	is_attacking = true
+	_upgrade_player()
 func _input(_event):
 	acc.x = 0
 	if dead == false:
@@ -160,6 +161,10 @@ func _input(_event):
 			$AnimationPlayer.play("run")
 			$leaftrail.emitting = true
 			transform.x.x = -1
+			$"mana+".scale.x *= -1
+			$"health+".scale.x *= -1
+			$rain_arrow.scale.x *= -1
+			$power_beam.scale.x *= -1
 			_step()
 		if Input.is_action_just_released(input_left):
 				$AnimationPlayer.play("idle")
@@ -225,7 +230,9 @@ func _process(delta: float) -> void:
 	recovery_mana = Global.recovery_mana
 	recovery_quive = Global.recovery_quive
 	invecible = Global.god_mode
-	_upgrade_player()
+	if  not Global.Dfire and not Global.Dwind:
+		Global.mana = 0
+		Global.recovery_mana = 0
 ## Use this instead of coyote_timer.start() to check if the coyote_timer is enabled first
 func start_coyote_timer():
 	if is_coyote_time_enabled:
@@ -484,16 +491,12 @@ func _dead():
 	$CollisionShape2D.shape = null
 	$Timer.stop()
 func _upgrade_player():
-	if  not Global.Dfire and not Global.Dwind:
-		Global.mana = 0
-		Global.recovery_mana = 0
 	if Global.Dfire and not Global.Dwater and Global.powerfire and Global.unlock < 4:
 		$powerUP.play("rain")
 		Global.special1 = true
 		Global.recovery_mana = 5
 		Global.mana = 100
 		Global.powerfire = false
-		print("FIRE")
 	else:
 		Global.recovery_mana = 5
 	if Global.Dwind and not Global.Dwater and Global.powerwind and Global.unlock < 4: 
@@ -502,19 +505,16 @@ func _upgrade_player():
 		Global.recovery_mana = 5
 		Global.mana = 100
 		Global.powerwind = false
-		print("WIND")
 	else:
 		Global.recovery_mana = 5
 	if Global.Dwater and Global.powerwater and Global.unlock < 4:
 		$powerUP.play("mana")
 		Global.recovery_mana = 10
 		Global.powerwater = false
-		print("WATER")
 	if Global.Dground and Global.powerground and Global.unlock < 4:
 		$powerUP.play("health")
 		Global.recovery_health = 10
 		Global.powerground = false
-		print("GROUND")
 func _step():
 	if $step.time_left <=0:
 		match Global.stage:

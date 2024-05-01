@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bd4lhvh1afe24"]
+[gd_scene load_steps=48 format=3 uid="uid://bd4lhvh1afe24"]
 
 [ext_resource type="Texture2D" uid="uid://bovyxon6775j3" path="res://assent/Elementals_leaf_ranger_288x128_SpriteSheet.png" id="1_grca3"]
 [ext_resource type="Script" path="res://platformer_controller/platformer_controller.gd" id="1_qjbl6"]
@@ -13,6 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://dpfxbnxoj0os3" path="res://sfx/leaf/rainArrow.MP3" id="10_qoiov"]
 [ext_resource type="AudioStream" uid="uid://occgu2lx7kug" path="res://sfx/leaf/hit.wav" id="12_x3c2b"]
 [ext_resource type="AudioStream" uid="uid://dilla75nbhort" path="res://sfx/leaf/roll.wav" id="13_s36f5"]
+[ext_resource type="AudioStream" uid="uid://c4ff74h3u3uxo" path="res://sfx/leaf/Teleport.wav" id="14_ujwnq"]
+[ext_resource type="AudioStream" uid="uid://ckk33k0y0h8j6" path="res://sfx/leaf/Jump.wav" id="15_d70l5"]
+[ext_resource type="AudioStream" uid="uid://d2kp0k3rp748g" path="res://sfx/leaf/powerUP.wav" id="16_5bv24"]
+[ext_resource type="AudioStream" uid="uid://itnddrojnnfc" path="res://sfx/leaf/death.wav" id="16_wn3y3"]
 
 [sub_resource type="Animation" id="Animation_i0p7e"]
 resource_name = "attack"
@@ -196,6 +200,18 @@ tracks/3/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/death:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_h86u0"]
 resource_name = "especial"
@@ -345,7 +361,7 @@ tracks/6/path = NodePath("sfx/powerBeam:playing")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -478,6 +494,18 @@ tracks/2/path = NodePath("attack/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/jump:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -630,6 +658,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/teleport:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_6i4mn"]
 resource_name = "teleport_out"
@@ -684,6 +724,18 @@ tracks/3/keys = {
 "method": &"_endstage"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/teleport:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uxnvb"]
 _data = {
@@ -725,7 +777,7 @@ emission_shape = 3
 emission_box_extents = Vector3(30, -130, 1)
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
-gravity = Vector3(0, 98, 0)
+gravity = Vector3(0, -98, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 3.0
@@ -803,6 +855,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-42, -45), Vector2(-42, -60)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/Powersfx:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_tuoym"]
 resource_name = "health"
@@ -829,6 +893,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/Powersfx:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_p7b5l"]
@@ -857,6 +933,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/Powersfx:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_6kl4s"]
 resource_name = "rain"
@@ -883,6 +971,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/Powersfx:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hku21"]
@@ -916,6 +1016,7 @@ position = Vector2(1, -39)
 texture = ExtResource("1_grca3")
 hframes = 22
 vframes = 17
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "teleport_in"
@@ -996,9 +1097,9 @@ one_shot = true
 [node name="mana+" type="Label" parent="."]
 visible = false
 offset_left = -20.0
-offset_top = -60.0
+offset_top = -45.0
 offset_right = 20.0
-offset_bottom = -41.0
+offset_bottom = -26.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_constants/line_spacing = 0
@@ -1012,9 +1113,9 @@ uppercase = true
 [node name="health+" type="Label" parent="."]
 visible = false
 offset_left = -20.0
-offset_top = -60.0
+offset_top = -45.0
 offset_right = 21.0
-offset_bottom = -41.0
+offset_bottom = -26.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_constants/line_spacing = 0
@@ -1066,8 +1167,6 @@ libraries = {
 "": SubResource("AnimationLibrary_hku21")
 }
 
-[node name="powerUPsfx" type="AudioStreamPlayer" parent="."]
-
 [node name="sfx" type="Node" parent="."]
 
 [node name="steepWater" type="AudioStreamPlayer" parent="sfx"]
@@ -1105,17 +1204,27 @@ volume_db = 5.0
 
 [node name="hit" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("12_x3c2b")
-volume_db = 5.0
+volume_db = 7.0
 
 [node name="roll" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("13_s36f5")
-volume_db = 5.0
+volume_db = 10.0
 
 [node name="teleport" type="AudioStreamPlayer" parent="sfx"]
-volume_db = 5.0
+stream = ExtResource("14_ujwnq")
+volume_db = 10.0
+
+[node name="jump" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("15_d70l5")
+volume_db = 10.0
 
 [node name="death" type="AudioStreamPlayer" parent="sfx"]
-volume_db = 5.0
+stream = ExtResource("16_wn3y3")
+volume_db = 10.0
+
+[node name="Powersfx" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("16_5bv24")
+volume_db = 10.0
 
 [node name="step" type="Timer" parent="."]
 one_shot = true

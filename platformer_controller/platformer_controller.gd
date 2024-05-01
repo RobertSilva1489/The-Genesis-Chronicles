@@ -479,6 +479,7 @@ func powerUP(boosPowerUp: String) ->void:
 		"wind":
 			$PowerUP.process_material.color = Color(0.662745, 0.662745, 0.662745, 1)
 	$PowerUP.emitting = true
+	$sfx/Powersfx.play()
 
 func _on_hit_timeout() -> void:
 	hit =  false

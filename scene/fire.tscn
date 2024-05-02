@@ -1,7 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://4p66m4wmkdi8"]
+[gd_scene load_steps=28 format=3 uid="uid://4p66m4wmkdi8"]
 
 [ext_resource type="Texture2D" uid="uid://dwra1ir67ea4a" path="res://assent/bosses/fire_FREE_SpriteSheet_288x128.png" id="1_dl5nf"]
 [ext_resource type="Script" path="res://scripts/fire.gd" id="1_ncpdh"]
+[ext_resource type="AudioStream" uid="uid://pu1ainnkx2is" path="res://sfx/fire/damage_4_sean.wav" id="3_le3ck"]
+[ext_resource type="AudioStream" uid="uid://b8v17o8k1mt1f" path="res://sfx/fire/death_4_sean.wav" id="4_ksflw"]
+[ext_resource type="AudioStream" uid="uid://dnnlgwubr0omy" path="res://sfx/fire/77_flesh_02.wav" id="5_d18k6"]
+[ext_resource type="AudioStream" uid="uid://cm3nkygoo8np1" path="res://sfx/fire/04_Fire_explosion_04_medium.wav" id="6_ccuk7"]
+[ext_resource type="AudioStream" uid="uid://c303by2xy4sid" path="res://sfx/fire/EXPLOSION SOUND EFFECT 💥🤯💣🔥.mp3" id="7_5ftmq"]
+[ext_resource type="AudioStream" uid="uid://3trfi5e3cjta" path="res://sfx/water/13_Ice_explosion_01.wav" id="8_lv7xt"]
+[ext_resource type="AudioStream" uid="uid://dwy63dqogigs1" path="res://sfx/fire/completion_2_sean.wav" id="9_033gy"]
+[ext_resource type="AudioStream" uid="uid://igu0sc27fo7u" path="res://sfx/fire/greeting_6_sean.wav" id="9_khjrs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mhf0t"]
 height = 44.0
@@ -57,6 +65,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_cr32a"]
 resource_name = "attack2"
@@ -107,6 +127,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/special:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_04ra6"]
@@ -171,6 +203,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/special:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sfx/attack:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.1, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_41yk1"]
@@ -275,6 +331,18 @@ tracks/6/path = NodePath(".:is_animation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sfx/death:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -478,6 +546,54 @@ tracks/5/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sfx/attack:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sfx/special3:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sfx/special2:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sfx/special:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_g2xq2"]
 resource_name = "special2"
@@ -530,6 +646,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/special3:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/special2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qrbx0"]
 _data = {
@@ -581,7 +721,7 @@ position = Vector2(113, 75)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_ncpdh")
-is_animation = true
+damage_apply = 35
 speed = 120
 health = 600
 
@@ -591,7 +731,6 @@ texture = ExtResource("1_dl5nf")
 centered = false
 hframes = 28
 vframes = 14
-frame = 140
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 5)
@@ -599,6 +738,7 @@ shape = SubResource("CapsuleShape2D_mhf0t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
+speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_qrbx0")
 }
@@ -637,6 +777,37 @@ amount = 300
 process_material = SubResource("ParticleProcessMaterial_158w2")
 lifetime = 2.0
 one_shot = true
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="hut" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("3_le3ck")
+
+[node name="death" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_ksflw")
+
+[node name="attack" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_d18k6")
+volume_db = 10.0
+
+[node name="special" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("6_ccuk7")
+volume_db = 10.0
+
+[node name="special2" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("7_5ftmq")
+
+[node name="special3" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("8_lv7xt")
+volume_db = 10.0
+
+[node name="victory" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("9_033gy")
+volume_db = 5.0
+
+[node name="hello" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("9_khjrs")
+volume_db = 5.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attacks" to="." method="_on_attacks_body_entered"]

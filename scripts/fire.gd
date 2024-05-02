@@ -11,6 +11,7 @@ var move :int
 var selected_animation
 @export var damage_apply = 30
 var _position
+@onready var victory: AudioStreamPlayer = $sfx/victory
 @export var is_animation = false
 @export var DIST_FOLLOW := 1000
 @export var DIST_ATTACK := 50
@@ -28,6 +29,7 @@ var _position
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	randomize()
+	$sfx/hello.play()
 	$AnimationPlayer.clear_caches()
 	$AnimationPlayer.play("idle")
 	Global.show_boss = true
@@ -43,13 +45,13 @@ func _process(delta: float) -> void:
 	Global.boss_health = health
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
-		if distance <=DIST_FOLLOW:
+		if distance <=DIST_FOLLOW and Global.health > 0:
 			follow = true
 			invencible = false
 		else:
 			follow = false
 			$AnimationPlayer.play("idle")
-		if distance <=DIST_ATTACK:
+		if distance <=DIST_ATTACK and Global.health > 0:
 			attack_player = true
 			invencible = false
 		else:
@@ -114,6 +116,7 @@ func damage (dame) -> void:
 	
 func blink() -> void:
 	$Sprite2D.modulate = Color(10,10,10,10)
+	$sfx/hut.play()
 	await get_tree().create_timer(.1).timeout
 	$Sprite2D.modulate = Color(1,1,1,1)
 func _on_attacks_body_entered(body: Node2D) -> void:
@@ -126,4 +129,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if dead == true:
 		$AnimationPlayer.play("death")
 	is_animation = false
-	
+func _victory():
+	victory.play()

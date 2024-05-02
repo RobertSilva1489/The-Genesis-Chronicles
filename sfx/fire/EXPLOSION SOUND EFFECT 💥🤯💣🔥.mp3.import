@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c303by2xy4sid"
+path="res://.godot/imported/EXPLOSION SOUND EFFECT 💥🤯💣🔥.mp3-4953e2633dec8368c367ba152c57867d.mp3str"
+
+[deps]
+
+source_file="res://sfx/fire/EXPLOSION SOUND EFFECT 💥🤯💣🔥.mp3"
+dest_files=["res://.godot/imported/EXPLOSION SOUND EFFECT 💥🤯💣🔥.mp3-4953e2633dec8368c367ba152c57867d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

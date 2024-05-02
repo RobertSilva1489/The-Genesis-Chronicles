@@ -1174,7 +1174,6 @@ stream = ExtResource("4_x2yss")
 
 [node name="steepFire" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_bc2o6")
-volume_db = 7.0
 
 [node name="steepWind" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("6_ornwi")
@@ -1211,7 +1210,7 @@ volume_db = 10.0
 
 [node name="teleport" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("14_ujwnq")
-volume_db = 10.0
+volume_db = 5.0
 
 [node name="jump" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("15_d70l5")

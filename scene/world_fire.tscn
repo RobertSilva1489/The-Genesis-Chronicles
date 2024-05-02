@@ -337,6 +337,10 @@ autoplay = true
 [node name="bossDead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_mkx76")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1687, -57)
+zoom = Vector2(1.4, 2)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Boss" to="." method="_on_boss_timeout"]
 [connection signal="body_entered" from="AreaBoss" to="." method="_on_area_boss_body_entered"]

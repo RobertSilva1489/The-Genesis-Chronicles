@@ -138,6 +138,7 @@ offset_bottom = 1409.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.3, 0.03)
+max_value = 600.0
 texture_under = ExtResource("7_1e2o6")
 texture_progress = ExtResource("7_1e2o6")
 tint_under = Color(0.0823529, 0.0823529, 0.0823529, 0.709804)

@@ -1171,7 +1171,6 @@ libraries = {
 
 [node name="steepWater" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_x2yss")
-volume_db = 7.0
 
 [node name="steepFire" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_bc2o6")

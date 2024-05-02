@@ -27,7 +27,7 @@ func _ready() -> void:
 	randomize()
 	$AnimationPlayer.clear_caches()
 	Global.show_boss = true
-	Global.boss_name = "Ground"
+	Global.boss_name = "Terra"
 	$AnimationPlayer.play("idle")
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():

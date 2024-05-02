@@ -10,7 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$hud_boss/Boss.value = Global.boss_health
 	$hud_boss/TextEdit.text = Global.boss_name
-	$hud_boss/Boss.max_value = 400
+	$hud_boss/Boss.max_value = 600
 	$health.value = Global.health
 	$mana.value = Global.mana
 	$Sprite2D2/arrow.value = Global.quiver

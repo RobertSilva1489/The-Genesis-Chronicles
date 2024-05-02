@@ -9,12 +9,13 @@ extends Node
 @export var recovery_mana = 5
 @export var recovery_quive = 1
 @export var show_boss = false
-@export var boss_health = 0
+@export var boss_health = 600
 @export var god_mode = false
 @export var Dfire = false
 @export var Dwater = false
 @export var Dwind = false
 @export var Dground = false
+var victory = false
 var powerwater = true
 var powerfire = true
 var powerwind = true

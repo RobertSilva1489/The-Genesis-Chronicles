@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=3 uid="uid://0lq0il055lme"]
+[gd_scene load_steps=182 format=3 uid="uid://0lq0il055lme"]
 
 [ext_resource type="Texture2D" uid="uid://b3bgplwto1jqt" path="res://assent/bosses/water_FREE_SpriteSheet_288x128.png" id="1_ktpxg"]
 [ext_resource type="Script" path="res://scripts/water.gd" id="1_s05rs"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://ci4xq04g4oi8u" path="res://sfx/water/greeting_6_karen.wav" id="6_anc3k"]
 [ext_resource type="AudioStream" uid="uid://dolojdvs8xtdf" path="res://sfx/water/22_Water_02.wav" id="7_obb1c"]
 [ext_resource type="AudioStream" uid="uid://3trfi5e3cjta" path="res://sfx/water/13_Ice_explosion_01.wav" id="8_nw5x4"]
+[ext_resource type="AudioStream" uid="uid://4w24jgev3yt7" path="res://sfx/water/completion_2_karen.wav" id="9_k0e5m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4q5x"]
 atlas = ExtResource("1_ktpxg")
@@ -1769,9 +1770,8 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_s05rs")
-speed = 100
+speed = 120
 health = 600
-strong = 100
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-144, -110)
@@ -1865,6 +1865,10 @@ volume_db = 20.0
 [node name="special2" type="AudioStreamPlayer" parent="Node"]
 stream = ExtResource("8_nw5x4")
 volume_db = 20.0
+
+[node name="victory" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("9_k0e5m")
+volume_db = 24.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attacks" to="." method="_on_attacks_body_entered"]

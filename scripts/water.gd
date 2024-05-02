@@ -22,6 +22,7 @@ var move :int
 @export var attack_cooldown : float = 1.0
 @onready var tree: AnimationTree = $AnimationTree
 @onready var leaf: CharacterBody2D = $"../Leaf"
+@onready var victory: AudioStreamPlayer = $Node/victory
 
 func _ready() -> void:
 	randomize()
@@ -95,6 +96,7 @@ func damage (dame) -> void:
 		blink()
 		health -= dame
 		countHit+=1
+		print(Global.boss_health)
 	if health <= 0:
 		dead = true
 		$CollisionShape2D.shape = null
@@ -119,3 +121,5 @@ func _on_attacks_body_entered(body: Node2D) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0:
 		$AnimationPlayer.play("idle")
+func _victory():
+	victory.play()

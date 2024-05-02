@@ -18,8 +18,8 @@ func _ready() -> void:
 	Global.can_pause = true
 	Global.showwave = true
 	Global.wave = wave_lenght
-	Global.mana = 100
 	Global.quiver = 10
+	Global.victory = false
 	$"/root/Hud".show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 		$AnimationPlayer.play("open")
 		Global.showwave = false
 	if water != null:
+		
 		if water.health <=0 and water_check == true:
 			water_check = false
 			$level.stream_paused = true
@@ -36,8 +37,12 @@ func _process(delta: float) -> void:
 			leaf.powerUP("water")
 			await get_tree().create_timer(5).timeout
 			leaf._out()
-	if Global.health <= 0:
+	if Global.health <= 0 and Global.victory == false:
+		Global.victory = true
 		$Camera2D.make_current()
+		water._victory()
+		await get_tree().create_timer(5).timeout
+		get_tree().change_scene_to_file("res://scene/world.tscn")
 func spawn_enemy():
 	wave_lenght-=1
 	Global.scene_enemy+=1

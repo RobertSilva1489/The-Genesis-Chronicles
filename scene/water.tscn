@@ -1,7 +1,13 @@
-[gd_scene load_steps=175 format=3 uid="uid://0lq0il055lme"]
+[gd_scene load_steps=181 format=3 uid="uid://0lq0il055lme"]
 
 [ext_resource type="Texture2D" uid="uid://b3bgplwto1jqt" path="res://assent/bosses/water_FREE_SpriteSheet_288x128.png" id="1_ktpxg"]
 [ext_resource type="Script" path="res://scripts/water.gd" id="1_s05rs"]
+[ext_resource type="AudioStream" uid="uid://x8j5jid6l6r7" path="res://sfx/water/damage_7_karen.wav" id="3_montj"]
+[ext_resource type="AudioStream" uid="uid://dnqc2yt17wiiy" path="res://sfx/water/56_Attack_03.wav" id="4_kqy4g"]
+[ext_resource type="AudioStream" uid="uid://b7t7nfwusrr4x" path="res://sfx/water/death_4_karen.wav" id="5_310cx"]
+[ext_resource type="AudioStream" uid="uid://ci4xq04g4oi8u" path="res://sfx/water/greeting_6_karen.wav" id="6_anc3k"]
+[ext_resource type="AudioStream" uid="uid://dolojdvs8xtdf" path="res://sfx/water/22_Water_02.wav" id="7_obb1c"]
+[ext_resource type="AudioStream" uid="uid://3trfi5e3cjta" path="res://sfx/water/13_Ice_explosion_01.wav" id="8_nw5x4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4q5x"]
 atlas = ExtResource("1_ktpxg")
@@ -1180,6 +1186,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_h0vkb"]
 length = 1.4
@@ -1230,6 +1248,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_y827k"]
@@ -1318,6 +1348,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node/attack:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.7, 1.2, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
 
 [sub_resource type="Animation" id="Animation_5fy38"]
 length = 5.0
@@ -1379,6 +1421,18 @@ tracks/2/keys = {
 "args": [],
 "method": &"blink"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node/death:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_vl24p"]
@@ -1558,6 +1612,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node/attack:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.6, 0.8, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node/special:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_whgq6"]
 length = 6.4
@@ -1621,6 +1699,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node/special:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node/special2:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6, 4.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_65e5b"]
 _data = {
@@ -1669,11 +1771,12 @@ collision_mask = 8
 script = ExtResource("1_s05rs")
 speed = 100
 health = 600
+strong = 100
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-144, -110)
 sprite_frames = SubResource("SpriteFrames_vhdca")
-animation = &"attack1"
+animation = &"idle"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1736,6 +1839,32 @@ disabled = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="hut" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("3_montj")
+volume_db = 20.0
+
+[node name="attack" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("4_kqy4g")
+volume_db = 24.0
+
+[node name="death" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("5_310cx")
+volume_db = 20.0
+
+[node name="hello" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("6_anc3k")
+volume_db = 10.0
+
+[node name="special" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("7_obb1c")
+volume_db = 20.0
+
+[node name="special2" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("8_nw5x4")
+volume_db = 20.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attacks" to="." method="_on_attacks_body_entered"]

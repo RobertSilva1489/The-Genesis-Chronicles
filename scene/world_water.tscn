@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://34cy45i4qvv"]
+[gd_scene load_steps=24 format=3 uid="uid://34cy45i4qvv"]
 
 [ext_resource type="Script" path="res://scripts/world_water.gd" id="1_rdlo3"]
 [ext_resource type="Texture2D" uid="uid://cwshg2jwnkhr4" path="res://assent/scenario/sea_background.png" id="2_pta8h"]
@@ -322,6 +322,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idrp6"]
 size = Vector2(139.5, 244)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qugw3"]
+shader = ExtResource("3_ddl53")
+shader_parameter/WATER_COL = Color(0.176471, 0.635294, 0.85098, 1)
+shader_parameter/WATER2_COL = Color(0.0588235, 0.529412, 0.776471, 1)
+shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 1)
+shader_parameter/distortion_speed = 20.0
+shader_parameter/tile = Vector2(1, 0)
+shader_parameter/offset = 0.0
+
 [node name="world_water" type="Node2D"]
 script = ExtResource("1_rdlo3")
 wave_lenght = 0
@@ -472,6 +481,18 @@ autoplay = true
 
 [node name="bossDead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_jm8a2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(3278, -62)
+zoom = Vector2(1.2, 1.2)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qugw3")
+offset_left = -955.0
+offset_top = -905.0
+offset_right = 5011.0
+offset_bottom = 516.0
+color = Color(1, 1, 1, 0.25098)
 
 [connection signal="timeout" from="boss" to="." method="_on_boss_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

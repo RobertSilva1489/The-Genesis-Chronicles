@@ -36,6 +36,8 @@ func _process(delta: float) -> void:
 			leaf.powerUP("water")
 			await get_tree().create_timer(5).timeout
 			leaf._out()
+	if Global.health <= 0:
+		$Camera2D.make_current()
 func spawn_enemy():
 	wave_lenght-=1
 	Global.scene_enemy+=1

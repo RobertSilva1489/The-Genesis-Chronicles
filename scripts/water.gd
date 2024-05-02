@@ -29,6 +29,7 @@ func _ready() -> void:
 	Global.show_boss = true
 	Global.boss_name = "Aqua"
 	$AnimationPlayer.play("idle")
+	$Node/hello.play()
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -42,7 +43,7 @@ func _process(delta: float) -> void:
 			follow = true
 		else:
 			follow = false 
-		if distance <=DIST_ATTACK:
+		if distance <=DIST_ATTACK and Global.health > 0:
 			attack_player = true
 			invencible = false
 		else:
@@ -58,7 +59,6 @@ func _process(delta: float) -> void:
 			if dead:
 				$AnimationPlayer.play("death")
 		_flip()	
-
 func _patrol():
 	if Global.health > 0 and health > 0:
 		velocity.x = direction * speed

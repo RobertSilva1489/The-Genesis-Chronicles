@@ -144,3 +144,21 @@ func _on_door_leaf_body_exited(body: Node2D) -> void:
 		player = null
 		teleport = ""
 		$doorLeaf2.hide()
+
+
+func _on_jotum_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		$Jotum.play("speak")
+		$AnimationPlayer.play("speak")
+		leaf.input_left = ""
+		leaf.input_right = ""
+		leaf.input_jump = ""
+		leaf.animation_player.play("idle")
+		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("die")
+		await $AnimationPlayer.animation_finished
+		leaf.input_jump = "jump"
+		leaf.input_left = "move_left"
+		leaf.input_right = "move_right"
+func _on_jotum_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

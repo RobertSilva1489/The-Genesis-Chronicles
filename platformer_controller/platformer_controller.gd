@@ -7,6 +7,7 @@ signal hit_ground()
 var _direction = 1
 var arrow: PackedScene = preload("res://scene/arrow.tscn")
 var special: PackedScene = preload("res://scene/arrow_shower.tscn")
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
 var recovery_health 
 var recovery_mana
@@ -149,6 +150,8 @@ func _ready():
 
 	Global.hit_stop_mediun()
 	Global.health = 400
+	if Global.Dfire or Global.Dwind:
+		Global.mana = 100
 	is_attacking = true
 	_upgrade_player()
 func _input(_event):

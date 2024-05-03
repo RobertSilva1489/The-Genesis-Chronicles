@@ -1171,15 +1171,19 @@ libraries = {
 
 [node name="steepWater" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_x2yss")
+volume_db = -1.0
 
 [node name="steepFire" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_bc2o6")
+volume_db = -1.0
 
 [node name="steepWind" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("6_ornwi")
+volume_db = -1.0
 
 [node name="steepGround" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_cxict")
+volume_db = -1.0
 
 [node name="fire" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_3jtd0")

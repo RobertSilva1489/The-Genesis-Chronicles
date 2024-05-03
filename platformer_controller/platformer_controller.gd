@@ -148,6 +148,7 @@ func _ready():
 		jump_buffer_timer.one_shot = true
 
 	Global.hit_stop_mediun()
+	Global.health = 400
 	is_attacking = true
 	_upgrade_player()
 func _input(_event):

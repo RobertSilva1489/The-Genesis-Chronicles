@@ -3563,11 +3563,11 @@ region_rect = Rect2(16, 64, 16, 16)
 
 [node name="attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("378_qagb4")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="defeadtAllBoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("379_vi2s2")
-volume_db = -2.0
+volume_db = -10.0
 
 [node name="tele" type="Marker2D" parent="."]
 position = Vector2(671, 111)

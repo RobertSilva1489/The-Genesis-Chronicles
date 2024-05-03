@@ -41,7 +41,6 @@ func _process(delta: float) -> void:
 			leaf._out()
 	if Global.health <= 0 and Global.victory == false:
 		Global.victory = true
-		$Camera2D.make_current()
 		ground._victory()
 		await get_tree().create_timer(5).timeout
 		get_tree().change_scene_to_file("res://scene/world.tscn")

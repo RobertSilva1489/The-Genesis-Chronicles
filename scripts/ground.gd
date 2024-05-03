@@ -22,10 +22,12 @@ var move :int
 @export var attack_cooldown : float = 0.5
 @onready var tree: AnimationTree = $AnimationTree
 @onready var leaf: CharacterBody2D = $"../Leaf"
+@onready var victory: AudioStreamPlayer = $sfx/victory
 
 func _ready() -> void:
 	randomize()
 	$AnimationPlayer.clear_caches()
+	$sfx/hello.play()
 	Global.show_boss = true
 	Global.boss_name = "Terra"
 	$AnimationPlayer.play("idle")
@@ -95,6 +97,7 @@ func damage (dame) -> void:
 		blink()
 		health -= dame
 		countHit+=1
+		$sfx/hut.play()
 	if health <= 0:
 		dead = true
 		$CollisionShape2D.shape = null
@@ -120,3 +123,6 @@ func _on_attacks_body_entered(body: Node2D) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if health > 0:
 		$AnimationPlayer.play("idle")
+func _victory():
+	victory.play()
+	$AnimationPlayer.play("idle")

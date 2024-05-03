@@ -27,6 +27,7 @@ var unlock = 0
 var can_pause = false
 var boss_name = ""
 var showwave = false
+var first_play = true
 func _process(delta: float) -> void:
 	UPGRADE()
 func freeze_frame(time, duration):

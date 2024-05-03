@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 		attack_player = true
 	else:
 		attack_player = false
+		follow = true
 	if leaf != null and dead == false:
 		_position = leaf.global_position.x - global_position.x
 		direction = sign(_position)
@@ -45,6 +46,7 @@ func _process(delta: float) -> void:
 func blink() -> void:
 	$Marker2D/Sprite2D.modulate = Color(10,10,10,10)
 	$AnimationPlayer.play("hit")
+	$sfx/hut.play()
 	await get_tree().create_timer(.1).timeout
 	$Marker2D/Sprite2D.modulate = Color(1,1,1,1)
 func damage (dame) -> void:
@@ -55,7 +57,6 @@ func damage (dame) -> void:
 		_dead()
 func _on_attack_body_entered(body):
 	if body.is_in_group("player"):
-		print("hit")
 		body.take_damage(strong)
 func _patrol():
 	if Global.health > 0 and health > 0:

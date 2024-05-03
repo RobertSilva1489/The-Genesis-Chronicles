@@ -37,11 +37,14 @@ func _process(delta: float) -> void:
 			leaf.powerUP("water")
 			await get_tree().create_timer(5).timeout
 			leaf._out()
-	if Global.health <= 0 and Global.victory == false:
+	if Global.health <= 0 and Global.victory == false and water:
 		Global.victory = true
 		$Camera2D.make_current()
 		water._victory()
 		await get_tree().create_timer(5).timeout
+		get_tree().change_scene_to_file("res://scene/world.tscn")
+	elif Global.health <= 0:
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://scene/world.tscn")
 func spawn_enemy():
 	wave_lenght-=1
@@ -64,7 +67,11 @@ func _on_timer_timeout() -> void:
 func spawn_boss():
 	var Boss = boss.instantiate()
 	add_child(Boss)
+	$waterbubles.emitting = true
+	await get_tree().create_timer(1).timeout
+	add_child(Boss)
 	Boss.global_position = boss_spawn.global_position
+	
 
 
 func _on_boss_timeout() -> void:

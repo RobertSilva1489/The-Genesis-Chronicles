@@ -2,9 +2,13 @@ extends Node2D
 @onready var hud = $"/root/Hud"
 @onready var leaf: CharacterBody2D = $Leaf
 @export var play = false
+
 var teleport = ""
 var  player
 func _ready() -> void:
+	if Global.first_play == false:
+		$Jotum.visible = false
+		$Jotum/jotum.monitoring = false
 	Global.stage = ""
 	Global.can_pause = true
 	hud.hide()
@@ -160,5 +164,5 @@ func _on_jotum_body_entered(body: Node2D) -> void:
 		leaf.input_jump = "jump"
 		leaf.input_left = "move_left"
 		leaf.input_right = "move_right"
-func _on_jotum_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+func firstPlay():
+	Global.first_play = false

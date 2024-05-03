@@ -418,10 +418,8 @@ layer_0/tile_data = PackedInt32Array(196664, 2, 0, 262200, 2, 1, 327736, 2, 1, 1
 
 [node name="Leaf" parent="." instance=ExtResource("9_3oh1v")]
 position = Vector2(612, -64)
-roll_distance = 500
-max_jump_amount = 2
-max_acceleration = 8000
-friction = 200
+roll_distance = 1500
+max_acceleration = 2000
 can_hold_jump = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -432,7 +430,7 @@ libraries = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(1544, -450)
+position = Vector2(1545, -113)
 rotation = -3.14159
 scale = Vector2(1.29227, 1.84757)
 collision_layer = 16
@@ -448,7 +446,6 @@ region_rect = Rect2(257.58, 3.34498, 58.4615, 185.655)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(30.1794, 29.9041)
 shape = SubResource("RectangleShape2D_prefe")
-disabled = true
 
 [node name="spawn" type="StaticBody2D" parent="."]
 position = Vector2(834, 14)
@@ -502,11 +499,16 @@ shape = SubResource("RectangleShape2D_p1401")
 
 [node name="level" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_2gwru")
-volume_db = -5.0
+volume_db = -7.0
 autoplay = true
 
 [node name="bossDead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_puy80")
+volume_db = -5.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1815, 38)
+zoom = Vector2(1.4, 2)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="boss" to="." method="_on_boss_timeout"]

@@ -29,6 +29,10 @@ func _process(delta: float) -> void:
 	var ground: CharacterBody2D = $ground
 	if Global.wave == 0:
 		Global.wave = -1
+		Global.health = 400
+		Global.quiver = 10
+		if Global.Dfire or Global.Dwind:
+			Global.mana = 100
 		$AnimationPlayer.play("open")
 		Global.showwave = false
 	if ground != null:
@@ -39,10 +43,13 @@ func _process(delta: float) -> void:
 			leaf.powerUP("ground")
 			await get_tree().create_timer(5).timeout
 			leaf._out()
-	if Global.health <= 0 and Global.victory == false:
+	if Global.health <= 0 and Global.victory == false and ground:
 		Global.victory = true
 		ground._victory()
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3.2).timeout
+		get_tree().change_scene_to_file("res://scene/world.tscn")
+	elif Global.health <= 0:
+		await get_tree().create_timer(3.2).timeout
 		get_tree().change_scene_to_file("res://scene/world.tscn")
 func spawn_enemy():
 	wave_lenght-=1

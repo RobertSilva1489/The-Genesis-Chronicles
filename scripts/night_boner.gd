@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = int(randf_range(40,50))
+@export var speed = int(randf_range(70,80))
 @export var health = 100
 @export var strong = 50
 @export var gravity = 980
@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 		attack_player = true
 	else:
 		attack_player = false
+		follow = true
 	if leaf != null and dead == false:
 		_position = leaf.global_position.x - global_position.x
 		direction = sign(_position)
@@ -48,6 +49,7 @@ func _process(delta: float) -> void:
 	$TextureProgressBar.value = health
 func blink() -> void:
 	$Marker2D/Sprite2D.modulate = Color(10,10,10,10)
+	$sfx/hut.play()
 	await get_tree().create_timer(.1).timeout
 	$Marker2D/Sprite2D.modulate = Color(0.5,0,0,1)
 func damage (dame) -> void:

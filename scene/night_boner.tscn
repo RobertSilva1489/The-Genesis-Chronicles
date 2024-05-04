@@ -1,8 +1,12 @@
-[gd_scene load_steps=63 format=3 uid="uid://cl80qymdgvdi"]
+[gd_scene load_steps=67 format=3 uid="uid://cl80qymdgvdi"]
 
 [ext_resource type="Script" path="res://scripts/night_boner.gd" id="1_68lv7"]
 [ext_resource type="Texture2D" uid="uid://bmb4606eejw8h" path="res://assent/enemy/NightBorne.png" id="1_b3n1x"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="2_g50r2"]
+[ext_resource type="AudioStream" uid="uid://dnnlgwubr0omy" path="res://sfx/fire/77_flesh_02.wav" id="4_kf87b"]
+[ext_resource type="AudioStream" uid="uid://3trfi5e3cjta" path="res://sfx/water/13_Ice_explosion_01.wav" id="5_4ljre"]
+[ext_resource type="AudioStream" uid="uid://cm3nkygoo8np1" path="res://sfx/fire/04_Fire_explosion_04_medium.wav" id="6_dc565"]
+[ext_resource type="AudioStream" uid="uid://da02p2xhl4krm" path="res://sfx/69_Enemy_death_01.wav" id="7_lunrx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfa6n"]
 atlas = ExtResource("1_b3n1x")
@@ -427,6 +431,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/attack2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_2uu0s"]
 length = 2.55556
@@ -480,6 +508,18 @@ tracks/3/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/death:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_xcljk"]
 length = 1.28571
@@ -519,6 +559,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("attack/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_2p71a"]
@@ -585,7 +637,7 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_68lv7")
-speed = 70
+attack_cooldown = 0.5
 DIST_ATTACK = 30
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -594,12 +646,13 @@ DIST_ATTACK = 30
 modulate = Color(0.501961, 0, 0, 1)
 position = Vector2(-43, -48)
 sprite_frames = SubResource("SpriteFrames_w4are")
-animation = &"attack"
+animation = &"death"
+frame = 9
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-speed_scale = 1.5
+speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_j8pqs")
 }
@@ -611,6 +664,7 @@ one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_80ngj")
+disabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
@@ -642,6 +696,24 @@ position = Vector2(-9, 2)
 rotation = 0.610865
 shape = SubResource("CapsuleShape2D_axvre")
 disabled = true
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("4_kf87b")
+volume_db = 20.0
+
+[node name="attack2" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("5_4ljre")
+volume_db = 15.0
+
+[node name="death" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("6_dc565")
+volume_db = 20.0
+
+[node name="hut" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("7_lunrx")
+volume_db = 20.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

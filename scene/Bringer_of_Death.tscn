@@ -1,8 +1,12 @@
-[gd_scene load_steps=65 format=3 uid="uid://v6oyrdhf7oyh"]
+[gd_scene load_steps=69 format=3 uid="uid://v6oyrdhf7oyh"]
 
 [ext_resource type="Script" path="res://scripts/Bringer_of_Death.gd" id="1_18r2i"]
 [ext_resource type="Texture2D" uid="uid://skc28mdvb0us" path="res://assent/enemy/Bringer-of-Death-SpritSheet.png" id="2_jtgai"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="3_phng1"]
+[ext_resource type="AudioStream" uid="uid://dnqc2yt17wiiy" path="res://sfx/water/56_Attack_03.wav" id="4_soy6h"]
+[ext_resource type="AudioStream" uid="uid://da02p2xhl4krm" path="res://sfx/69_Enemy_death_01.wav" id="5_irogn"]
+[ext_resource type="AudioStream" uid="uid://cqdrql8hv6pm" path="res://sfx/hit.wav" id="6_36a7b"]
+[ext_resource type="AudioStream" uid="uid://0xi5poa6konf" path="res://sfx/ground/30_Earth_02.wav" id="7_mc5d4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijrya"]
 atlas = ExtResource("2_jtgai")
@@ -457,6 +461,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/attack:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_le6ct"]
 tracks/0/type = "value"
@@ -508,6 +524,18 @@ tracks/3/keys = {
 "args": [],
 "method": &"range_attack"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack2:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_q643l"]
@@ -584,6 +612,18 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sfx/death:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [true]
 }
 
@@ -718,6 +758,7 @@ scale = Vector2(1.2, 1.2)
 collision_layer = 2
 collision_mask = 12
 script = ExtResource("1_18r2i")
+attack_cooldown = 0.5
 
 [node name="Body" type="Marker2D" parent="."]
 position = Vector2(0.5, 0)
@@ -727,7 +768,7 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(161, -78)
 scale = Vector2(-1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_f6kgo")
-animation = &"walk"
+animation = &"idle"
 centered = false
 
 [node name="attack" type="Area2D" parent="."]
@@ -787,6 +828,24 @@ libraries = {
 
 [node name="spell" type="Marker2D" parent="."]
 position = Vector2(144.167, 7)
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="attack" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_soy6h")
+volume_db = 15.0
+
+[node name="death" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_irogn")
+volume_db = 15.0
+
+[node name="hut" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("6_36a7b")
+volume_db = 15.0
+
+[node name="attack2" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("7_mc5d4")
+volume_db = 15.0
 
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_entered" from="detectPlayer" to="." method="_on_detect_player_body_entered"]

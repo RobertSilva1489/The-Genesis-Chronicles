@@ -29,6 +29,10 @@ func _process(delta: float) -> void:
 	var wind: CharacterBody2D = $wind
 	if Global.wave == 0:
 		Global.wave = -1
+		Global.health = 400
+		Global.quiver = 10
+		if Global.Dfire or Global.Dwind:
+			Global.mana = 100
 		$AnimationPlayer.play("open")
 		Global.showwave = false
 	if wind != null:
@@ -39,11 +43,14 @@ func _process(delta: float) -> void:
 			leaf.powerUP("wind")
 			await get_tree().create_timer(5).timeout
 			leaf._out()
-	if Global.health <= 0 and Global.victory == false:
+	if Global.health <= 0 and Global.victory == false and wind:
 		Global.victory = true
 		$Camera2D.make_current()
 		wind._victory()
 		await get_tree().create_timer(5).timeout
+		get_tree().change_scene_to_file("res://scene/world.tscn")
+	elif Global.health <= 0:
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scene/world.tscn")
 func spawn_enemy():
 	wave_lenght-=1
@@ -53,11 +60,11 @@ func spawn_enemy():
 	RanPos.append(spawn2)
 	RanPos.append(spawn3)
 	RanPos.append(spawn4)
-	enemy.append(bringer_of_Death)
+#	enemy.append(bringer_of_Death)
 	enemy.append(karasu)
-	enemy.append(yamabushi)
-	enemy.append(karasu)
-	enemy.append(yamabushi)
+#	enemy.append(yamabushi)
+#	enemy.append(karasu)
+#	enemy.append(yamabushi)
 	var selecte = enemy.pick_random()
 	var select = RanPos.pick_random()
 	var Enemy = selecte.instantiate()
@@ -72,6 +79,8 @@ func _on_timer_timeout() -> void:
 	if Global.scene_enemy < sceneEnemy and wave_lenght > 0:
 		spawn_enemy()
 func _on_boss_timeout() -> void:
+	$windEnter.emitting = true
+	await get_tree().create_timer(1).timeout
 	spawn_boss()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

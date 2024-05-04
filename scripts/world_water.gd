@@ -26,6 +26,10 @@ func _process(delta: float) -> void:
 	var water: CharacterBody2D = $water
 	if Global.wave == 0:
 		Global.wave = -1
+		Global.health = 400
+		Global.quiver = 10
+		if Global.Dfire or Global.Dwind:
+			Global.mana = 100
 		$AnimationPlayer.play("open")
 		Global.showwave = false
 	if water != null:

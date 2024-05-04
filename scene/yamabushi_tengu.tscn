@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cklrpha4ujcqr"]
+[gd_scene load_steps=54 format=3 uid="uid://cklrpha4ujcqr"]
 
 [ext_resource type="Texture2D" uid="uid://b1l0l7nquw4q2" path="res://assent/enemy/Yamabushi_tengu/Attack_1.png" id="1_5m3sy"]
 [ext_resource type="Script" path="res://scripts/yamabushi_tengu.gd" id="1_bvc6y"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bptdbk8slvl66" path="res://assent/enemy/Yamabushi_tengu/Dead.png" id="4_4dgvd"]
 [ext_resource type="Texture2D" uid="uid://b6gvsiwiarcar" path="res://assent/enemy/Yamabushi_tengu/Idle.png" id="5_81c30"]
 [ext_resource type="Texture2D" uid="uid://bm705uky13vdk" path="res://assent/enemy/Yamabushi_tengu/Run.png" id="6_ja5rw"]
+[ext_resource type="AudioStream" uid="uid://da02p2xhl4krm" path="res://sfx/69_Enemy_death_01.wav" id="9_dlg7e"]
+[ext_resource type="AudioStream" uid="uid://dnqc2yt17wiiy" path="res://sfx/water/56_Attack_03.wav" id="9_wniac"]
+[ext_resource type="AudioStream" uid="uid://cqdrql8hv6pm" path="res://sfx/hit.wav" id="10_8um2k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynj5u"]
 atlas = ExtResource("1_5m3sy")
@@ -309,6 +312,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ms6ev"]
 length = 0.857143
@@ -359,6 +374,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_5if1i"]
@@ -411,9 +438,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_vn8gx"]
-length = 2.0
+length = 1.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -445,7 +484,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(1.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -459,6 +498,18 @@ tracks/3/path = NodePath("CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/death:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -618,14 +669,16 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 12
 script = ExtResource("1_bvc6y")
-DIST_ATTACK = 60
+strong = 25
+attack_cooldown = 0.5
+DIST_ATTACK = 50
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Marker2D"]
 position = Vector2(-57, -79)
 sprite_frames = SubResource("SpriteFrames_hgdxd")
-animation = &"walk"
+animation = &"idle"
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -680,6 +733,20 @@ rotation = 4.71239
 scale = Vector2(5, 1)
 target_position = Vector2(0, 24.2857)
 collision_mask = 8
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="attack" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("9_wniac")
+volume_db = 15.0
+
+[node name="death" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("9_dlg7e")
+volume_db = 15.0
+
+[node name="hut" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("10_8um2k")
+volume_db = 15.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var speed = int(randf_range(40,50))
+@export var speed = int(randf_range(60,70))
 @export var health = 100
 @export var strong = 20
 @export var gravity = 980
@@ -47,6 +47,7 @@ func _process(delta: float) -> void:
 	$TextureProgressBar.value = health
 func blink() -> void:
 	$Body/Bringer.modulate = Color(10,10,10,10)
+	$sfx/hut.play()
 	await get_tree().create_timer(.1).timeout
 	$Body/Bringer.modulate = Color(1,1,1,1)
 func damage (dame) -> void:
@@ -93,4 +94,5 @@ func _on_detect_player_body_entered(body: Node2D) -> void:
 func _on_detect_player_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		attack_player = false
+		follow = true
 

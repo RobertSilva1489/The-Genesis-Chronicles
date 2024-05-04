@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://csudobtpkv4um"]
+[gd_scene load_steps=26 format=3 uid="uid://csudobtpkv4um"]
 
 [ext_resource type="Script" path="res://scripts/world_wind.gd" id="1_5on8r"]
 [ext_resource type="Texture2D" uid="uid://3jbujalxf50r" path="res://assent/scenario/ParallaxBG/Layer 1.png" id="2_5diyc"]
@@ -303,10 +303,14 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_sy553"]
+resource_name = "wind"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ot80"]
 _data = {
 "new_animation_2": SubResource("Animation_v2607"),
-"open": SubResource("Animation_tpblm")
+"open": SubResource("Animation_tpblm"),
+"wind": SubResource("Animation_sy553")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prefe"]
@@ -321,9 +325,20 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 3.0
 scale_max = 4.0
-color = Color(1, 1, 1, 0.117647)
+color = Color(1, 1, 1, 0.392157)
 turbulence_noise_strength = 5.63
 turbulence_noise_scale = 3.63
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xo4oj"]
+emission_shape = 3
+emission_box_extents = Vector3(100, 200, 1)
+particle_flag_disable_z = true
+gravity = Vector3(-5000, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 3.0
+scale_max = 5.0
+color = Color(1, 1, 1, 0.392157)
 
 [sub_resource type="Animation" id="Animation_ejqs3"]
 resource_name = "new_animation"
@@ -355,7 +370,8 @@ size = Vector2(632, 19)
 
 [node name="world_wind" type="Node2D"]
 script = ExtResource("1_5on8r")
-wave_lenght = 20
+wave_lenght = 0
+sceneEnemy = 0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -462,12 +478,21 @@ position = Vector2(1290, 23)
 position = Vector2(1960, -9)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(550, 5)
-amount = 80
+position = Vector2(550, 105)
+amount = 500
 process_material = SubResource("ParticleProcessMaterial_k1ptv")
 explosiveness = 0.16
 randomness = 1.0
 visibility_rect = Rect2(-100, -234, 2000, 500)
+
+[node name="windEnter" type="GPUParticles2D" parent="."]
+position = Vector2(1998, 28)
+scale = Vector2(-1, 1)
+emitting = false
+amount = 8000
+process_material = SubResource("ParticleProcessMaterial_xo4oj")
+one_shot = true
+visibility_rect = Rect2(-100, -100, 600, 245)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

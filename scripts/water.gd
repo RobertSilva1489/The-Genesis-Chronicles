@@ -97,7 +97,6 @@ func damage (dame) -> void:
 		blink()
 		health -= dame
 		countHit+=1
-		print(Global.boss_health)
 	if health <= 0:
 		dead = true
 		$CollisionShape2D.shape = null

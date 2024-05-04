@@ -47,6 +47,7 @@ func _process(delta: float) -> void:
 		if distance <=DIST_ATTACK and Global.health > 0:
 			attack_player = true
 			invencible = false
+			follow = true
 		else:
 			attack_player = false
 		if leaf != null and dead == false:

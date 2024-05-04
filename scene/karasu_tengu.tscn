@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bc6byvcn0paf2"]
+[gd_scene load_steps=54 format=3 uid="uid://bc6byvcn0paf2"]
 
 [ext_resource type="Texture2D" uid="uid://0ab6q3t2xtqg" path="res://assent/enemy/Karasu_tengu/Attack_1.png" id="1_mpq5y"]
 [ext_resource type="Script" path="res://scripts/karasu_tengu.gd" id="1_wkgqr"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cw726oyssnyjh" path="res://assent/enemy/Karasu_tengu/Idle.png" id="5_vk7pp"]
 [ext_resource type="Texture2D" uid="uid://djraibrsdc5oq" path="res://assent/enemy/Karasu_tengu/Run.png" id="6_d532a"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="8_hklxl"]
+[ext_resource type="AudioStream" uid="uid://dnqc2yt17wiiy" path="res://sfx/water/56_Attack_03.wav" id="9_k2g3c"]
+[ext_resource type="AudioStream" uid="uid://da02p2xhl4krm" path="res://sfx/69_Enemy_death_01.wav" id="10_otqru"]
+[ext_resource type="AudioStream" uid="uid://cqdrql8hv6pm" path="res://sfx/hit.wav" id="11_l480w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxp87"]
 atlas = ExtResource("1_mpq5y")
@@ -309,6 +312,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_t2b7n"]
 length = 0.571429
@@ -359,6 +374,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_a12bp"]
@@ -411,9 +438,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_r4lja"]
-length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -457,12 +495,24 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(0.9),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/death:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_gh3mr"]
@@ -619,7 +669,8 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 28
 script = ExtResource("1_wkgqr")
-DIST_ATTACK = 60
+attack_cooldown = 0.5
+DIST_ATTACK = 50
 JUMP = 7
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -627,7 +678,7 @@ JUMP = 7
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Marker2D"]
 position = Vector2(-67, -78)
 sprite_frames = SubResource("SpriteFrames_7isk7")
-animation = &"walk"
+animation = &"death"
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -639,6 +690,7 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_byt6m")
+disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 49.5)
@@ -681,5 +733,19 @@ rotation = 4.71239
 scale = Vector2(5, 1)
 target_position = Vector2(0, 24.2857)
 collision_mask = 8
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="attack" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("9_k2g3c")
+volume_db = 15.0
+
+[node name="death" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("10_otqru")
+volume_db = 15.0
+
+[node name="hut" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("11_l480w")
+volume_db = 15.0
 
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

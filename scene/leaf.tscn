@@ -1188,6 +1188,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="powerUP" type="AnimationPlayer" parent="."]
+speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_hku21")
 }

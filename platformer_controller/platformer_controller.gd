@@ -154,7 +154,6 @@ func _ready():
 	if Global.Dfire or Global.Dwind:
 		Global.mana = 100
 	is_attacking = true
-	_upgrade_player()
 func actions_play():
 	acc.x = 0
 	if dead == false:
@@ -511,28 +510,33 @@ func _dead():
 	$CollisionShape2D.shape = null
 	$Timer.stop()
 func _upgrade_player():
-	if Global.Dfire and not Global.Dwater and Global.powerfire and Global.unlock < 4:
+	print("aqui")
+	if Global.Dfire and Global.unlock < 4 and Global.powerfire:
 		$powerUP.play("rain")
+		print("F")
 		Global.special1 = true
 		Global.recovery_mana = 5
 		Global.mana = 100
 		Global.powerfire = false
 	else:
 		Global.recovery_mana = 5
-	if Global.Dwind and not Global.Dwater and Global.powerwind and Global.unlock < 4: 
+	if Global.Dwind and Global.unlock < 4 and Global.powerwind: 
 		$powerUP.play("beam")
+		print("W")
 		Global.special2 = true
 		Global.recovery_mana = 5
 		Global.mana = 100
 		Global.powerwind = false
 	else:
 		Global.recovery_mana = 5
-	if Global.Dwater and Global.powerwater and Global.unlock < 4:
+	if Global.Dwater and Global.unlock < 4 and Global.powerwater:
 		$powerUP.play("mana")
+		print("WA")
 		Global.recovery_mana = 10
 		Global.powerwater = false
-	if Global.Dground and Global.powerground and Global.unlock < 4:
+	if Global.Dground and Global.unlock < 4 and Global.powerground:
 		$powerUP.play("health")
+		print("G")
 		Global.recovery_health = 10
 		Global.powerground = false
 func _step():

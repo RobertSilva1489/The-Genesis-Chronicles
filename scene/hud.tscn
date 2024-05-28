@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4muf76kgfb77"]
+[gd_scene load_steps=20 format=3 uid="uid://c4muf76kgfb77"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_7bswo"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="4_kcijc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://0l3434yahwd6" path="res://assent/HUD/hud_bg_without_custom_meter.png" id="6_bibaq"]
 [ext_resource type="Texture2D" uid="uid://3jbujalxf50r" path="res://assent/scenario/ParallaxBG/Layer 1.png" id="7_1e2o6"]
 [ext_resource type="Texture2D" uid="uid://bnnuq4bixxcf7" path="res://assent/hud_name.png" id="7_s2ems"]
+[ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="9_argcs"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k4tnl"]
 
@@ -167,3 +168,71 @@ placeholder_text = "boss"
 wrap_mode = 1
 highlight_all_occurrences = true
 scroll_fit_content_height = true
+
+[node name="mana+" type="Label" parent="."]
+visible = false
+offset_left = 363.0
+offset_top = 186.0
+offset_right = 528.0
+offset_bottom = 242.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("9_argcs")
+theme_override_font_sizes/font_size = 50
+text = "mana + "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="health+" type="Label" parent="."]
+visible = false
+offset_left = 347.0
+offset_top = 186.0
+offset_right = 490.0
+offset_bottom = 242.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("9_argcs")
+theme_override_font_sizes/font_size = 50
+text = "health +"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="rain_arrow" type="Label" parent="."]
+visible = false
+offset_left = 324.0
+offset_top = 186.0
+offset_right = 607.0
+offset_bottom = 242.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("9_argcs")
+theme_override_font_sizes/font_size = 50
+text = "unlock rain arrow"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="power_beam" type="Label" parent="."]
+visible = false
+offset_left = 325.0
+offset_top = 186.0
+offset_right = 601.0
+offset_bottom = 242.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("9_argcs")
+theme_override_font_sizes/font_size = 50
+text = "unlock powe beam"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true

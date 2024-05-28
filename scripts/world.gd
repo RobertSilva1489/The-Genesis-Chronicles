@@ -12,6 +12,7 @@ func _ready() -> void:
 	Global.stage = ""
 	Global.can_pause = true
 	hud.hide()
+	leaf._upgrade_player()
 	if Global.Dfire == false and Global.Dwater == false and Global.Dground == false and Global.Dwind == false:
 		leaf.global_position.x = $fires.global_position.x
 		$attack.play()

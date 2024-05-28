@@ -1,8 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://rmatfkgymk0t"]
+[gd_scene load_steps=46 format=3 uid="uid://rmatfkgymk0t"]
 
 [ext_resource type="Script" path="res://scripts/fire_golem.gd" id="1_nueyw"]
 [ext_resource type="Texture2D" uid="uid://f4h04gr0aity" path="res://assent/enemy/Fire golem(64x64).png" id="1_pyakr"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="2_iivws"]
+[ext_resource type="AudioStream" uid="uid://dnnlgwubr0omy" path="res://sfx/fire/77_flesh_02.wav" id="4_877su"]
+[ext_resource type="AudioStream" uid="uid://da02p2xhl4krm" path="res://sfx/69_Enemy_death_01.wav" id="5_jucir"]
+[ext_resource type="AudioStream" uid="uid://cqdrql8hv6pm" path="res://sfx/hit.wav" id="6_1pauc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80o7x"]
 atlas = ExtResource("1_pyakr")
@@ -293,6 +296,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true, false, true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/attack:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_27wr4"]
 length = 0.777778
@@ -345,6 +360,18 @@ tracks/3/keys = {
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/death:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7sicx"]
@@ -495,6 +522,23 @@ position = Vector2(-44, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_us4dm")
 disabled = true
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="attack" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("4_877su")
+volume_db = 15.0
+pitch_scale = 0.5
+
+[node name="death" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("5_jucir")
+volume_db = 15.0
+pitch_scale = 0.5
+
+[node name="hut" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("6_1pauc")
+volume_db = 15.0
+pitch_scale = 0.5
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

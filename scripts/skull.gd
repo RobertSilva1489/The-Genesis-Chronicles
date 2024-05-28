@@ -4,7 +4,7 @@ var direction = 0
 var hit = int(randf_range(5,15))
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
-	pass
+	$fire.play()
 func _physics_process(delta) -> void:
 	if direction == 1:
 		scale.x = 1

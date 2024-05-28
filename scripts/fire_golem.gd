@@ -50,6 +50,7 @@ func _process(delta: float) -> void:
 	$TextureProgressBar.value = health
 func blink() -> void:
 	$Marker2D/Sprite2D.modulate = Color(10,10,10,10)
+	$sfx/hut.play()
 	await get_tree().create_timer(.1).timeout
 	$Marker2D/Sprite2D.modulate = Color(1,1,1,1)
 func damage (dame) -> void:

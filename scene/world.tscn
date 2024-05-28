@@ -3391,7 +3391,7 @@ position = Vector2(203, 95)
 scale = Vector2(2.08, 1.62)
 sprite_frames = SubResource("SpriteFrames_ovvm5")
 autoplay = "default"
-frame = 10
+frame = 3
 centered = false
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="fires"]
@@ -3698,7 +3698,7 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="Leaf" parent="." instance=ExtResource("1_nkah1")]
-position = Vector2(670, 111)
+position = Vector2(670, 50)
 collision_mask = 8
 rolling = false
 max_jump_height = 100.0
@@ -3801,7 +3801,7 @@ scale = Vector2(-1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_5f03y")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.547779
+frame_progress = 0.364566
 centered = false
 
 [node name="jotum" type="Area2D" parent="Jotum"]

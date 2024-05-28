@@ -18,6 +18,7 @@ var boss_defeat = false
 var dead = false
 var special_1 = Global.special1
 var special_2 = Global.special2
+
 @export var rolling = true
 @export var is_attacking = false
 # Set these to the name of your action (in the Input Map)
@@ -154,7 +155,7 @@ func _ready():
 		Global.mana = 100
 	is_attacking = true
 	_upgrade_player()
-func _input(_event):
+func actions_play():
 	acc.x = 0
 	if dead == false:
 		if Input.is_action_pressed(input_left) and is_attacking == false:
@@ -162,8 +163,9 @@ func _input(_event):
 			_direction = -1
 			$attack.monitoring = false
 			$attack/CollisionShape2D.disabled = true
-			$AnimationPlayer.play("run")
-			$leaftrail.emitting = true
+			if is_on_floor():
+				$AnimationPlayer.play("run")
+				$leaftrail.emitting = true
 			transform.x.x = -1
 			$"mana+".scale.x *= -1
 			$"health+".scale.x *= -1
@@ -171,22 +173,33 @@ func _input(_event):
 			$power_beam.scale.x *= -1
 			_step()
 		if Input.is_action_just_released(input_left):
+			if is_on_floor():
 				$AnimationPlayer.play("idle")
-				$leaftrail.emitting = false
-				_stepStop()
+			else:		
+				$AnimationPlayer.play("fall")
+			$leaftrail.emitting = false
+			_stepStop()
 		if Input.is_action_pressed(input_right) and is_attacking == false:
 			acc.x = max_acceleration
 			_direction = 1
 			$attack.monitoring = false
 			$attack/CollisionShape2D.disabled = true
-			$AnimationPlayer.play("run")
-			$leaftrail.emitting = true
+			if is_on_floor():
+				$AnimationPlayer.play("run")
+				$leaftrail.emitting = true
 			transform.x.x = 1
+			$"mana+".scale.x *= -1
+			$"health+".scale.x *= -1
+			$rain_arrow.scale.x *= -1
+			$power_beam.scale.x *= -1
 			_step()
 		if Input.is_action_just_released(input_right):
+			if is_on_floor():
 				$AnimationPlayer.play("idle")
-				$leaftrail.emitting = false
-				_stepStop()
+			else:		
+				$AnimationPlayer.play("fall")
+			$leaftrail.emitting = false
+			_stepStop()
 		if Input.is_action_just_pressed(input_jump) and rolling:
 			$AnimationPlayer.play("jump")
 			holding_jump = true
@@ -195,10 +208,12 @@ func _input(_event):
 				jump()		
 		if Input.is_action_just_released(input_jump):
 			holding_jump = false
+			await $AnimationPlayer.animation_finished
+			$AnimationPlayer.play("fall")
 		if Input.is_action_just_pressed("ui_down"):
 			_roll()
 func _physics_process(delta):
-	
+	actions_play()
 	if is_coyote_timer_running() or current_jump_type == JumpType.NONE:
 		jumps_left = max_jump_amount
 	if is_feet_on_ground() and current_jump_type == JumpType.NONE:

@@ -1,8 +1,11 @@
-[gd_scene load_steps=88 format=3 uid="uid://dg2fcgkxwmw0d"]
+[gd_scene load_steps=91 format=3 uid="uid://dg2fcgkxwmw0d"]
 
 [ext_resource type="Texture2D" uid="uid://csvgyi6qgo0wt" path="res://assent/enemy/Necromancer_creativekind-Sheet.png" id="1_puq0o"]
 [ext_resource type="Script" path="res://scripts/necromancer.gd" id="1_rb2bn"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="2_phs3s"]
+[ext_resource type="AudioStream" uid="uid://3trfi5e3cjta" path="res://sfx/water/13_Ice_explosion_01.wav" id="4_x6rax"]
+[ext_resource type="AudioStream" uid="uid://da02p2xhl4krm" path="res://sfx/69_Enemy_death_01.wav" id="5_2fdfv"]
+[ext_resource type="AudioStream" uid="uid://cqdrql8hv6pm" path="res://sfx/hit.wav" id="6_1scey"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vttpr"]
 atlas = ExtResource("1_puq0o")
@@ -600,6 +603,18 @@ tracks/2/keys = {
 "method": &"_rain_fire"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/attack1:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_qn34x"]
 length = 1.85714
@@ -641,6 +656,18 @@ tracks/2/keys = {
 "method": &"_hurricane"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/attack1:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_w1njc"]
 length = 2.42857
@@ -681,6 +708,18 @@ tracks/2/keys = {
 "args": [],
 "method": &"attack_fly_head"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/attack1:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_72fnj"]
@@ -747,6 +786,18 @@ tracks/4/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/death:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_asba6"]
 length = 0.714286
@@ -773,6 +824,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["hit"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/hut:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_nfoyv"]
@@ -871,6 +934,7 @@ collision_mask = 12
 script = ExtResource("1_rb2bn")
 speed = 70.0
 health = 50
+gravity = 0
 DIST_FOLLOW = 500
 DIST_ATTACK = 200
 
@@ -879,8 +943,8 @@ DIST_ATTACK = 200
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
 position = Vector2(-80, -77)
 sprite_frames = SubResource("SpriteFrames_tu2j3")
-animation = &"attack1"
-frame = 12
+animation = &"hit"
+frame = 4
 centered = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -890,6 +954,7 @@ shape = SubResource("RectangleShape2D_2k48d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 10)
 shape = SubResource("CapsuleShape2D_5vyuf")
+disabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
@@ -927,5 +992,22 @@ position = Vector2(17, -22)
 
 [node name="skull" type="Marker2D" parent="."]
 position = Vector2(-9, -2)
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="attack1" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("4_x6rax")
+volume_db = 15.0
+pitch_scale = 1.5
+
+[node name="death" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("5_2fdfv")
+volume_db = 15.0
+pitch_scale = 2.0
+
+[node name="hut" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("6_1scey")
+volume_db = 15.0
+pitch_scale = 2.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

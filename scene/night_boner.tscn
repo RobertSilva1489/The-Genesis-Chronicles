@@ -646,8 +646,7 @@ DIST_ATTACK = 30
 modulate = Color(0.501961, 0, 0, 1)
 position = Vector2(-43, -48)
 sprite_frames = SubResource("SpriteFrames_w4are")
-animation = &"death"
-frame = 9
+animation = &"idle"
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

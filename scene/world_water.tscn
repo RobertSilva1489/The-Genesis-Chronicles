@@ -344,7 +344,7 @@ shader_parameter/offset = 0.0
 
 [node name="world_water" type="Node2D"]
 script = ExtResource("1_rdlo3")
-wave_lenght = 0
+wave_lenght = 20
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.4, 0.4)

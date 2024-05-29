@@ -820,8 +820,7 @@ _data = {
 
 [node name="world_ground" type="Node2D"]
 script = ExtResource("1_e8qah")
-wave_lenght = 0
-sceneEnemy = 0
+wave_lenght = 20
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2(0.2, 0.2)

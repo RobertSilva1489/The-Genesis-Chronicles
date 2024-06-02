@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 		if Global.Dfire or Global.Dwind:
 			Global.mana = 100
 		$AnimationPlayer.play("open")
+		Hud._go()
 		Global.showwave = false
 	if water != null:
 		
@@ -39,13 +40,13 @@ func _process(delta: float) -> void:
 			$level.stream_paused = true
 			$bossDead.play()
 			leaf.powerUP("water")
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(1).timeout
 			leaf._out()
 	if Global.health <= 0 and Global.victory == false and water:
 		Global.victory = true
 		$Camera2D.make_current()
 		water._victory()
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://scene/world.tscn")
 	elif Global.health <= 0:
 		await get_tree().create_timer(0.5).timeout

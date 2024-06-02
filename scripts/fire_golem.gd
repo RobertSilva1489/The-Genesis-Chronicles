@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 50
+@export var speed = randf_range(100,150)
 @export var health = 100
 @export var strong = 20
 @export var gravity = 980
@@ -19,6 +19,7 @@ var dano: int
 
 func _ready() -> void:
 	$TextureProgressBar.value = health
+	Global.scene_enemy+=1
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -34,7 +35,7 @@ func _process(delta: float) -> void:
 	else:
 		follow = false 
 		$AnimationPlayer.play("idle")
-	if distance <=DIST_ATTACK:
+	if distance <=DIST_ATTACK and Global.health > 0:
 		attack_player = true
 	else:
 		attack_player = false

@@ -1,11 +1,11 @@
 extends CharacterBody2D
-@export var speed = randf_range(70,100)
+@export var speed = randf_range(100,150)
 @export var health = 100
 @export var strong = 20
 @export var gravity = 980
 @export var can_attack = true
 @export var follow = false
-@export var attack_cooldown : float = 3.5
+@export var attack_cooldown : float = 4
 @export var attack_player = false
 @export var DIST_FOLLOW := 2000
 @export var DIST_ATTACK := 300
@@ -22,6 +22,7 @@ var distance := 0.0
 var _position
 
 func _ready() -> void:
+	Global.scene_enemy+=1
 	$TextureProgressBar.value = health
 	randomize()
 func _physics_process(delta: float) -> void:
@@ -33,20 +34,21 @@ func _process(delta: float) -> void:
 		$AnimationPlayer.play("idle")
 	if leaf != null:
 		distance = global_position.distance_to(leaf.global_position)
-		if distance <=DIST_FOLLOW:
+		if distance <=DIST_FOLLOW :
 			follow = true
 		else:
 			follow = false
 			$AnimationPlayer.play("idle")
-		if distance <=DIST_ATTACK:
+		if distance <=DIST_ATTACK and Global.health > 0:
 			attack_player = true
-		else:
+		elif distance > DIST_ATTACK and can_attack:
 			attack_player = false
 	if leaf != null and dead == false:
 		_position = leaf.global_position.x - global_position.x
 		direction = sign(_position)
 		if attack_player and can_attack:
 			attack()
+			await $AnimationPlayer.animation_finished
 		elif follow and attack_player !=true:
 			$AnimationPlayer.play("walk")
 			_patrol()
@@ -88,7 +90,6 @@ func attack():
 	$AnimationPlayer.play(select)
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
-
 func _rain_fire():
 	var rain_fires = rain_fire.instantiate()
 	get_parent().add_child(rain_fires)

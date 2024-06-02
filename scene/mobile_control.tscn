@@ -1,0 +1,94 @@
+[gd_scene load_steps=19 format=3 uid="uid://bkms0q30uhfqv"]
+
+[ext_resource type="Texture2D" uid="uid://crc3rb0n3klrf" path="res://assent/mobile/02_Left_Pressed.png" id="1_lq7o5"]
+[ext_resource type="Texture2D" uid="uid://n7qkj40pkf78" path="res://assent/mobile/01_Left.png" id="2_xicgl"]
+[ext_resource type="Texture2D" uid="uid://dpfjinoqnttsv" path="res://assent/mobile/03_Right.png" id="3_1i3tb"]
+[ext_resource type="Texture2D" uid="uid://c6xurh67r8wlh" path="res://assent/mobile/04_Right_Pressed.png" id="4_khymp"]
+[ext_resource type="Texture2D" uid="uid://6a56rc7n3yt7" path="res://assent/mobile/07_Down.png" id="5_6hldn"]
+[ext_resource type="Texture2D" uid="uid://djtdvgr8umg6f" path="res://assent/mobile/08_Down_Pressed.png" id="6_ct7rr"]
+[ext_resource type="Texture2D" uid="uid://5gwhx2o3jmxl" path="res://assent/mobile/button_xbox_digital_a_4.png" id="7_64a45"]
+[ext_resource type="Texture2D" uid="uid://bhu85inceaaan" path="res://assent/mobile/05_Up.png" id="7_pljil"]
+[ext_resource type="Texture2D" uid="uid://bmvlqvp1b2iwg" path="res://assent/mobile/06_Up_Pressed.png" id="8_5d5ls"]
+[ext_resource type="Texture2D" uid="uid://c1ypphcxan8rh" path="res://assent/mobile/button_xbox_digital_a_5.png" id="8_o6sx4"]
+[ext_resource type="Texture2D" uid="uid://rsi0kco3al17" path="res://assent/mobile/button_xbox_digital_b_4.png" id="9_f76n1"]
+[ext_resource type="Texture2D" uid="uid://cxku01c33gk18" path="res://assent/mobile/button_xbox_digital_b_5.png" id="10_snjmi"]
+[ext_resource type="Texture2D" uid="uid://d1bhe5t37yy14" path="res://assent/mobile/button_xbox_digital_y_4.png" id="11_nvg3s"]
+[ext_resource type="Texture2D" uid="uid://ccab7or41dd8b" path="res://assent/mobile/button_xbox_digital_y_5.png" id="12_8ekc3"]
+[ext_resource type="Texture2D" uid="uid://ddk6m7xotd4nf" path="res://assent/mobile/button_xbox_digital_x_4.png" id="13_kketg"]
+[ext_resource type="Texture2D" uid="uid://vs3nvejdbii4" path="res://assent/mobile/button_xbox_digital_x_5.png" id="14_mwpjj"]
+[ext_resource type="Texture2D" uid="uid://dlf63ucxaro6p" path="res://assent/mobile/Pause2.png" id="17_ghnvo"]
+[ext_resource type="Texture2D" uid="uid://6arni2os1enf" path="res://assent/mobile/Pause2_Pressed.png" id="18_6ydga"]
+
+[node name="Mobile" type="CanvasLayer"]
+visible = false
+
+[node name="left" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(42, 440)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_xicgl")
+texture_pressed = ExtResource("1_lq7o5")
+action = "move_left"
+
+[node name="right" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(155, 440)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_1i3tb")
+texture_pressed = ExtResource("4_khymp")
+action = "move_right"
+
+[node name="down" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(98, 518)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("5_6hldn")
+texture_pressed = ExtResource("6_ct7rr")
+action = "ui_down"
+
+[node name="up" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(98, 370)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("7_pljil")
+texture_pressed = ExtResource("8_5d5ls")
+action = "ui_up"
+
+[node name="A" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(625, 518)
+scale = Vector2(0.16, 0.16)
+texture_normal = ExtResource("7_64a45")
+texture_pressed = ExtResource("8_o6sx4")
+action = "ui_accept"
+
+[node name="B" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(700, 440)
+scale = Vector2(0.16, 0.16)
+texture_normal = ExtResource("9_f76n1")
+texture_pressed = ExtResource("10_snjmi")
+action = "meele"
+
+[node name="Y" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(625, 370)
+scale = Vector2(0.16, 0.16)
+texture_normal = ExtResource("11_nvg3s")
+texture_pressed = ExtResource("12_8ekc3")
+action = "special2"
+
+[node name="X" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(550, 440)
+scale = Vector2(0.16, 0.16)
+texture_normal = ExtResource("13_kketg")
+texture_pressed = ExtResource("14_mwpjj")
+action = "bow"
+
+[node name="START" type="TouchScreenButton" parent="."]
+position = Vector2(320, 530)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("17_ghnvo")
+texture_pressed = ExtResource("18_6ydga")
+action = "Pause"

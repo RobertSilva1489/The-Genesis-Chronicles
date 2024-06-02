@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbkmj8wgvwimx"]
+[gd_scene load_steps=18 format=3 uid="uid://bbkmj8wgvwimx"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_j83vd"]
 [ext_resource type="Texture2D" uid="uid://dsmt40wai14qy" path="res://assent/Menu.jpg" id="2_g7qvh"]
@@ -114,6 +114,8 @@ _data = {
 "new_animation": SubResource("Animation_3einp")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8occp"]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -152,6 +154,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_neighbor_left = NodePath("../../VBoxContainer/OptionButon")
+focus_neighbor_top = NodePath("../../VBoxContainer/StartButton")
 mouse_filter = 2
 mouse_default_cursor_shape = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -169,6 +172,7 @@ theme_override_styles/focus = ExtResource("4_g8qju")
 text = "INVINCIBLE"
 
 [node name="Button2" type="Button" parent="VBoxContainer2"]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
@@ -256,6 +260,7 @@ flat = true
 icon_alignment = 1
 
 [node name="ExistButton" type="Button" parent="VBoxContainer"]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 layout_direction = 1
@@ -293,10 +298,10 @@ autoplay = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 498.0
-offset_top = 184.0
-offset_right = 862.0
-offset_bottom = 382.0
+offset_left = 507.0
+offset_top = 138.0
+offset_right = 871.0
+offset_bottom = 372.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
@@ -306,16 +311,33 @@ text = "move: arrows
 
 fire: CTRL
 
-melee: space
+melee: Z
 
 rain arrow: A
 
 power Beam: D
 
-roll: down and left or right "
+roll: down 
+
+jump: space"
 vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
+
+[node name="CheckButton" type="CheckButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 289.0
+offset_top = 10.0
+offset_right = 398.0
+offset_bottom = 41.0
+scale = Vector2(2, 2)
+focus_mode = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8occp")
+text = "MOBILE"
+flat = true
+alignment = 1
+icon_alignment = 1
 
 [connection signal="focus_entered" from="VBoxContainer2/Button" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]
@@ -328,3 +350,4 @@ uppercase = true
 [connection signal="focus_entered" from="VBoxContainer/ExistButton" to="." method="_on_exist_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/ExistButton" to="." method="_on_exist_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

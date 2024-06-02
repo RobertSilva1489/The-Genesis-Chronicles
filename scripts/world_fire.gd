@@ -29,6 +29,9 @@ func _process(delta: float) -> void:
 		$AnimationPlayer.play("open")
 		Global.wave = -1
 		Global.showwave = false
+		Global.quiver = 10
+		Global.health = 400
+		Hud._go()
 	if fire != null:
 		if fire.health <=0 and fire_check == true:
 			fire_check = false
@@ -36,17 +39,17 @@ func _process(delta: float) -> void:
 			$bossDead.play()
 			leaf.powerUP("fire")
 			Global.Dfire = true
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(1).timeout
 			leaf._out()
 	if Global.health <= 0 and Global.victory == false:
 		Global.victory = true
-		$Camera2D.make_current()
-		fire._victory()
-		await get_tree().create_timer(5).timeout
+#		$Camera2D.make_current()
+		if fire !=null:
+			fire._victory()
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scene/world.tscn")
 func spawn_enemy():
 	wave_lenght-=1
-	Global.scene_enemy+=1
 	randomize()
 	RanPos.append(spawn1)
 	RanPos.append(spawn2)

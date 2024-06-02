@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 		if Global.Dfire or Global.Dwind:
 			Global.mana = 100
 		$AnimationPlayer.play("open")
+		Hud._go()
 		Global.showwave = false
 	if ground != null:
 		if ground.health <=0 and ground_check == true:
@@ -41,7 +42,7 @@ func _process(delta: float) -> void:
 			$level.stream_paused = true
 			$bossDead.play()
 			leaf.powerUP("ground")
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(1).timeout
 			leaf._out()
 	if Global.health <= 0 and Global.victory == false and ground:
 		Global.victory = true

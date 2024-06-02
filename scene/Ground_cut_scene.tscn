@@ -164,7 +164,7 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_5cxnt")
 theme_override_font_sizes/font_size = 20
-text = "Terra, guardian of the earth, why do you let your rocks rend the harmony of Veridara's soil?"
+text = "Terra, guardian of the earth, why do you let your rocks rend the harmony of AIROTIV's soil?"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -180,12 +180,14 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_5cxnt")
 theme_override_font_sizes/font_size = 20
-text = "Leaf, your flourishing landscapes mask the strength of the earth. I shall reshape Veridara's foundation to reflect the might of the rocks."
+text = "Leaf, your flourishing landscapes mask the strength of the earth. I shall reshape AIROTIV's foundation to reflect the might of the rocks."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true
 uppercase = true
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 8

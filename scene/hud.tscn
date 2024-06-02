@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c4muf76kgfb77"]
+[gd_scene load_steps=24 format=3 uid="uid://c4muf76kgfb77"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_7bswo"]
 [ext_resource type="Texture2D" uid="uid://cya0fvpa5d13g" path="res://assent/HUD/hp_bar.png" id="4_kcijc"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://3jbujalxf50r" path="res://assent/scenario/ParallaxBG/Layer 1.png" id="7_1e2o6"]
 [ext_resource type="Texture2D" uid="uid://bnnuq4bixxcf7" path="res://assent/hud_name.png" id="7_s2ems"]
 [ext_resource type="FontFile" uid="uid://eclxogxyxgsx" path="res://font/Silver.ttf" id="9_argcs"]
+[ext_resource type="Texture2D" uid="uid://vle4afwnn7ej" path="res://assent/arrow/arrow_.png" id="10_r2eh7"]
+[ext_resource type="FontFile" uid="uid://balhb42drx84j" path="res://font/GODOFWAR.TTF" id="11_ygx5a"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k4tnl"]
 
@@ -29,6 +31,27 @@
 [sub_resource type="SystemFont" id="SystemFont_jbark"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0eef4"]
+
+[sub_resource type="Animation" id="Animation_6keoa"]
+resource_name = "new_animation"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GO ->:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yc2xm"]
+_data = {
+"new_animation": SubResource("Animation_6keoa")
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7bswo")
@@ -83,6 +106,7 @@ value = 10.0
 texture_progress = ExtResource("5_sjs26")
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 position = Vector2(400, 20)
 scale = Vector2(1.5, 1.5)
 
@@ -236,3 +260,32 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
+
+[node name="GO ->" type="Node2D" parent="."]
+visible = false
+position = Vector2(-2, 6.00001)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="GO ->"]
+position = Vector2(14, 115)
+scale = Vector2(4, 4)
+texture = ExtResource("10_r2eh7")
+centered = false
+region_enabled = true
+region_rect = Rect2(105, 44, 42, 22)
+
+[node name="Label" type="Label" parent="GO ->/Sprite2D"]
+offset_left = 8.75
+offset_top = -0.25
+offset_right = 36.75
+offset_bottom = 19.75
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("11_ygx5a")
+text = "GO"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_yc2xm")
+}

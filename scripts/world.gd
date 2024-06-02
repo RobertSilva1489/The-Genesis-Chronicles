@@ -6,6 +6,7 @@ extends Node2D
 var teleport = ""
 var  player
 func _ready() -> void:
+
 	if Global.first_play == false:
 		$Jotum.visible = false
 		$Jotum/jotum.monitoring = false
@@ -43,7 +44,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	Global.mana = 0
 	Global.quiver = 0
-	if Input.is_action_just_pressed("special1") and  player!= null:
+	if Input.is_action_just_pressed("ui_accept") and  player!= null:
 		match teleport:
 			"water":
 				get_tree().change_scene_to_file("res://scene/water_cut_scene.tscn")

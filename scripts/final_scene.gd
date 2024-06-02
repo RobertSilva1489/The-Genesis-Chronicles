@@ -3,7 +3,7 @@ extends Node2D
 var play = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$VBoxContainer/menu.grab_focus()
+	$VBoxContainer/exit.grab_focus()
 	Global.can_pause = false
 func _on_menu_pressed() -> void:
 	$pressed.play()

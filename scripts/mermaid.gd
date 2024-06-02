@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	else:
 		follow = false 
 		$AnimationPlayer.play("idle")
-	if distance <=DIST_ATTACK:
+	if distance <=DIST_ATTACK and Global.health > 0:
 		attack_player = true
 	else:
 		attack_player = false

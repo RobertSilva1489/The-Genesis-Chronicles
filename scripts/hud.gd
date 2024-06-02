@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	$Sprite2D2/arrow.value = Global.quiver
 	$Node2D/TextEdit2.text = str(Global.wave)
 	if Global.showwave == true:
-		$Node2D.visible = true
+		$Node2D.visible = false
 	else:
 		$Node2D.visible = false
 	if Global.show_boss == true:
@@ -24,3 +24,5 @@ func _process(delta: float) -> void:
 	else:
 		$hud_boss.visible = false
 	
+func _go():
+	$AnimationPlayer.play("new_animation")

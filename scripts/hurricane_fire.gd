@@ -1,7 +1,7 @@
 extends Area2D
-@export var speed = 100
+@export var speed = 300
 var direction = 0
-var hit = int(randf_range(1,10))
+var hit = int(randf_range(10,50))
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	$fire.play()

@@ -50,6 +50,7 @@ offset_right = 161.0
 offset_bottom = 472.0
 
 [node name="menu" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0.819608, 0, 0.72549)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -61,6 +62,7 @@ text = "Menu"
 flat = true
 
 [node name="exit" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0.819608, 0, 0.72549)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

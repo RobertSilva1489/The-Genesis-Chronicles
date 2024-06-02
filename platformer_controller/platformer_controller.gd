@@ -27,7 +27,7 @@ var special_2 = Global.special2
 ## Name of input action to move right.
 @export var input_right : String = "move_right"
 ## Name of input action to jump.
-@export var input_jump : String = "jump"
+@export var input_jump : String = "ui_up"
 @export var invecible: bool
 @export var roll_distance = 1000
 const DEFAULT_MAX_JUMP_HEIGHT = 150
@@ -137,6 +137,7 @@ func _init():
 
 
 func _ready():
+	invecible = Global.god_mode
 	randomize()
 	
 	if is_coyote_time_enabled:
@@ -247,7 +248,6 @@ func _process(delta: float) -> void:
 	recovery_health = Global.recovery_health
 	recovery_mana = Global.recovery_mana
 	recovery_quive = Global.recovery_quive
-	invecible = Global.god_mode
 	if  not Global.Dfire and not Global.Dwind:
 		Global.mana = 0
 		Global.recovery_mana = 0
@@ -399,7 +399,7 @@ func _attack():
 			$AnimationPlayer.play("bow")
 			$AnimationPlayer.speed_scale = 2.5
 			_stop()
-	if Input.is_action_just_pressed("special1") and is_attacking == false and special_1 == true:
+	if Input.is_action_just_pressed("ui_accept") and is_attacking == false and special_1 == true:
 		if Global.mana >= 100 and special != null:
 			$AnimationPlayer.play("especial")
 			_stop()
@@ -444,7 +444,7 @@ func _stop() -> void:
 		input_right = ""
 		input_jump = ""
 		await $AnimationPlayer.animation_finished
-		input_jump = "jump"
+		input_jump = "ui_up"
 		input_left = "move_left"
 		input_right = "move_right"
 func _on_special_body_entered(body: Node2D) -> void:
@@ -510,10 +510,10 @@ func _dead():
 	$CollisionShape2D.shape = null
 	$Timer.stop()
 func _upgrade_player():
-	print("aqui")
+	
 	if Global.Dfire and Global.unlock < 4 and Global.powerfire:
 		$powerUP.play("rain")
-		print("F")
+	
 		Global.special1 = true
 		Global.recovery_mana = 5
 		Global.mana = 100
@@ -522,7 +522,7 @@ func _upgrade_player():
 		Global.recovery_mana = 5
 	if Global.Dwind and Global.unlock < 4 and Global.powerwind: 
 		$powerUP.play("beam")
-		print("W")
+	
 		Global.special2 = true
 		Global.recovery_mana = 5
 		Global.mana = 100
@@ -531,12 +531,12 @@ func _upgrade_player():
 		Global.recovery_mana = 5
 	if Global.Dwater and Global.unlock < 4 and Global.powerwater:
 		$powerUP.play("mana")
-		print("WA")
+	
 		Global.recovery_mana = 10
 		Global.powerwater = false
 	if Global.Dground and Global.unlock < 4 and Global.powerground:
 		$powerUP.play("health")
-		print("G")
+	
 		Global.recovery_health = 10
 		Global.powerground = false
 func _step():

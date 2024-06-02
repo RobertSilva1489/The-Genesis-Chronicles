@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq8vdb2q43o03"
 path.s3tc="res://.godot/imported/LAVAROCKS.png-78ab4b324b340cf7630b6fc66b3221a8.s3tc.ctex"
+path.etc2="res://.godot/imported/LAVAROCKS.png-78ab4b324b340cf7630b6fc66b3221a8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assent/scenario/Textures/LAVAROCKS.png"
-dest_files=["res://.godot/imported/LAVAROCKS.png-78ab4b324b340cf7630b6fc66b3221a8.s3tc.ctex"]
+dest_files=["res://.godot/imported/LAVAROCKS.png-78ab4b324b340cf7630b6fc66b3221a8.s3tc.ctex", "res://.godot/imported/LAVAROCKS.png-78ab4b324b340cf7630b6fc66b3221a8.etc2.ctex"]
 
 [params]
 

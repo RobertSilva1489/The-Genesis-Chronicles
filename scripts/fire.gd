@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var attack_hold = 1
-var attacks = ["attack1","attack2","attack3","defender"]
-var special = ["special1","special2","defender"]
+var attacks = ["attack1","attack2","attack3"]
+var special = ["special1","special2"]
 var special2 = ["special1","special2","attack1","attack2","attack3"]
 var direction = 0
 var dead = false

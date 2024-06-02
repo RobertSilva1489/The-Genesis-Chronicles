@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://3jbujalxf50r"
 path.s3tc="res://.godot/imported/Layer 1.png-4ee234a5487bda49cb3dea8d6fbf4fcd.s3tc.ctex"
+path.etc2="res://.godot/imported/Layer 1.png-4ee234a5487bda49cb3dea8d6fbf4fcd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assent/scenario/ParallaxBG/Layer 1.png"
-dest_files=["res://.godot/imported/Layer 1.png-4ee234a5487bda49cb3dea8d6fbf4fcd.s3tc.ctex"]
+dest_files=["res://.godot/imported/Layer 1.png-4ee234a5487bda49cb3dea8d6fbf4fcd.s3tc.ctex", "res://.godot/imported/Layer 1.png-4ee234a5487bda49cb3dea8d6fbf4fcd.etc2.ctex"]
 
 [params]
 

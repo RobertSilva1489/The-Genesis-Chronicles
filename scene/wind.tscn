@@ -802,10 +802,9 @@ scale = Vector2(1.2, 1.2)
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_5a07s")
-speed = 180
+speed = 190
 health = 600
 strong = 40
-attack_cooldown = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-145, -108.333)
@@ -816,6 +815,7 @@ vframes = 13
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
+speed_scale = 1.2
 libraries = {
 "": SubResource("AnimationLibrary_cbi0y")
 }

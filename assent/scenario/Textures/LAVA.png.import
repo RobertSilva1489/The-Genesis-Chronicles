@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bal1y8wcmir0e"
 path.s3tc="res://.godot/imported/LAVA.png-c0133bf784a37e0df0c16cb9c552a146.s3tc.ctex"
+path.etc2="res://.godot/imported/LAVA.png-c0133bf784a37e0df0c16cb9c552a146.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assent/scenario/Textures/LAVA.png"
-dest_files=["res://.godot/imported/LAVA.png-c0133bf784a37e0df0c16cb9c552a146.s3tc.ctex"]
+dest_files=["res://.godot/imported/LAVA.png-c0133bf784a37e0df0c16cb9c552a146.s3tc.ctex", "res://.godot/imported/LAVA.png-c0133bf784a37e0df0c16cb9c552a146.etc2.ctex"]
 
 [params]
 

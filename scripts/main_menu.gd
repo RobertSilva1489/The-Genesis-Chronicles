@@ -61,3 +61,10 @@ func _on_load_button_pressed() -> void:
 
 func _on_load_button_focus_entered() -> void:
 	$focus.play()
+
+
+func _on_check_button_toggled(button_pressed: bool) -> void:
+	if MobileControl.visible == false:
+		MobileControl.show()
+	else:
+		MobileControl.hide()

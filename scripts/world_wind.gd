@@ -1,6 +1,5 @@
 extends Node2D
 
-var bringer_of_Death = preload("res://scene/Bringer_of_Death.tscn")
 var yamabushi = preload("res://scene/yamabushi_tengu.tscn")
 var karasu = preload("res://scene/karasu_tengu.tscn")
 var boss = preload("res://scene/wind.tscn")
@@ -34,6 +33,7 @@ func _process(delta: float) -> void:
 		if Global.Dfire or Global.Dwind:
 			Global.mana = 100
 		$AnimationPlayer.play("open")
+		Hud._go()
 		Global.showwave = false
 	if wind != null:
 		if wind.health <=0 and wind_check == true:
@@ -41,13 +41,13 @@ func _process(delta: float) -> void:
 			$level.stream_paused = true
 			$bossDead.play()
 			leaf.powerUP("wind")
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(1).timeout
 			leaf._out()
 	if Global.health <= 0 and Global.victory == false and wind:
 		Global.victory = true
 		$Camera2D.make_current()
 		wind._victory()
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scene/world.tscn")
 	elif Global.health <= 0:
 		await get_tree().create_timer(1).timeout
@@ -60,11 +60,10 @@ func spawn_enemy():
 	RanPos.append(spawn2)
 	RanPos.append(spawn3)
 	RanPos.append(spawn4)
-#	enemy.append(bringer_of_Death)
 	enemy.append(karasu)
-#	enemy.append(yamabushi)
-#	enemy.append(karasu)
-#	enemy.append(yamabushi)
+	enemy.append(yamabushi)
+	enemy.append(karasu)
+	enemy.append(yamabushi)
 	var selecte = enemy.pick_random()
 	var select = RanPos.pick_random()
 	var Enemy = selecte.instantiate()

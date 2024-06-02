@@ -21,7 +21,6 @@ func _toggle_pause():
 func _on_button_pressed() -> void:
 	$pressed.play()
 	_toggle_pause()
-	print("resume")
 func _on_button_focus_entered() -> void:
 	if is_paused:
 		$focus.play()
@@ -30,14 +29,13 @@ func _on_button_2_pressed() -> void:
 	hide()
 	_toggle_pause()
 	await $pressed.finished
-	get_tree().change_scene_to_file("res://scene/main_menu.tscn")
+#	get_tree().change_scene_to_file("res://scene/main_menu.tscn")
 
 func _on_button_2_focus_entered() -> void:
 	$focus.play()
 
 func _on_button_3_pressed() -> void:
 	$pressed.play()
-	print("exit")
 	await $pressed.finished
 	get_tree().quit()
 func _on_button_3_focus_entered() -> void:

@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 			attack_player = true
 			invencible = false
 			follow = true
-		else:
+		elif distance > DIST_ATTACK and can_attack:
 			attack_player = false
 		if leaf != null and dead == false:
 			distance = leaf.global_position.x - global_position.x
